@@ -6,16 +6,14 @@ module.exports = {
     es2021: true,
   },
 
-  extends: ['airbnb-base','eslint:recommended','prettier'],
-  plugins: ['import','prettier'],
+  extends: ['airbnb-base', 'eslint:recommended', 'prettier'],
+  plugins: ['import', 'prettier'],
   overrides: [
     {
       env: {
         node: true,
       },
-      files: [
-        '.eslintrc.{js,cjs}',
-      ],
+      files: ['.eslintrc.{js,cjs}'],
       parserOptions: {
         sourceType: 'script',
       },
