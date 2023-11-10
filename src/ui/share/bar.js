@@ -1,3 +1,6 @@
+import logoUrl from '../../assets/img/logo.svg';
+import cupUrl from '../../assets/icons/coffee-cup.svg';
+
 const menuItems = [
   { name: 'logo', link: '/', anchor: 'enjoy' },
   { name: 'Favorite coffee', link: 'favourites-coffee' },
@@ -19,8 +22,7 @@ document.querySelector('#header').innerHTML = `
 <bar class="header__bar">
   <a href="/" id="logo"
     ><img
-    
-      src="/src/assets/img/logo.svg"
+      src="${logoUrl}"
       alt="${menuItems[0].name}"
   /></a>
 
@@ -68,7 +70,7 @@ document.querySelector('#header').innerHTML = `
     >${menuItems[5].name}
     <img
       class="bar__coffee-menu_cup nav-item mb-1 ml-2"
-      src="/src/assets/icons/coffee-cup.svg"
+      src="${cupUrl}"
       alt="menu" />
   </a>
 </bar>
