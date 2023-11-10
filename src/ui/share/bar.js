@@ -1,26 +1,25 @@
-const main = [
-  { name: 'Logo', link: '' },
-  { name: 'Favorite coffee', link: '#favourites-coffee' },
-  { name: 'About', link: '#about' },
-  { name: 'Mobile app', link: '#mobele-app' },
-  { name: 'Contact us', link: '#footer' },
+const menuItems = [
+  { name: 'logo', link: '/', anchor: 'enjoy' },
+  { name: 'Favorite coffee', link: 'favourites-coffee' },
+  { name: 'About', link: 'about' },
+  { name: 'Mobile app', link: 'mobile-app' },
+  { name: 'Contact us', link: 'footer' },
   { name: 'Menu', link: '/menu/' },
 ];
-const menu = [
-  { name: 'logo', link: '/' },
-  { name: 'Favorite coffee', link: '/#favourites-coffee' },
-  { name: 'About', link: '/#about' },
-  { name: 'Mobile app', link: '/#mobele-app' },
-  { name: 'Contact us', link: '/#footer' },
-  { name: 'Menu', link: '' },
-];
+
+let char;
 const path = window.location.pathname;
-const menuItems = path === '/menu/' ? [...menu] : [...main];
+if (path === '/menu/') {
+  char = '/#';
+} else {
+  char = '#';
+}
 
 document.querySelector('#header').innerHTML = `
 <bar class="header__bar">
-  <a href="/"
+  <a href="/" id="logo"
     ><img
+    
       src="/src/assets/img/logo.svg"
       alt="${menuItems[0].name}"
   /></a>
@@ -29,28 +28,32 @@ document.querySelector('#header').innerHTML = `
     <ul class="nav__list pl-0">
       <li>
         <a
-          href="${menuItems[1].link}"
+        id="nav-${menuItems[1].link}"
+          href="${char}${menuItems[1].link}"
           class="nav-item"
           >${menuItems[1].name}</a
         >
       </li>
       <li>
         <a
-          href="${menuItems[2].link}"
+        id="nav-${menuItems[2].link}"
+          href="${char}${menuItems[2].link}"
           class="nav-item"
           >${menuItems[2].name}</a
         >
       </li>
       <li>
         <a
-          href="${menuItems[3].link}"
+        id="nav-${menuItems[3].link}"
+          href="${char}${menuItems[3].link}"
           class="nav-item"
           >${menuItems[3].name}</a
         >
       </li>
       <li>
         <a
-          href="${menuItems[4].link}"
+        id="nav-${menuItems[4].link}"
+          href="${char}${menuItems[4].link}"
           class="nav-item"
           >${menuItems[4].name}</a
         >
@@ -59,6 +62,7 @@ document.querySelector('#header').innerHTML = `
   </nav>
 
   <a
+    id="nav-menu"
     class="bar__coffee-menu nav-item"
     href="${menuItems[5].link}"
     >${menuItems[5].name}
@@ -69,3 +73,20 @@ document.querySelector('#header').innerHTML = `
   </a>
 </bar>
 `;
+
+if (path === '/menu/') {
+  document.querySelector('#nav-menu').style.pointerEvents = 'none';
+  document.querySelector('#nav-menu').classList.add('active');
+} else {
+  document.querySelector('#logo').style.pointerEvents = 'none';
+}
+const menu = menuItems.slice(1, -1);
+
+function setupActive(element, menuItem) {
+  element.addEventListener('mouseover', () => menuItem.classList.add('active'));
+  element.addEventListener('mouseleave', () => menuItem.classList.remove('active'));
+}
+
+menu.forEach((el) => {
+  setupActive(document.querySelector(`#${el.link}`), document.querySelector(`#nav-${el.link}`));
+});

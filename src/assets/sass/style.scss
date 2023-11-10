@@ -245,10 +245,25 @@ li {
         transition: all 0.3s;
       }
 
-      &:hover::after {
+      &:hover::after,
+      &:target::after {
         width: 100%;
         left: 0;
       }
     }
+
+    .nav-item.active {
+      &:after {
+        content: '';
+        position: absolute;
+        bottom: -4px;
+        height: 2px;
+        width: 100%;
+        left: 0;
+        background: $text-dark-color;
+        transition: all 0.3s;
+      }
+    }
   }
 }
+
