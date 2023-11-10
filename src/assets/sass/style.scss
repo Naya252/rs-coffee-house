@@ -140,6 +140,7 @@ button:focus-visible {
   line-height: 140%;
 }
 
+a,
 link,
 button {
   font-size: 16px;
@@ -185,7 +186,7 @@ body {
   box-sizing: border-box;
   background-color: $light-color;
   margin: 0px;
-  padding: 0px;
+  padding: 0px $content-gap-xl;
   display: flex;
   place-items: start;
   min-width: 320px;
@@ -197,9 +198,13 @@ a.link,
 a {
   text-decoration: none;
 }
+ul,
+li {
+  list-style: none;
+}
 
 .wrap {
-  max-width: 1440px;
+  max-width: $content-width-xl;
   width: 100%;
 }
 
@@ -209,4 +214,41 @@ a {
   top: 0;
   background: rgba($light-color, 0.85);
   backdrop-filter: blur(2px);
+
+  .header__bar {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .nav__list {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 40px;
+    }
+
+    .nav-item {
+      display: flex;
+      align-items: center;
+      position: relative;
+      color: $text-dark-color;
+
+      &:after {
+        content: '';
+        position: absolute;
+        bottom: -4px;
+        height: 2px;
+        width: 0;
+        left: 50%;
+        background: $text-dark-color;
+        transition: all 0.3s;
+      }
+
+      &:hover::after {
+        width: 100%;
+        left: 0;
+      }
+    }
+  }
 }
