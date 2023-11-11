@@ -1,5 +1,6 @@
 import logoUrl from '../../assets/img/logo.svg';
 import cupUrl from '../../assets/icons/coffee-cup.svg';
+import '../../assets/sass/bar.scss';
 
 const menuData = [
   { name: 'logo', link: '/', anchor: 'enjoy' },
@@ -44,13 +45,6 @@ document.querySelector('#header').innerHTML = `
 </bar>
 `;
 
-if (path === '/menu/') {
-  document.querySelector('#nav-menu').style.pointerEvents = 'none';
-  document.querySelector('#nav-menu').classList.add('active');
-} else {
-  document.querySelector('#logo').style.pointerEvents = 'none';
-}
-
 const menuItems = menuData.slice(1, -1);
 let navItems = '';
 menuItems.forEach((el) => {
@@ -71,6 +65,12 @@ function setupActive(element, menuItem) {
   element.addEventListener('mouseleave', () => menuItem.classList.remove('active'));
 }
 
-menuItems.forEach((el) => {
-  setupActive(document.querySelector(`#${el.link}`), document.querySelector(`#nav-${el.link}`));
-});
+if (path === '/menu/') {
+  document.querySelector('#nav-menu').style.pointerEvents = 'none';
+  document.querySelector('#nav-menu').classList.add('active');
+} else {
+  document.querySelector('#logo').style.pointerEvents = 'none';
+  menuItems.forEach((el) => {
+    setupActive(document.querySelector(`#${el.link}`), document.querySelector(`#nav-${el.link}`));
+  });
+}
