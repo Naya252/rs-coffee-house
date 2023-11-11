@@ -20,6 +20,12 @@
       gap: 40px;
     }
 
+    #nav-menu svg{
+        stroke: $text-dark-color;
+        margin-bottom: 4px;
+        margin-left: 8px;
+    }
+
     .nav-item {
       display: flex;
       align-items: center;
@@ -56,5 +62,8 @@
         transition: all 0.3s;
       }
     }
+
   }
 }
+
+
