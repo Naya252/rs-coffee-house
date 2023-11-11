@@ -1,7 +1,7 @@
 import logoUrl from '../../assets/img/logo.svg';
 import cupUrl from '../../assets/icons/coffee-cup.svg';
 
-const menuItems = [
+const menuData = [
   { name: 'logo', link: '/', anchor: 'enjoy' },
   { name: 'Favorite coffee', link: 'favourites-coffee' },
   { name: 'About', link: 'about' },
@@ -23,51 +23,19 @@ document.querySelector('#header').innerHTML = `
   <a href="/" id="logo"
     ><img
       src="${logoUrl}"
-      alt="${menuItems[0].name}"
+      alt="${menuData[0].name}"
   /></a>
 
   <nav class="bar__nav">
-    <ul class="nav__list pl-0">
-      <li>
-        <a
-        id="nav-${menuItems[1].link}"
-          href="${char}${menuItems[1].link}"
-          class="nav-item"
-          >${menuItems[1].name}</a
-        >
-      </li>
-      <li>
-        <a
-        id="nav-${menuItems[2].link}"
-          href="${char}${menuItems[2].link}"
-          class="nav-item"
-          >${menuItems[2].name}</a
-        >
-      </li>
-      <li>
-        <a
-        id="nav-${menuItems[3].link}"
-          href="${char}${menuItems[3].link}"
-          class="nav-item"
-          >${menuItems[3].name}</a
-        >
-      </li>
-      <li>
-        <a
-        id="nav-${menuItems[4].link}"
-          href="${char}${menuItems[4].link}"
-          class="nav-item"
-          >${menuItems[4].name}</a
-        >
-      </li>
+    <ul id="nav-list" class="nav__list pl-0">
     </ul>
   </nav>
 
   <a
     id="nav-menu"
     class="bar__coffee-menu nav-item"
-    href="${menuItems[5].link}"
-    >${menuItems[5].name}
+    href="${menuData[5].link}"
+    >${menuData[5].name}
     <img
       class="bar__coffee-menu_cup nav-item mb-1 ml-2"
       src="${cupUrl}"
@@ -82,13 +50,27 @@ if (path === '/menu/') {
 } else {
   document.querySelector('#logo').style.pointerEvents = 'none';
 }
-const menu = menuItems.slice(1, -1);
+
+const menuItems = menuData.slice(1, -1);
+let navItems = '';
+menuItems.forEach((el) => {
+  navItems += `
+  <li>
+        <a
+        id="nav-${el.link}"
+          href="${char}${el.link}"
+          class="nav-item">${el.name}</a>
+  </li>
+  `;
+});
+
+document.querySelector('#nav-list').innerHTML = navItems;
 
 function setupActive(element, menuItem) {
   element.addEventListener('mouseover', () => menuItem.classList.add('active'));
   element.addEventListener('mouseleave', () => menuItem.classList.remove('active'));
 }
 
-menu.forEach((el) => {
+menuItems.forEach((el) => {
   setupActive(document.querySelector(`#${el.link}`), document.querySelector(`#nav-${el.link}`));
 });

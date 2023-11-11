@@ -1,7 +1,9 @@
-import '@/sass/style.scss'
-import javascriptLogo from './javascript.svg'
-import viteLogo from '/vite.svg'
-import { setupCounter } from './counter.js'
+import './src/assets/sass/style.scss';
+import './src/ui/share/bar';
+import './src/ui/share/footer';
+// import javascriptLogo from './javascript.svg'
+// import viteLogo from '/vite.svg'
+// import { setupCounter } from './counter.js'
 
 // document.querySelector('#app').innerHTML = `
 //   <div>
