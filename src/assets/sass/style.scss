@@ -106,6 +106,16 @@ button:focus-visible {
   }
 } */
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+}
+
 .heading-1 {
   font-size: 72px;
   font-weight: 600;
@@ -142,7 +152,8 @@ button:focus-visible {
 
 a,
 link,
-button {
+button,
+.link {
   font-size: 16px;
   font-weight: 600;
   line-height: 150%;
@@ -194,7 +205,7 @@ body {
   width: 100%;
   flex-direction: column;
 }
-a.link,
+
 a {
   text-decoration: none;
 }
@@ -206,4 +217,35 @@ li {
 .wrap {
   max-width: $content-width-xl;
   width: 100%;
+}
+
+.link {
+  svg {
+    stroke: $light-color;
+    margin-right: 8px;
+  }
+  span {
+    position: relative;
+
+    &:after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      height: 2px;
+      width: 0;
+      left: 50%;
+      background: $light-color;
+      transition: all 0.3s;
+    }
+
+    &:hover::after,
+    &:target::after {
+      width: 100%;
+      left: 0;
+    }
+    svg {
+      stroke: $light-color;
+      margin-right: 8px;
+    }
+  }
 }
