@@ -1,6 +1,6 @@
 import logoUrl from '../../assets/img/logo.svg';
 import '../../sass/bar.scss';
-import cupImg from '../../core/icons/coffee-cup';
+import { CUP_ICON } from '../../core/constants';
 
 const menuData = [
   { name: 'logo', link: '/', anchor: 'enjoy' },
@@ -38,7 +38,7 @@ document.querySelector('#header').innerHTML = `
     href="${menuData[5].link}"
     >${menuData[5].name}
 
-    ${cupImg}
+    ${CUP_ICON}
  
   </a>
 </bar>
