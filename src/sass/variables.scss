@@ -1,12 +1,17 @@
+//Main colors
 $dark-color: #403f3d;
+$dark-color-secondary: #665f55;
 $light-color: #e1d4c9;
+$light-color-secondary: #c1b6ad;
 $accent-color: #b0907a;
-$container-color: #665f55;
-$backdrop-color: rgba(64, 63, 61, 0.8);
-$text-light-color: #c1b6ad;
+//Text colors
+$text-light-color: $light-color-secondary;
 $text-dark-color: $dark-color;
-$border-color: #c1b6ad;
-
+//Element colors
+$backdrop-color: rgba($dark-color, 0.8);
+$border-color: $light-color-secondary;
+$container-color: $dark-color-secondary;
+//Content width
 $content-max-width: 1440px;
 $content-gap-xl: 40px;
 $content-gap-md: 30px;
