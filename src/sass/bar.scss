@@ -4,8 +4,10 @@
   height: 100px;
   position: sticky;
   top: 0;
-  background: rgba($light-color, 0.85);
-  backdrop-filter: blur(2px);
+  background: $light-color;
+  // background: rgba($light-color, 0.95);
+  // backdrop-filter: blur(20px);
+  z-index: 10;
 
   .header__bar {
     height: 100%;

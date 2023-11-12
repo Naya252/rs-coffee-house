@@ -30,7 +30,6 @@
       position: relative;
       transition: all 0.5s ease-out;
       cursor: pointer;
-      color: $border-color;
 
       svg {
         position: absolute;
@@ -54,13 +53,13 @@
 
   .footer__contacts {
     margin-right: 100px;
-    color: $light-color;
+    color: $text-light-color;
     display: flex;
     flex-direction: column;
     gap: 16px;
 
     a {
-      color: $light-color;
+      color: $text-light-color;
     }
   }
 }

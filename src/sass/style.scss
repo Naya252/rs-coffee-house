@@ -66,6 +66,10 @@ p {
 a {
   text-decoration: none;
 }
+button {
+  border: none;
+  font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
+}
 ul,
 li {
   list-style: none;
@@ -103,6 +107,7 @@ a,
 button,
 .link {
   font-weight: 600;
+  font-size: 16px;
 }
 
 .burger-link {
@@ -114,6 +119,12 @@ button,
 .wrap {
   max-width: $content-width-xl;
   width: 100%;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  gap: 100px;
 }
 
 .text-light {
