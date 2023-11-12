@@ -1,15 +1,17 @@
 import '../../sass/enjoy.scss';
 import { CUP_ICON } from '../../core/constants';
+import imgUrl from '../../assets/video/img-hero.svg';
+import videoUrl from '../../assets/video/video (2160p).mp4';
 
 document.querySelector('#enjoy').innerHTML = `
 <div class="enjoy__content">
   <video
     autoplay
-    poster="./src/assets/video/img-hero.svg"
+    poster="${imgUrl}"
     muted
     loop>
     <source
-      src="/src/assets/video/video (2160p).mp4"
+      src="${videoUrl}"
       type="video/mp4" />
   </video>
 
