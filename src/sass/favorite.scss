@@ -1,0 +1,84 @@
+@import './variables.scss';
+
+#favorite-coffee {
+  h2 {
+    text-align: center;
+  }
+  .slider {
+    height: 684px;
+    position: relative;
+
+    .slider__content {
+      width: 480px;
+
+      .slider__content_img {
+        height: 480px;
+        background-image: url('../assets/img/slider/coffee-slider-1.svg');
+        background-repeat: no-repeat;
+        background-position: center;
+      }
+      .slider__content_text {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        text-align: center;
+      }
+    }
+    .slider__buttons {
+      position: absolute;
+      top: calc(50% - 62px);
+      left: 0;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+
+      .slider__buttons_btn-left,
+      .slider__buttons_btn-right {
+        margin: 2px;
+        width: 60px;
+        height: 60px;
+        background: inherit;
+        border-radius: 50%;
+        border: 1px solid $dark-color-secondary;
+        cursor: pointer;
+        position: relative;
+        transition: all 0.5s ease-out;
+
+        svg {
+          position: absolute;
+          top: calc(50% - 12px);
+          left: calc(50% - 12px);
+          stroke: $dark-color-secondary;
+        }
+
+        &:hover {
+          background: $dark-color-secondary;
+
+          svg {
+            stroke: $light-color;
+          }
+        }
+      }
+    }
+    .slider__controls {
+      position: absolute;
+      bottom: 0;
+      left: calc(50% - 72px);
+      display: flex;
+      gap: 12px;
+
+      .slider__controls_item {
+        width: 40px;
+        height: 4px;
+        border-radius: 100px;
+        background: $border-color;
+        cursor: pointer;
+        transition: all 0.5s ease-out;
+      }
+      .active {
+        background: $dark-color-secondary;
+        cursor: auto;
+      }
+    }
+  }
+}

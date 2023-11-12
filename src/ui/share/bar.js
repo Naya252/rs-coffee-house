@@ -4,7 +4,7 @@ import { CUP_ICON } from '../../core/constants';
 
 const menuData = [
   { name: 'logo', link: '/', anchor: 'enjoy' },
-  { name: 'Favorite coffee', link: 'favourites-coffee' },
+  { name: 'Favorite coffee', link: 'favorite-coffee' },
   { name: 'About', link: 'about' },
   { name: 'Mobile app', link: 'mobile-app' },
   { name: 'Contact us', link: 'footer' },
