@@ -1,0 +1,53 @@
+@import './variables.scss';
+
+#about {
+  .about__images {
+    display: flex;
+    gap: 40px;
+
+    .about__images_column {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+      flex: 1 1 calc((100% / 2) - 40px);
+    }
+
+    .card {
+      min-height: 430px;
+      width: 100%;
+      height: 100%;
+      border-radius: 20px;
+      overflow: hidden;
+      position: relative;
+
+      img {
+        transition: all 0.5s ease-in;
+        height: 110%;
+        width: 110%;
+        object-fit: cover;
+        position: absolute;
+        top: -5%;
+        left: -5%;
+
+        &:hover {
+          height: 100%;
+          width: 100%;
+          top: 0%;
+          left: 0%;
+        }
+      }
+    }
+
+    .large {
+      min-height: 590px;
+
+      img {
+        height: 110%;
+
+        &:hover {
+          height: 100%;
+        }
+      }
+    }
+  }
+}
