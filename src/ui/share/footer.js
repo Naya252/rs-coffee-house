@@ -1,10 +1,10 @@
-import '../../assets/sass/footer.scss';
-import twitterImg from '../../assets/icons/twitter';
-import instagramImg from '../../assets/icons/instagram';
-import facebookPlayImg from '../../assets/icons/facebook';
-import phoneImg from '../../assets/icons/phone';
-import pinImg from '../../assets/icons/pin-alt';
-import clockImg from '../../assets/icons/clock';
+import '../../sass/footer.scss';
+import twitterImg from '../../core/icons/twitter';
+import instagramImg from '../../core/icons/instagram';
+import facebookPlayImg from '../../core/icons/facebook';
+import phoneImg from '../../core/icons/phone';
+import pinImg from '../../core/icons/pin-alt';
+import clockImg from '../../core/icons/clock';
 
 document.querySelector('#footer').innerHTML = `
 <div class="footer__offer">

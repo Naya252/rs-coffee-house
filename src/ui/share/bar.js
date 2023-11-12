@@ -1,6 +1,6 @@
 import logoUrl from '../../assets/img/logo.svg';
-import '../../assets/sass/bar.scss';
-import cupImg from '../../assets/icons/coffee-cup';
+import '../../sass/bar.scss';
+import cupImg from '../../core/icons/coffee-cup';
 
 const menuData = [
   { name: 'logo', link: '/', anchor: 'enjoy' },
