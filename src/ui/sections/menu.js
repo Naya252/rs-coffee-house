@@ -77,7 +77,7 @@ document.querySelector('#menu').insertAdjacentHTML(
 let tabsHtml = '';
 tabItems.forEach((el) => {
   tabsHtml += `<button id="${el.name.toLowerCase()}">
-  <div class="button_img-container">${el.img}</div>
+  <span class="button_img-container">${el.img}</span>
   ${el.name}</button>`;
 });
 document.querySelector('.menu__tabs').insertAdjacentHTML('afterbegin', tabsHtml);
