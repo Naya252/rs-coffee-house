@@ -1,6 +1,6 @@
 import logoUrl from '../../assets/img/logo.svg';
 import '../../sass/bar.scss';
-import { CUP_ICON } from '../../core/constants';
+import { CUP_ICON, BASE_URL } from '../../core/constants';
 
 const menuData = [
   { name: 'logo', link: 'enjoy', anchor: 'enjoy' },
@@ -8,13 +8,14 @@ const menuData = [
   { name: 'About', link: 'about' },
   { name: 'Mobile app', link: 'mobile-app' },
   { name: 'Contact us', link: 'footer' },
-  { name: 'Menu', link: '/menu/' },
+  { name: 'Menu', link: `${BASE_URL}menu/` },
 ];
 
 let char;
 const footerChar = '#';
 const path = window.location.pathname;
-if (path === '/menu/') {
+
+if (path === '/naya252-JSFE2023Q4/coffee-house/menu/') {
   char = '/#';
   menuData[0].link = '/';
 } else {
@@ -67,7 +68,7 @@ function setupActive(element, menuItem) {
   element.addEventListener('mouseleave', () => menuItem.classList.remove('active'));
 }
 
-if (path === '/menu/') {
+if (path === '/naya252-JSFE2023Q4/coffee-house/menu/') {
   document.querySelector('#nav-menu').style.pointerEvents = 'none';
   document.querySelector('#nav-menu').classList.add('active');
 } else {
