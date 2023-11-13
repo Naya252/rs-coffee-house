@@ -1,7 +1,9 @@
 import '../../sass/mobile.scss';
 import { APPLE_ICON, GOOGLE_PLAY_ICON } from '../../core/constants';
 
-document.querySelector('#mobile-app').innerHTML = `
+document.querySelector('#mobile-app').insertAdjacentHTML(
+  'afterbegin',
+  `
 <div class="mobile-app__offer">
   <h2 class="heading-2"><em class="text-accent">Download</em> our apps to start ordering</h2>
   <p>
@@ -26,4 +28,5 @@ document.querySelector('#mobile-app').innerHTML = `
 </div>
 <div class="mobile-app__img">
 </div>
-`;
+`,
+);

@@ -23,7 +23,9 @@ if (path === '/naya252-JSFE2023Q4/coffee-house/menu/') {
   menuData[0].link = `${BASE_URL}#enjoy`;
 }
 
-document.querySelector('#header').innerHTML = `
+document.querySelector('#header').insertAdjacentHTML(
+  'afterbegin',
+  `
 <bar class="header__bar">
   <a href="${menuData[0].link}" id="logo"
     ><img
@@ -46,7 +48,8 @@ document.querySelector('#header').innerHTML = `
  
   </a>
 </bar>
-`;
+`,
+);
 
 const menuItems = menuData.slice(1, -1);
 let navItems = '';
@@ -61,7 +64,7 @@ menuItems.forEach((el) => {
   `;
 });
 
-document.querySelector('#nav-list').innerHTML = navItems;
+document.querySelector('#nav-list').insertAdjacentHTML('afterbegin', navItems);
 
 function setupActive(element, menuItem) {
   element.addEventListener('mouseover', () => menuItem.classList.add('active'));
