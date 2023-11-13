@@ -21,3 +21,5 @@ export const ARROW_LEFT_ICON = arrowLeftImg;
 export const ARROW_RIGHT_ICON = arrowRightImg;
 export const APPLE_ICON = appleImg;
 export const GOOGLE_PLAY_ICON = googlePlayImg;
+
+export const { BASE_URL } = import.meta.env;
