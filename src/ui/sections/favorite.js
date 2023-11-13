@@ -1,7 +1,9 @@
 import '../../sass/favorite.scss';
 import { ARROW_LEFT_ICON, ARROW_RIGHT_ICON } from '../../core/constants';
 
-document.querySelector('#favorite-coffee').innerHTML = `
+document.querySelector('#favorite-coffee').insertAdjacentHTML(
+  'afterbegin',
+  `
 <h2 class="heading-2 mb-10">Choose your <em class="text-accent">favorite</em> coffee</h2>
 <div class="slider">
   <div class="slider__content mx-auto">
@@ -24,4 +26,5 @@ document.querySelector('#favorite-coffee').innerHTML = `
     <button class="slider__controls_item"></button>
   </div>
 </div>
-`;
+`,
+);

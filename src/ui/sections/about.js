@@ -4,7 +4,9 @@ import about2Url from '../../assets/img/photo/about-2.svg';
 import about3Url from '../../assets/img/photo/about-3.svg';
 import about4Url from '../../assets/img/photo/about-4.svg';
 
-document.querySelector('#about').innerHTML = `
+document.querySelector('#about').insertAdjacentHTML(
+  'afterbegin',
+  `
 <h2 class="heading-2 mb-10">
   Resource is <em class="text-accent">the perfect and cozy place</em> where you can enjoy a variety of hot beverages,
   relax, catch up with friends, or get some work done.
@@ -35,4 +37,5 @@ document.querySelector('#about').innerHTML = `
     </div>
   </div>
 </div>
-`;
+`,
+);

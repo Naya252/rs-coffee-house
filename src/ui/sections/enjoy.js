@@ -3,7 +3,9 @@ import { CUP_ICON, BASE_URL } from '../../core/constants';
 import imgUrl from '../../assets/video/img-hero.svg';
 import videoUrl from '../../assets/video/video (2160p).mp4';
 
-document.querySelector('#enjoy').innerHTML = `
+document.querySelector('#enjoy').insertAdjacentHTML(
+  'afterbegin',
+  `
 <div class="enjoy__content">
   <video
     autoplay
@@ -26,4 +28,5 @@ document.querySelector('#enjoy').innerHTML = `
     </div>
   </div>
 </div>
-`;
+`,
+);

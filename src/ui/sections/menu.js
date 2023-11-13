@@ -65,11 +65,14 @@ const coffeeItems = [
   },
 ];
 
-document.querySelector('#menu').innerHTML = `
+document.querySelector('#menu').insertAdjacentHTML(
+  'afterbegin',
+  `
 <h2 class="heading-2 mb-10 mx-auto">Behind each of our cups hides an <em class="text-accent">amazing surprise</em></h2>
 <div class="menu__tabs mb-10"></div>
 <div class="menu__items"></div>
-`;
+`,
+);
 
 let tabsHtml = '';
 tabItems.forEach((el) => {
@@ -77,7 +80,7 @@ tabItems.forEach((el) => {
   <div class="button_img-container">${el.img}</div>
   ${el.name}</button>`;
 });
-document.querySelector('.menu__tabs').innerHTML = tabsHtml;
+document.querySelector('.menu__tabs').insertAdjacentHTML('afterbegin', tabsHtml);
 document.querySelector('#coffee').classList.add('active');
 
 let cardsHtml = '';
@@ -97,4 +100,4 @@ coffeeItems.forEach((el) => {
   </div>
   `;
 });
-document.querySelector('.menu__items').innerHTML = cardsHtml;
+document.querySelector('.menu__items').insertAdjacentHTML('afterbegin', cardsHtml);

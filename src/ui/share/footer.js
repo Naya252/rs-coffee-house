@@ -1,7 +1,9 @@
 import '../../sass/footer.scss';
 import { TWITTER_ICON, INSTAGRAM_ICON, FACEBOOK_ICON, PHONE_ICON, PIN_ICON, CLOCK_ICON } from '../../core/constants';
 
-document.querySelector('#footer').innerHTML = `
+document.querySelector('#footer').insertAdjacentHTML(
+  'afterbegin',
+  `
 <div class="footer__offer">
   <h2 class="heading-2 mb-10">
     <span class="text-light">Sip, Savor, Smile.</span> <br />
@@ -24,11 +26,12 @@ document.querySelector('#footer').innerHTML = `
   >
   <span class="link">${CLOCK_ICON} Mon-Sat: 9:00 AM – 23:00 PM</span>
 </div>
-`;
+`,
+);
 
 const socialIcons = [TWITTER_ICON, INSTAGRAM_ICON, FACEBOOK_ICON];
 let socialButtons = '';
 socialIcons.forEach((el) => {
   socialButtons += `<button class="social__btn">${el}</button>`;
 });
-document.querySelector('#socials').innerHTML = socialButtons;
+document.querySelector('#socials').insertAdjacentHTML('afterbegin', socialButtons);
