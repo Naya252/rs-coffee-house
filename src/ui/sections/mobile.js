@@ -12,17 +12,17 @@ document.querySelector('#mobile-app').insertAdjacentHTML(
   <div class="mobile-app__offer_buttons">
     <button>
       ${APPLE_ICON}
-      <div class="button__text">
+      <span class="button__text">
         <span class="caption">Available on the</span>
         <span>App Store</span>
-      </div>
+      </span>
     </button>
     <button>
     ${GOOGLE_PLAY_ICON}
-      <div class="button__text">
+      <span class="button__text">
         <span class="caption">Available on</span>
         <span>Google Play</span>
-      </div>
+      </span>
     </button>
   </div>
 </div>
