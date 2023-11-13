@@ -16,11 +16,11 @@ const footerChar = '#';
 const path = window.location.pathname;
 
 if (path === '/naya252-JSFE2023Q4/coffee-house/menu/') {
-  char = '/#';
-  menuData[0].link = '/';
+  char = `${BASE_URL}#`;
+  menuData[0].link = BASE_URL;
 } else {
   char = '#';
-  menuData[0].link = '/#enjoy';
+  menuData[0].link = `${BASE_URL}#enjoy`;
 }
 
 document.querySelector('#header').innerHTML = `
