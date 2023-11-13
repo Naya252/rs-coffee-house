@@ -7,6 +7,8 @@ import pinImg from './icons/pin-alt';
 import clockImg from './icons/clock';
 import arrowLeftImg from './icons/arrow-left';
 import arrowRightImg from './icons/arrow-right';
+import appleImg from './icons/apple';
+import googlePlayImg from './icons/google-play';
 
 export const CUP_ICON = cupImg;
 export const TWITTER_ICON = twitterImg;
@@ -17,3 +19,5 @@ export const PIN_ICON = pinImg;
 export const CLOCK_ICON = clockImg;
 export const ARROW_LEFT_ICON = arrowLeftImg;
 export const ARROW_RIGHT_ICON = arrowRightImg;
+export const APPLE_ICON = appleImg;
+export const GOOGLE_PLAY_ICON = googlePlayImg;
