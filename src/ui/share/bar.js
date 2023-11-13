@@ -3,7 +3,7 @@ import '../../sass/bar.scss';
 import { CUP_ICON } from '../../core/constants';
 
 const menuData = [
-  { name: 'logo', link: '/', anchor: 'enjoy' },
+  { name: 'logo', link: 'enjoy', anchor: 'enjoy' },
   { name: 'Favorite coffee', link: 'favorite-coffee' },
   { name: 'About', link: 'about' },
   { name: 'Mobile app', link: 'mobile-app' },
@@ -12,16 +12,19 @@ const menuData = [
 ];
 
 let char;
+const footerChar = '#';
 const path = window.location.pathname;
 if (path === '/menu/') {
   char = '/#';
+  menuData[0].link = '/';
 } else {
   char = '#';
+  menuData[0].link = '/#enjoy';
 }
 
 document.querySelector('#header').innerHTML = `
 <bar class="header__bar">
-  <a href="/" id="logo"
+  <a href="${menuData[0].link}" id="logo"
     ><img
       src="${logoUrl}"
       alt="${menuData[0].name}"
@@ -51,7 +54,7 @@ menuItems.forEach((el) => {
   <li>
         <a
         id="nav-${el.link}"
-          href="${char}${el.link}"
+          href="${el.link === 'footer' ? footerChar + el.link : char + el.link}"
           class="nav-item">${el.name}</a>
   </li>
   `;
@@ -68,7 +71,6 @@ if (path === '/menu/') {
   document.querySelector('#nav-menu').style.pointerEvents = 'none';
   document.querySelector('#nav-menu').classList.add('active');
 } else {
-  document.querySelector('#logo').style.pointerEvents = 'none';
   menuItems.forEach((el) => {
     setupActive(document.querySelector(`#${el.link}`), document.querySelector(`#nav-${el.link}`));
   });
