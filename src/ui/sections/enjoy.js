@@ -1,7 +1,7 @@
 import '../../sass/enjoy.scss';
 import { CUP_ICON, BASE_URL } from '../../core/constants';
 import imgUrl from '../../assets/video/img-hero.svg';
-import videoUrl from '../../assets/video/video (2160p).mp4';
+import videoUrl from '../../assets/video/video(2160p).mp4';
 
 document.querySelector('#enjoy').insertAdjacentHTML(
   'afterbegin',

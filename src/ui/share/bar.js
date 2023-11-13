@@ -26,7 +26,7 @@ if (path === '/naya252-JSFE2023Q4/coffee-house/menu/') {
 document.querySelector('#header').insertAdjacentHTML(
   'afterbegin',
   `
-<bar class="header__bar">
+<div class="header__bar">
   <a href="${menuData[0].link}" id="logo"
     ><img
       src="${logoUrl}"
@@ -47,7 +47,7 @@ document.querySelector('#header').insertAdjacentHTML(
     ${CUP_ICON}
  
   </a>
-</bar>
+</div>
 `,
 );
 
