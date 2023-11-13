@@ -1,12 +1,12 @@
 @import './variables.scss';
 
 #header {
-  height: 100px;
+  height: 60px;
   position: sticky;
   top: 0;
   background: $light-color;
-  // background: rgba($light-color, 0.95);
-  // backdrop-filter: blur(20px);
+  background: rgba($light-color, 0.8);
+  backdrop-filter: blur(10px);
   z-index: 10;
 
   .header__bar {
