@@ -28,12 +28,12 @@ document.querySelector('#about').insertAdjacentHTML(
     <div class="card">
       <img
         src="${about3Url}"
-        alt="bout-3" />
+        alt="about-3" />
     </div>
     <div class="card large">
       <img
         src="${about4Url}"
-        alt="bout-4" />
+        alt="about-4" />
     </div>
   </div>
 </div>
