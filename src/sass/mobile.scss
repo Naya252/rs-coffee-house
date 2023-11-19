@@ -65,3 +65,29 @@
     width: 100%;
   }
 }
+
+@media only screen and (max-width: 1044px) {
+  #mobile-app {
+    flex-direction: column;
+    gap: 100px;
+
+    .mobile-app__offer {
+      max-width: 688px;
+    }
+  }
+}
+
+@media only screen and (max-width: 720px) {
+  #mobile-app {
+    gap: 40px;
+
+    .mobile-app__offer_buttons {
+      flex-wrap: wrap;
+    }
+
+    .mobile-app__img {
+      height: 348px;
+      background-size: contain;
+    }
+  }
+}

@@ -53,17 +53,17 @@
 }
 
 @media only screen and (max-width: 1044px) {
-  #about{
+  #about {
     .about__images {
       flex-wrap: wrap;
       .about__images_column {
         flex: 1 1 100%;
 
-        .card{
+        .card {
           display: none;
         }
 
-        .card.large{
+        .card.large {
           display: block;
         }
       }
