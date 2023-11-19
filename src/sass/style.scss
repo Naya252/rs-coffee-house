@@ -171,16 +171,19 @@ main {
 }
 
 @media only screen and (max-width: 1044px) {
-  body {
-    padding: 0px $content-gap-md;
-  }
+  // body {
+  //   padding: 0px $content-gap-md;
+  // }
 
-  .wrap {
-    max-width: $content-width-md;
-  }
+  // .wrap {
+  //   max-width: $content-width-md;
+  // }
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 720px) {
+  ::-webkit-scrollbar {
+    width: 0;
+  }
   body {
     padding: 0px $content-gap-xs;
   }
@@ -190,9 +193,9 @@ main {
   }
 
   .heading-1 {
-    font-size: 2.815rem;
+    font-size: 2.63rem;
     font-weight: 600;
-    line-height: 125%;
+    line-height: 114%;
   }
 
   .heading-2 {
@@ -200,10 +203,18 @@ main {
     font-weight: 600;
     line-height: 125%;
   }
-  
+
   a,
   button,
   .link {
     font-size: 1rem;
+  }
+}
+
+@media only screen and (max-width: 379px) {
+  .heading-1 {
+    font-size: 2rem;
+    font-weight: 600;
+    line-height: 114%;
   }
 }
