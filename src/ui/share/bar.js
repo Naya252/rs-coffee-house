@@ -47,6 +47,8 @@ document.querySelector('#header').insertAdjacentHTML(
     ${CUP_ICON}
  
   </a>
+
+  <button id="burger-btn"></button>
 </div>
 `,
 );
