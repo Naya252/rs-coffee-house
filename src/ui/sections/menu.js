@@ -7,6 +7,7 @@ import coffee5Url from '../../assets/img/coffee/coffee-5.svg';
 import coffee6Url from '../../assets/img/coffee/coffee-6.svg';
 import coffee7Url from '../../assets/img/coffee/coffee-7.svg';
 import coffee8Url from '../../assets/img/coffee/coffee-8.svg';
+import { REFRESH_ICON } from '../../core/constants';
 
 const tabItems = [
   { name: 'Coffee', img: '&#9749;' },
@@ -72,6 +73,7 @@ document.querySelector('#menu').insertAdjacentHTML(
 <h2 class="heading-2 mb-10 mx-auto">Behind each of our cups hides an <em class="text-accent">amazing surprise</em></h2>
 <div class="menu__tabs mb-10"></div>
 <div class="menu__items"></div>
+<button id="more-cards">${REFRESH_ICON}</button>
 `,
 );
 
@@ -79,7 +81,8 @@ let tabsHtml = '';
 tabItems.forEach((el) => {
   tabsHtml += `<button id="${el.name.toLowerCase()}">
   <span class="button_img-container">${el.img}</span>
-  ${el.name}</button>`;
+  <span class="button_text">${el.name}</span>
+  </button>`;
 });
 document.querySelector('.menu__tabs').insertAdjacentHTML('afterbegin', tabsHtml);
 document.querySelector('#coffee').classList.add('active');
