@@ -82,3 +82,39 @@
     }
   }
 }
+
+@media only screen and (max-width: 720px) {
+  #favorite-coffee {
+    .slider {
+      height: 576px;
+
+      .slider__content {
+        width: 348px;
+
+        .slider__content_img {
+          height: 348px;
+          background-size: contain;
+        }
+      }
+      .slider__buttons {
+        display: none;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 379px) {
+  #favorite-coffee {
+    .slider {
+      height: 520px;
+
+      .slider__content {
+        width: 250px;
+
+        .slider__content_img {
+          height: 250px;
+        }
+      }
+    }
+  }
+}
