@@ -51,3 +51,22 @@
     }
   }
 }
+
+@media only screen and (max-width: 1044px) {
+  #about{
+    .about__images {
+      flex-wrap: wrap;
+      .about__images_column {
+        flex: 1 1 100%;
+
+        .card{
+          display: none;
+        }
+
+        .card.large{
+          display: block;
+        }
+      }
+    }
+  }
+}
