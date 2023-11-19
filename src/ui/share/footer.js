@@ -5,8 +5,8 @@ document.querySelector('#footer').insertAdjacentHTML(
   'afterbegin',
   `
 <div class="footer__offer">
-  <h2 class="heading-2 mb-10">
-    <span class="text-light">Sip, Savor, Smile.</span> <br />
+  <h2 class="heading-2">
+    <span class="text-light">Sip, Savor, Smile.</span>
     <span class="text-accent accent">It’s coffee time!</span>
   </h2>
   <div id="socials"></div>
