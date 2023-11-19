@@ -9,6 +9,7 @@ import arrowLeftImg from './icons/arrow-left';
 import arrowRightImg from './icons/arrow-right';
 import appleImg from './icons/apple';
 import googlePlayImg from './icons/google-play';
+import refreshImg from './icons/refresh';
 
 export const CUP_ICON = cupImg;
 export const TWITTER_ICON = twitterImg;
@@ -21,5 +22,6 @@ export const ARROW_LEFT_ICON = arrowLeftImg;
 export const ARROW_RIGHT_ICON = arrowRightImg;
 export const APPLE_ICON = appleImg;
 export const GOOGLE_PLAY_ICON = googlePlayImg;
+export const REFRESH_ICON = refreshImg;
 
 export const { BASE_URL } = import.meta.env;
