@@ -68,6 +68,7 @@ const coffeeItems = [
 document.querySelector('#menu').insertAdjacentHTML(
   'afterbegin',
   `
+<h1 style="display: none">Menu</h1>  
 <h2 class="heading-2 mb-10 mx-auto">Behind each of our cups hides an <em class="text-accent">amazing surprise</em></h2>
 <div class="menu__tabs mb-10"></div>
 <div class="menu__items"></div>
