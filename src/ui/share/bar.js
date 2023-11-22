@@ -66,16 +66,33 @@ menuItems.forEach((el) => {
 
 document.querySelector('#nav-list').insertAdjacentHTML('afterbegin', navItems);
 
-function setupActive(element, menuItem) {
-  element.addEventListener('mouseover', () => menuItem.classList.add('active'));
-  element.addEventListener('mouseleave', () => menuItem.classList.remove('active'));
+function intersectionCallback(entries) {
+  entries.forEach((entry) => {
+    const section = entry.target;
+    if (entry.isIntersecting) {
+      document.querySelectorAll(`.nav-item`).forEach((el) => {
+        el.classList.toggle('active', el.getAttribute('id').replace('nav-', '') === section.id);
+      });
+    } else if (!entry.isIntersecting && path === '/naya252-JSFE2023Q4/coffee-house/') {
+      document.querySelectorAll(`.nav-item`).forEach((el) => {
+        el.classList.remove('active');
+      });
+    }
+  });
 }
 
+const observer = new IntersectionObserver(intersectionCallback, {
+  threshold: [0.5, 1],
+});
+
 if (path === '/naya252-JSFE2023Q4/coffee-house/menu/') {
-  document.querySelector('#nav-menu').style.pointerEvents = 'none';
   document.querySelector('#nav-menu').classList.add('active');
+  document.querySelector('#nav-menu').style.pointerEvents = 'none';
+  ['menu', 'footer'].forEach((el) => {
+    observer.observe(document.getElementById(el));
+  });
 } else {
   menuItems.forEach((el) => {
-    setupActive(document.querySelector(`#${el.link}`), document.querySelector(`#nav-${el.link}`));
+    observer.observe(document.getElementById(el.link));
   });
 }
