@@ -37,7 +37,7 @@
         margin: 2px;
         width: 60px;
         height: 60px;
-        background: inherit;
+
         border-radius: 50%;
         border: 1px solid $dark-color-secondary;
         cursor: pointer;
@@ -48,15 +48,6 @@
           position: absolute;
           top: calc(50% - 12px);
           left: calc(50% - 12px);
-          stroke: $dark-color-secondary;
-        }
-
-        &:hover {
-          background: $dark-color-secondary;
-
-          svg {
-            stroke: $light-color;
-          }
         }
       }
     }
@@ -78,6 +69,44 @@
       .active {
         background: $dark-color-secondary;
         cursor: auto;
+      }
+    }
+  }
+}
+
+@media (hover: hover) {
+  .slider__buttons_btn-left,
+  .slider__buttons_btn-right {
+    background: inherit;
+
+    svg {
+      stroke: $dark-color-secondary;
+    }
+
+    &:hover {
+      background: $dark-color-secondary;
+
+      svg {
+        stroke: $light-color;
+      }
+    }
+  }
+}
+
+@media (hover: none) {
+  .slider__buttons_btn-left,
+  .slider__buttons_btn-right {
+    background: inherit;
+
+    svg {
+      stroke: $dark-color-secondary;
+    }
+
+    &:active {
+      background: $dark-color-secondary;
+
+      svg {
+        stroke: $light-color;
       }
     }
   }

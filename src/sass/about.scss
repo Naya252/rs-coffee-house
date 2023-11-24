@@ -22,32 +22,57 @@
 
       img {
         transition: all 0.5s ease-in;
-        height: 110%;
-        width: 110%;
         object-fit: cover;
         position: absolute;
-        top: -5%;
-        left: -5%;
-
-        &:hover {
-          height: 100%;
-          width: 100%;
-          top: 0%;
-          left: 0%;
-        }
       }
     }
 
     .large {
       min-height: 590px;
+    }
+  }
+}
 
-      img {
-        height: 110%;
+@media (hover: hover) {
+  .card {
+    img {
+      height: 110%;
+      width: 110%;
+      top: -5%;
+      left: -5%;
 
-        &:hover {
-          height: 100%;
-        }
+      &:hover {
+        height: 100%;
+        width: 100%;
+        top: 0%;
+        left: 0%;
       }
+    }
+  }
+
+  .large {
+    img {
+      height: 110%;
+
+      &:hover {
+        height: 100%;
+      }
+    }
+  }
+}
+@media (hover: none) {
+  .card {
+    img {
+      height: 100%;
+      width: 100%;
+      top: 0;
+      left: 0;
+    }
+  }
+
+  .large {
+    img {
+      height: 100%;
     }
   }
 }

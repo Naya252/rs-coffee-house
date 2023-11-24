@@ -39,13 +39,11 @@
         position: absolute;
         bottom: -4px;
         height: 2px;
-        width: 0;
-        left: 50%;
+
         background: $text-dark-color;
         transition: all 0.5s ease-out;
       }
 
-      &:hover::after,
       &:target::after {
         width: 100%;
         left: 0;
@@ -96,6 +94,28 @@
         background: $dark-color;
         transition: all 0.5s ease-out;
       }
+    }
+  }
+}
+
+@media (hover: hover) {
+  .nav-item {
+    &:after {
+      left: 50%;
+      width: 0;
+    }
+
+    &:hover::after {
+      width: 100%;
+      left: 0;
+    }
+  }
+}
+@media (hover: none) {
+  .nav-item {
+    &:after {
+      left: 50%;
+      width: 0;
     }
   }
 }

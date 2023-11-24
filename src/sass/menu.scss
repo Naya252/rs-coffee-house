@@ -19,8 +19,7 @@
       display: flex;
       align-items: center;
       gap: 8px;
-      background: inherit;
-      border: 1px solid $light-color-secondary;
+
       transition: all 0.4s ease-in;
       cursor: pointer;
       height: 46px;
@@ -32,22 +31,17 @@
         align-items: center;
         justify-content: center;
         border-radius: 50%;
-        background: $light-color-secondary;
       }
 
-      &:hover,
       &.active {
         background: $dark-color-secondary;
         border: 1px solid $dark-color-secondary;
         color: $text-light-color;
+        cursor: auto;
 
         .button_img-container {
           background: $light-color;
         }
-      }
-
-      &.active {
-        cursor: auto;
       }
     }
   }
@@ -75,12 +69,9 @@
 
         img {
           transition: all 0.5s ease-in;
-          height: 110%;
-          width: 110%;
+
           object-fit: cover;
           position: absolute;
-          top: -5%;
-          left: -5%;
         }
       }
 
@@ -90,15 +81,6 @@
         justify-content: flex-start;
         padding: 20px;
         height: 156px;
-      }
-
-      &:hover {
-        img {
-          height: 100%;
-          width: 100%;
-          top: 0%;
-          left: 0%;
-        }
       }
     }
   }
@@ -122,6 +104,70 @@
       left: calc(50% - 12px);
       stroke: $dark-color-secondary;
       margin: auto;
+    }
+  }
+}
+
+@media (hover: hover) {
+  .menu__tabs button {
+    background: inherit;
+    border: 1px solid $light-color-secondary;
+
+    .button_img-container {
+      background: $light-color-secondary;
+    }
+
+    &:hover {
+      background: $dark-color-secondary;
+      border: 1px solid $dark-color-secondary;
+      color: $text-light-color;
+
+      .button_img-container {
+        background: $light-color;
+      }
+    }
+  }
+
+  .menu__items .card {
+    .card__img {
+      img {
+        height: 110%;
+        width: 110%;
+        top: -5%;
+        left: -5%;
+      }
+    }
+
+    &:hover {
+      .card__img {
+        img {
+          height: 100%;
+          width: 100%;
+          top: 0%;
+          left: 0%;
+        }
+      }
+    }
+  }
+}
+@media (hover: none) {
+  .menu__tabs button {
+    background: inherit;
+    border: 1px solid $light-color-secondary;
+
+    .button_img-container {
+      background: $light-color-secondary;
+    }
+  }
+
+  .menu__items .card {
+    .card__img {
+      img {
+        height: 100%;
+        width: 100%;
+        top: 0%;
+        left: 0%;
+      }
     }
   }
 }

@@ -41,7 +41,6 @@
           position: relative;
 
           span {
-            margin-right: 0;
             transition: all 0.35s ease-out;
           }
 
@@ -51,7 +50,6 @@
             position: absolute;
             top: calc(50% - 10px);
             right: 60px;
-            opacity: 0;
           }
 
           &:hover {
@@ -64,6 +62,38 @@
           }
         }
       }
+    }
+  }
+}
+
+@media (hover: hover) {
+  .button-primary {
+    svg {
+      opacity: 0;
+    }
+    span {
+      margin-right: 0;
+    }
+
+    &:hover {
+      svg {
+        opacity: 1;
+      }
+
+      span {
+        margin-right: 18px;
+      }
+    }
+  }
+}
+
+@media (hover: none) {
+  .button-primary {
+    svg {
+      opacity: 1;
+    }
+    span {
+      margin-right: 18px;
     }
   }
 }

@@ -31,8 +31,7 @@
       width: 60px;
       height: 60px;
       border-radius: 50%;
-      border: 1px solid $border-color;
-      background: inherit;
+
       position: relative;
       transition: all 0.5s ease-out;
       cursor: pointer;
@@ -42,18 +41,8 @@
         position: absolute;
         top: calc(50% - 12px);
         left: calc(50% - 12px);
-        stroke: $light-color;
+
         margin: auto;
-      }
-
-      &:hover {
-        border: 1px solid $light-color;
-        background: $light-color;
-
-        svg {
-          stroke: $dark-color;
-          margin: auto;
-        }
       }
     }
   }
@@ -75,6 +64,46 @@
 
     .link {
       display: inline-flex;
+    }
+  }
+}
+
+@media (hover: hover) {
+  .social__btn {
+    border: 1px solid $border-color;
+    background: inherit;
+
+    svg {
+      stroke: $light-color;
+    }
+
+    &:hover {
+      border: 1px solid $light-color;
+      background: $light-color;
+
+      svg {
+        stroke: $dark-color;
+      }
+    }
+  }
+}
+
+@media (hover: none) {
+  .social__btn {
+    border: 1px solid $border-color;
+    background: inherit;
+
+    svg {
+      stroke: $light-color;
+    }
+
+    &:active {
+      border: 1px solid $light-color;
+      background: $light-color;
+
+      svg {
+        stroke: $dark-color;
+      }
     }
   }
 }

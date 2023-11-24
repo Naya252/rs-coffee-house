@@ -26,12 +26,7 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: $light-color-secondary;
   border-radius: 10px;
-
-  &:hover {
-    background: $accent-color;
-  }
 }
 
 body {
@@ -152,14 +147,14 @@ main {
       position: absolute;
       bottom: -4px;
       height: 2px;
-      width: 0;
-      left: 50%;
       background: $light-color;
       transition: all 0.5s ease-out;
     }
 
-    &:hover::after,
-    &:target::after {
+    &:target::after,
+    &:link::after,
+    &:focus::after,
+    &:active::after {
       width: 100%;
       left: 0;
     }
@@ -170,14 +165,45 @@ main {
   }
 }
 
-@media only screen and (max-width: 1044px) {
-  // body {
-  //   padding: 0px $content-gap-md;
-  // }
+@media (hover: hover) {
+  ::-webkit-scrollbar-thumb {
+    background: $light-color-secondary;
+    &:hover {
+      background: $accent-color;
+    }
+  }
 
-  // .wrap {
-  //   max-width: $content-width-md;
-  // }
+  .link {
+    span {
+      &:after {
+        width: 0;
+        left: 50%;
+      }
+
+      &:hover::after {
+        width: 100%;
+        left: 0;
+      }
+    }
+  }
+}
+
+@media (hover: none) {
+  ::-webkit-scrollbar-thumb {
+    background: $light-color-secondary;
+  }
+
+  .link {
+    span {
+      &:after {
+        width: 0;
+        left: 50%;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 1044px) {
 }
 
 @media only screen and (max-width: 720px) {

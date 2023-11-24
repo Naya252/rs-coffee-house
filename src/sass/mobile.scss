@@ -23,17 +23,14 @@
         height: 64px;
         border-radius: 100px;
         border: 1px solid $border-color;
-        background: inherit;
         cursor: pointer;
         display: flex;
         align-items: center;
         gap: 8px;
         padding: 8px 20px;
-        color: $text-dark-color;
         transition: all 0.5s ease-out;
 
         svg {
-          fill: $text-dark-color;
           transition: all 0.5s ease-out;
         }
 
@@ -43,15 +40,6 @@
           align-items: flex-start;
           justify-content: center;
           gap: 2px;
-        }
-
-        &:hover {
-          background: $dark-color-secondary;
-          color: $text-light-color;
-
-          svg {
-            fill: $text-light-color;
-          }
         }
       }
     }
@@ -63,6 +51,45 @@
     background-repeat: no-repeat;
     background-position: center;
     width: 100%;
+  }
+}
+
+@media (hover: hover) {
+  .mobile-app__offer_buttons button {
+    background: inherit;
+    color: $text-dark-color;
+
+    svg {
+      fill: $text-dark-color;
+    }
+
+    &:hover {
+      background: $dark-color-secondary;
+      color: $text-light-color;
+
+      svg {
+        fill: $text-light-color;
+      }
+    }
+  }
+}
+@media (hover: none) {
+  .mobile-app__offer_buttons button {
+    background: inherit;
+    color: $text-dark-color;
+
+    svg {
+      fill: $text-dark-color;
+    }
+
+    &:active {
+      background: $dark-color-secondary;
+      color: $text-light-color;
+
+      svg {
+        fill: $text-light-color;
+      }
+    }
   }
 }
 
