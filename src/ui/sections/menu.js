@@ -18,25 +18,25 @@ const tabItems = [
 const coffeeItems = [
   {
     name: 'Irish coffee',
-    descriptions: 'Fragrant black coffee with Jameson Irish whiskey and whippedmilk',
+    descriptions: 'Fragrant black coffee with Jameson Irish whiskey and whipped milk',
     price: '$7.00',
     img: coffee1Url,
   },
   {
     name: 'Kahlua coffee',
-    descriptions: 'Classic coffee with milk and Kahlua liqueur under acap of frothed milk',
+    descriptions: 'Classic coffee with milk and Kahlua liqueur under a cap of frothed milk',
     price: '$7.00',
     img: coffee2Url,
   },
   {
     name: 'Honey raf',
-    descriptions: 'Espresso with frothed milk, cream andaromatic honey',
+    descriptions: 'Espresso with frothed milk, cream and aromatic honey',
     price: '$5.50',
     img: coffee3Url,
   },
   {
     name: 'Ice cappuccino',
-    descriptions: 'Cappuccino with soft thick foam in summerversion with ice',
+    descriptions: 'Cappuccino with soft thick foam in summer version with ice',
     price: '$5.00',
     img: coffee4Url,
   },
