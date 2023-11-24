@@ -163,10 +163,10 @@
   .menu__items .card {
     .card__img {
       img {
-        height: 100%;
-        width: 100%;
-        top: 0%;
-        left: 0%;
+        height: 110%;
+        width: 110%;
+        top: -5%;
+        left: -5%;
       }
     }
   }
@@ -180,7 +180,7 @@
 
     .menu__items {
       grid-template-columns: 1fr 1fr;
-      margin: 0 9px;
+      margin: 0 12px;
 
       .card {
         &:nth-child(n + 5) {
