@@ -165,6 +165,17 @@ main {
   }
 }
 
+.text-three-rows {
+  display: -webkit-box;
+  overflow: hidden;
+  white-space: normal;
+  text-overflow: ellipsis;
+  word-break: normal;
+  overflow-wrap: break-word;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
 @media (hover: hover) {
   ::-webkit-scrollbar-thumb {
     background: $light-color-secondary;

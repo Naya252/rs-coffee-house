@@ -98,7 +98,7 @@ coffeeItems.forEach((el) => {
     </div>
     <div class="card__info">
       <h3 class="heading-3 mb-3">${el.name}</h3>
-      <p>${el.descriptions}</p>
+      <p class="text-three-rows">${el.descriptions}</p>
       <h3 class="heading-3 mt-auto">${el.price}</h3>
     </div>
   </div>
