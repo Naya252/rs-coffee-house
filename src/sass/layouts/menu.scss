@@ -171,7 +171,7 @@
   }
 }
 
-@media only screen and (max-width: 1044px) {
+@media only screen and (max-width: $breakpoint-lg) {
   #menu {
     h2 {
       width: 100%;
@@ -180,7 +180,13 @@
     .menu__items {
       grid-template-columns: 1fr 1fr;
       margin: 0 12px;
+    }
+  }
+}
 
+@media only screen and (max-width: $breakpoint-md) {
+  #menu {
+    .menu__items {
       .card {
         &:nth-child(n + 5) {
           display: none;
@@ -194,7 +200,7 @@
   }
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: $breakpoint-xs) {
   #menu {
     .menu__tabs {
       gap: 8px;
@@ -207,7 +213,7 @@
   }
 }
 
-@media only screen and (max-width: 379px) {
+@media only screen and (max-width: $breakpoint-xxs) {
   #menu {
     .menu__tabs {
       gap: 16px;

@@ -120,7 +120,7 @@
   }
 }
 
-@media only screen and (max-width: 1044px) {
+@media only screen and (max-width: $breakpoint-md) {
   #header {
     .bar__nav,
     #nav-menu {

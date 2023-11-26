@@ -203,10 +203,7 @@ main {
   }
 }
 
-@media only screen and (max-width: 1044px) {
-}
-
-@media only screen and (max-width: 720px) {
+@media only screen and (max-width: $breakpoint-sm) {
   ::-webkit-scrollbar {
     width: 0;
   }
@@ -221,7 +218,7 @@ main {
   .heading-1 {
     font-size: 2.63rem;
     font-weight: 600;
-    line-height: 114%;
+    line-height: 115%;
   }
 
   .heading-2 {
@@ -237,7 +234,7 @@ main {
   }
 }
 
-@media only screen and (max-width: 379px) {
+@media only screen and (max-width: $breakpoint-xxs) {
   .heading-1 {
     font-size: 2rem;
     font-weight: 600;

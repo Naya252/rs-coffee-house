@@ -57,7 +57,7 @@
   }
 }
 
-@media only screen and (max-width: 1044px) {
+@media only screen and (max-width: $breakpoint-lg) {
   #footer {
     flex-wrap: wrap;
 
@@ -79,7 +79,7 @@
   }
 }
 
-@media only screen and (max-width: 720px) {
+@media only screen and (max-width: $breakpoint-sm) {
   #footer {
     gap: $content-gap-xl;
 

@@ -32,13 +32,13 @@
   }
 }
 
-@media only screen and (max-width: 1044px) {
+@media only screen and (max-width: $breakpoint-lg) {
   #enjoy .enjoy__content .enjoy__content_offer-wrapper .enjoy__content_offer {
     padding: 100px 60px 100px 60px;
   }
 }
 
-@media only screen and (max-width: 720px) {
+@media only screen and (max-width: $breakpoint-sm) {
   #enjoy {
     .enjoy__content {
       height: 552px;
@@ -51,7 +51,7 @@
   }
 }
 
-@media only screen and (max-width: 379px) {
+@media only screen and (max-width: $breakpoint-xxs) {
   #enjoy {
     .enjoy__content {
       .enjoy__content_offer-wrapper .enjoy__content_offer {

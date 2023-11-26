@@ -60,7 +60,7 @@
   }
 }
 
-@media only screen and (max-width: 720px) {
+@media only screen and (max-width: $breakpoint-sm) {
   #favorite-coffee {
     .slider {
       height: 576px;
@@ -80,7 +80,7 @@
   }
 }
 
-@media only screen and (max-width: 379px) {
+@media only screen and (max-width: $breakpoint-xxs) {
   #favorite-coffee {
     .slider {
       height: 520px;
