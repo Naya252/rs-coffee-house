@@ -14,10 +14,8 @@ $container-color: $dark-color-secondary;
 //Content width
 $content-max-width: 1440px;
 $content-gap-xl: 40px;
-// $content-gap-md: 22px;
 $content-gap-xs: 16px;
 $content-width-xl: $content-max-width - $content-gap-xl * 2;
-// $content-width-md: $content-max-width - $content-gap-md * 2;
 $content-width-xs: $content-max-width - $content-gap-xs * 2;
 
 $main-p-xl: 100px;
