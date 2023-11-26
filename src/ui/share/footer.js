@@ -1,4 +1,5 @@
-import '../../sass/footer.scss';
+import '../../sass/layouts/footer.scss';
+import '../../sass/components/button.scss';
 import { TWITTER_ICON, INSTAGRAM_ICON, FACEBOOK_ICON, PHONE_ICON, PIN_ICON, CLOCK_ICON } from '../../core/constants';
 
 document.querySelector('#footer').insertAdjacentHTML(
@@ -32,6 +33,6 @@ document.querySelector('#footer').insertAdjacentHTML(
 const socialIcons = [TWITTER_ICON, INSTAGRAM_ICON, FACEBOOK_ICON];
 let socialButtons = '';
 socialIcons.forEach((el) => {
-  socialButtons += `<button class="social__btn">${el}</button>`;
+  socialButtons += `<button class="social__btn rounded-btn transparent-light-btn">${el}</button>`;
 });
 document.querySelector('#socials').insertAdjacentHTML('afterbegin', socialButtons);

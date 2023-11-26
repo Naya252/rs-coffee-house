@@ -1,4 +1,5 @@
-import '../../sass/mobile.scss';
+import '../../sass/layouts/mobile.scss';
+import '../../sass/components/button.scss';
 import { APPLE_ICON, GOOGLE_PLAY_ICON } from '../../core/constants';
 
 document.querySelector('#mobile-app').insertAdjacentHTML(
@@ -10,20 +11,20 @@ document.querySelector('#mobile-app').insertAdjacentHTML(
     Download the Resource app today and experience the comfort of ordering your favorite coffee from wherever you are
   </p>
   <div class="mobile-app__offer_buttons">
-    <button>
-      ${APPLE_ICON}
-      <span class="button__text">
-        <span class="caption">Available on the</span>
-        <span>App Store</span>
-      </span>
-    </button>
-    <button>
-    ${GOOGLE_PLAY_ICON}
-      <span class="button__text">
-        <span class="caption">Available on</span>
-        <span>Google Play</span>
-      </span>
-    </button>
+    <button class="button-primary mobile-app-btn transparent-dark-btn">
+    ${APPLE_ICON}
+    <span class="button__text">
+      <span class="caption">Available on the</span>
+      <span>App Store</span>
+    </span>
+  </button>
+  <button class="button-primary mobile-app-btn transparent-dark-btn">
+  ${GOOGLE_PLAY_ICON}
+    <span class="button__text">
+      <span class="caption">Available on</span>
+      <span>Google Play</span>
+    </span>
+  </button>
   </div>
 </div>
 <div class="mobile-app__img">

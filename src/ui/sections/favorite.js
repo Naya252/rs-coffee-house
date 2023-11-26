@@ -1,4 +1,5 @@
-import '../../sass/favorite.scss';
+import '../../sass/layouts/favorite.scss';
+import '../../sass/components/button.scss';
 import { ARROW_LEFT_ICON, ARROW_RIGHT_ICON } from '../../core/constants';
 
 document.querySelector('#favorite-coffee').insertAdjacentHTML(
@@ -17,8 +18,8 @@ document.querySelector('#favorite-coffee').insertAdjacentHTML(
     </div>
   </div>
   <div class="slider__buttons">
-    <button class="slider__buttons_btn-left">${ARROW_LEFT_ICON}</button>
-    <button class="slider__buttons_btn-right">${ARROW_RIGHT_ICON}</button>
+    <button class="slider__buttons_btn-left rounded-btn transparent-dark-btn">${ARROW_LEFT_ICON}</button>
+    <button class="slider__buttons_btn-right rounded-btn transparent-dark-btn">${ARROW_RIGHT_ICON}</button>
   </div>
   <div class="slider__controls">
     <button class="slider__controls_item active"></button>
