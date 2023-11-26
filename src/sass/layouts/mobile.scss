@@ -1,0 +1,56 @@
+@import '../variables.scss';
+
+#mobile-app {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 100px;
+
+  .mobile-app__offer,
+  .mobile-app__img {
+    max-width: 630px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+
+    .mobile-app__offer_buttons {
+      display: inline-flex;
+      align-items: center;
+      gap: 20px;
+    }
+  }
+
+  .mobile-app__img {
+    height: 630px;
+    background-image: url('../../assets/img/mobile-screens.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 1044px) {
+  #mobile-app {
+    flex-direction: column;
+    gap: 100px;
+
+    .mobile-app__offer {
+      max-width: 688px;
+    }
+  }
+}
+
+@media only screen and (max-width: 720px) {
+  #mobile-app {
+    gap: 40px;
+
+    .mobile-app__offer_buttons {
+      flex-wrap: wrap;
+    }
+
+    .mobile-app__img {
+      height: 348px;
+      background-size: contain;
+    }
+  }
+}

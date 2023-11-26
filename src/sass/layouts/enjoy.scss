@@ -1,4 +1,4 @@
-@import './variables.scss';
+@import '../variables.scss';
 
 #enjoy {
   .enjoy__content {
@@ -27,64 +27,7 @@
       .enjoy__content_offer {
         padding: 100px;
         width: 530px;
-
-        .button-primary {
-          width: 200px;
-          height: 64px;
-          border-radius: 100px;
-          background: $light-color;
-          color: $text-dark-color;
-          cursor: pointer;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          position: relative;
-
-          span {
-            transition: all 0.35s ease-out;
-          }
-
-          svg {
-            stroke: $dark-color;
-            margin-bottom: 4px;
-            position: absolute;
-            top: calc(50% - 10px);
-            right: 60px;
-          }
-        }
       }
-    }
-  }
-}
-
-@media (hover: hover) {
-  .button-primary {
-    svg {
-      opacity: 0;
-    }
-    span {
-      margin-right: 0;
-    }
-
-    &:hover {
-      svg {
-        opacity: 1;
-      }
-
-      span {
-        margin-right: 24px;
-      }
-    }
-  }
-}
-
-@media (hover: none) {
-  .button-primary {
-    svg {
-      opacity: 1;
-    }
-    span {
-      margin-right: 24px;
     }
   }
 }

@@ -1,4 +1,4 @@
-import '../../sass/menu.scss';
+import '../../sass/layouts/menu.scss';
 import coffee1Url from '../../assets/img/coffee/coffee-1.svg';
 import coffee2Url from '../../assets/img/coffee/coffee-2.svg';
 import coffee3Url from '../../assets/img/coffee/coffee-3.svg';

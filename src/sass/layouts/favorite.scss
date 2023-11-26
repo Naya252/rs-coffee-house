@@ -1,4 +1,4 @@
-@import './variables.scss';
+@import '../variables.scss';
 
 #favorite-coffee {
   h2 {
@@ -13,7 +13,7 @@
 
       .slider__content_img {
         height: 480px;
-        background-image: url('../assets/img/slider/coffee-slider-1.svg');
+        background-image: url('../../assets/img/slider/coffee-slider-1.svg');
         background-repeat: no-repeat;
         background-position: center;
       }
@@ -35,20 +35,6 @@
       .slider__buttons_btn-left,
       .slider__buttons_btn-right {
         margin: 2px;
-        width: 60px;
-        height: 60px;
-
-        border-radius: 50%;
-        border: 1px solid $dark-color-secondary;
-        cursor: pointer;
-        position: relative;
-        transition: all 0.5s ease-out;
-
-        svg {
-          position: absolute;
-          top: calc(50% - 12px);
-          left: calc(50% - 12px);
-        }
       }
     }
     .slider__controls {
@@ -69,44 +55,6 @@
       .active {
         background: $dark-color-secondary;
         cursor: auto;
-      }
-    }
-  }
-}
-
-@media (hover: hover) {
-  .slider__buttons_btn-left,
-  .slider__buttons_btn-right {
-    background: inherit;
-
-    svg {
-      stroke: $dark-color-secondary;
-    }
-
-    &:hover {
-      background: $dark-color-secondary;
-
-      svg {
-        stroke: $light-color;
-      }
-    }
-  }
-}
-
-@media (hover: none) {
-  .slider__buttons_btn-left,
-  .slider__buttons_btn-right {
-    background: inherit;
-
-    svg {
-      stroke: $dark-color-secondary;
-    }
-
-    &:active {
-      background: $dark-color-secondary;
-
-      svg {
-        stroke: $light-color;
       }
     }
   }

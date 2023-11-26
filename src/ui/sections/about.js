@@ -1,4 +1,4 @@
-import '../../sass/about.scss';
+import '../../sass/layouts/about.scss';
 import about1Url from '../../assets/img/photo/about-1.svg';
 import about2Url from '../../assets/img/photo/about-2.svg';
 import about3Url from '../../assets/img/photo/about-3.svg';
