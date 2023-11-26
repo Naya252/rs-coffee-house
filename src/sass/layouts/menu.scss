@@ -69,7 +69,6 @@
 
         img {
           transition: all 0.5s ease-in;
-
           object-fit: cover;
           position: absolute;
         }
@@ -86,25 +85,25 @@
   }
 
   #more-cards {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    background: inherit;
-    border: 1px solid $dark-color-secondary;
-    cursor: pointer;
+    // width: 60px;
+    // height: 60px;
+    // border-radius: 50%;
+    // background: inherit;
+    // border: 1px solid $dark-color-secondary;
+    // cursor: pointer;
     margin-top: 40px;
     margin-left: calc(50% - 30px);
     display: none;
-    position: relative;
-    transition: all 0.5s ease-out;
+    // position: relative;
+    // transition: all 0.5s ease-out;
 
-    svg {
-      position: absolute;
-      top: calc(50% - 12px);
-      left: calc(50% - 12px);
-      stroke: $dark-color-secondary;
-      margin: auto;
-    }
+    // svg {
+    //   position: absolute;
+    //   top: calc(50% - 12px);
+    //   left: calc(50% - 12px);
+    //   stroke: $dark-color-secondary;
+    //   margin: auto;
+    // }
   }
 }
 
