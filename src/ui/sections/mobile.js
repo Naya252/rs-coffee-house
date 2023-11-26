@@ -11,14 +11,14 @@ document.querySelector('#mobile-app').insertAdjacentHTML(
     Download the Resource app today and experience the comfort of ordering your favorite coffee from wherever you are
   </p>
   <div class="mobile-app__offer_buttons">
-    <button class="button-primary mobile-app-btn transparent-dark-btn">
+    <button class="button-primary mobile-app-btn transparent-dark-btn svg-fill">
     ${APPLE_ICON}
     <span class="button__text">
       <span class="caption">Available on the</span>
       <span>App Store</span>
     </span>
   </button>
-  <button class="button-primary mobile-app-btn transparent-dark-btn">
+  <button class="button-primary mobile-app-btn transparent-dark-btn svg-fill">
   ${GOOGLE_PLAY_ICON}
     <span class="button__text">
       <span class="caption">Available on</span>

@@ -5,8 +5,14 @@
   border: 1px solid $dark-color-secondary;
 
   svg {
-    fill: $text-dark-color;
     stroke: $text-dark-color;
+  }
+
+  &.svg-fill {
+    svg {
+      stroke: none;
+      fill: $text-dark-color;
+    }
   }
 }
 .transparent-light-btn {
@@ -80,14 +86,6 @@
   }
 }
 
-//menu
-// button {
-//     padding: 8px 16px 8px 8px;
-//     border-radius: 100px;
-//     display: flex;
-//     align-items: center;
-//     gap: 8px;
-
 @media (hover: hover) {
   .transparent-dark-btn {
     &:hover {
@@ -95,8 +93,14 @@
       color: $text-light-color;
 
       svg {
-        fill: $text-light-color;
         stroke: $text-light-color;
+      }
+
+      &.svg-fill {
+        svg {
+          stroke: none;
+          fill: $text-light-color;
+        }
       }
     }
   }
