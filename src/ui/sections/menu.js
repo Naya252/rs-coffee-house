@@ -1,70 +1,21 @@
 import '../../sass/layouts/menu.scss';
-import coffee1Url from '../../assets/img/coffee/coffee-1.svg';
-import coffee2Url from '../../assets/img/coffee/coffee-2.svg';
-import coffee3Url from '../../assets/img/coffee/coffee-3.svg';
-import coffee4Url from '../../assets/img/coffee/coffee-4.svg';
-import coffee5Url from '../../assets/img/coffee/coffee-5.svg';
-import coffee6Url from '../../assets/img/coffee/coffee-6.svg';
-import coffee7Url from '../../assets/img/coffee/coffee-7.svg';
-import coffee8Url from '../../assets/img/coffee/coffee-8.svg';
-import { REFRESH_ICON } from '../../core/constants';
+import { REFRESH_ICON, COFFEE_IMAGES, TEA_IMAGES, DESSERTS_IMAGES } from '../../core/constants';
+import { getTabData } from '../../repository/products-repository';
 
 const tabItems = [
   { name: 'Coffee', img: '&#9749;' },
   { name: 'Tea', img: '&#129750;' },
   { name: 'Dessert', img: '&#127856;' },
 ];
-
-const coffeeItems = [
-  {
-    name: 'Irish coffee',
-    descriptions: 'Fragrant black coffee with Jameson Irish whiskey and whipped milk',
-    price: '$7.00',
-    img: coffee1Url,
-  },
-  {
-    name: 'Kahlua coffee',
-    descriptions: 'Classic coffee with milk and Kahlua liqueur under a cap of frothed milk',
-    price: '$7.00',
-    img: coffee2Url,
-  },
-  {
-    name: 'Honey raf',
-    descriptions: 'Espresso with frothed milk, cream and aromatic honey',
-    price: '$5.50',
-    img: coffee3Url,
-  },
-  {
-    name: 'Ice cappuccino',
-    descriptions: 'Cappuccino with soft thick foam in summer version with ice',
-    price: '$5.00',
-    img: coffee4Url,
-  },
-  {
-    name: 'Espresso',
-    descriptions: 'Classic black coffee',
-    price: '$4.50',
-    img: coffee5Url,
-  },
-  {
-    name: 'Latte',
-    descriptions: 'Espresso coffee with the addition of steamed milk and dense milk foam',
-    price: '$5.50',
-    img: coffee6Url,
-  },
-  {
-    name: 'Latte macchiato',
-    descriptions: 'Espresso with frothed milk and chocolate',
-    price: '$5.50',
-    img: coffee7Url,
-  },
-  {
-    name: 'Coffeewith cognac',
-    descriptions: 'Fragrant black coffee with cognac and whipped cream',
-    price: '$6.50',
-    img: coffee8Url,
-  },
-];
+let coffeeItems = getTabData('coffee');
+let teaItems = getTabData('tea');
+let dessertsItems = getTabData('dessert');
+coffeeItems = coffeeItems.map((el, i) => ({ ...el, img: COFFEE_IMAGES[i] }));
+teaItems = teaItems.map((el, i) => ({ ...el, img: TEA_IMAGES[i] }));
+dessertsItems = dessertsItems.map((el, i) => ({ ...el, img: DESSERTS_IMAGES[i] }));
+console.log(coffeeItems);
+console.log(teaItems);
+console.log(dessertsItems);
 
 document.querySelector('#menu').insertAdjacentHTML(
   'afterbegin',
@@ -98,7 +49,7 @@ coffeeItems.forEach((el) => {
     </div>
     <div class="card__info">
       <h3 class="heading-3 mb-3">${el.name}</h3>
-      <p class="text-three-rows">${el.descriptions}</p>
+      <p class="text-three-rows">${el.description}</p>
       <h3 class="heading-3 mt-auto">${el.price}</h3>
     </div>
   </div>
