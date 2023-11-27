@@ -91,7 +91,7 @@ coffeeItems.forEach((el) => {
     <div class="card__img">
       <img
         src="${el.img}"
-        alt="bout-3" />
+        alt="${el.name}" />
     </div>
     <div class="card__info">
       <h3 class="heading-3 mb-3">${el.name}</h3>
