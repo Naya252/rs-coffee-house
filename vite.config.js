@@ -1,7 +1,7 @@
 import path, { resolve } from 'path';
 
 export default {
-  base: 'https://rolling-scopes-school.github.io/naya252-JSFE2023Q4/coffee-house2/',
+  base: 'https://rolling-scopes-school.github.io/naya252-JSFE2023Q4/coffee-house3/',
   plugins: [],
   resolve: {
     alias: {

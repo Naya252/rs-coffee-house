@@ -15,7 +15,7 @@ let char;
 const footerChar = '#';
 const path = window.location.pathname;
 
-if (path === '/naya252-JSFE2023Q4/coffee-house2/menu/') {
+if (path === '/naya252-JSFE2023Q4/coffee-house3/menu/') {
   char = `${BASE_URL}#`;
   menuData[0].link = BASE_URL;
 } else {
@@ -75,7 +75,7 @@ function intersectionCallback(entries) {
       document.querySelectorAll(`.nav-item`).forEach((el) => {
         el.classList.toggle('active', el.getAttribute('id').replace('nav-', '') === section.id);
       });
-    } else if (!entry.isIntersecting && path === '/naya252-JSFE2023Q4/coffee-house2/') {
+    } else if (!entry.isIntersecting && path === '/naya252-JSFE2023Q4/coffee-house3/') {
       document.querySelectorAll(`.nav-item`).forEach((el) => {
         el.classList.remove('active');
       });
@@ -87,7 +87,7 @@ const observer = new IntersectionObserver(intersectionCallback, {
   threshold: [0.5, 1],
 });
 
-if (path === '/naya252-JSFE2023Q4/coffee-house2/menu/') {
+if (path === '/naya252-JSFE2023Q4/coffee-house3/menu/') {
   document.querySelector('#nav-menu').classList.add('active');
   document.querySelector('#nav-menu').style.pointerEvents = 'none';
   ['menu', 'footer'].forEach((el) => {
