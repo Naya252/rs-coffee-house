@@ -111,6 +111,7 @@
   .menu__tabs button {
     background: inherit;
     border: 1px solid $light-color-secondary;
+    color: $dark-color;
 
     .button_img-container {
       background: $light-color-secondary;
@@ -119,7 +120,7 @@
     &:hover {
       background: $dark-color-secondary;
       border: 1px solid $dark-color-secondary;
-      color: $text-light-color;
+      color: $light-color;
 
       .button_img-container {
         background: $light-color;
@@ -153,6 +154,7 @@
   .menu__tabs button {
     background: inherit;
     border: 1px solid $light-color-secondary;
+    color: $dark-color;
 
     .button_img-container {
       background: $light-color-secondary;

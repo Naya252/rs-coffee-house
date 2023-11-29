@@ -7,12 +7,12 @@ import coffee5Url from '../../assets/img/coffee/coffee-5.svg';
 import coffee6Url from '../../assets/img/coffee/coffee-6.svg';
 import coffee7Url from '../../assets/img/coffee/coffee-7.svg';
 import coffee8Url from '../../assets/img/coffee/coffee-8.svg';
-import { REFRESH_ICON } from '../../core/constants';
+import { TAB_COFFEE, TAB_TEA, TAB_DESSERT, REFRESH_ICON } from '../../core/constants';
 
 const tabItems = [
-  { name: 'Coffee', img: '&#9749;' },
-  { name: 'Tea', img: '&#129750;' },
-  { name: 'Dessert', img: '&#127856;' },
+  { name: 'Coffee', img: TAB_COFFEE },
+  { name: 'Tea', img: TAB_TEA },
+  { name: 'Dessert', img: TAB_DESSERT },
 ];
 
 const coffeeItems = [
