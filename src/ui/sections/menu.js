@@ -1,11 +1,19 @@
 import '../../sass/layouts/menu.scss';
-import { REFRESH_ICON, COFFEE_IMAGES, TEA_IMAGES, DESSERTS_IMAGES } from '../../core/constants';
+import {
+  TAB_COFFEE,
+  TAB_TEA,
+  TAB_DESSERT,
+  REFRESH_ICON,
+  COFFEE_IMAGES,
+  TEA_IMAGES,
+  DESSERTS_IMAGES,
+} from '../../core/constants';
 import { getTabData } from '../../repository/products-repository';
 
 const tabItems = [
-  { name: 'Coffee', img: '&#9749;' },
-  { name: 'Tea', img: '&#129750;' },
-  { name: 'Dessert', img: '&#127856;' },
+  { name: 'Coffee', img: TAB_COFFEE },
+  { name: 'Tea', img: TAB_TEA },
+  { name: 'Dessert', img: TAB_DESSERT },
 ];
 let coffeeItems = getTabData('coffee');
 let teaItems = getTabData('tea');

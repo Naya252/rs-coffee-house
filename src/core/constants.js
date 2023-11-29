@@ -31,6 +31,9 @@ import dessertUrl5 from '../assets/img/dessert/dessert-5.svg';
 import dessertUrl6 from '../assets/img/dessert/dessert-6.svg';
 import dessertUrl7 from '../assets/img/dessert/dessert-7.svg';
 import dessertUrl8 from '../assets/img/dessert/dessert-8.svg';
+import tabCoffee from './icons/tab-coffee';
+import tabTea from './icons/tab-tea';
+import tabDessert from './icons/tab-dessert';
 
 export const CUP_ICON = cupImg;
 export const TWITTER_ICON = twitterImg;
@@ -44,6 +47,10 @@ export const ARROW_RIGHT_ICON = arrowRightImg;
 export const APPLE_ICON = appleImg;
 export const GOOGLE_PLAY_ICON = googlePlayImg;
 export const REFRESH_ICON = refreshImg;
+
+export const TAB_COFFEE = tabCoffee;
+export const TAB_TEA = tabTea;
+export const TAB_DESSERT = tabDessert;
 
 export const COFFEE_IMAGES = [
   coffeeUrl1,
