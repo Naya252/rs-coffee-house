@@ -66,14 +66,18 @@ const coffeeItems = [
   },
 ];
 
-document.querySelector('#menu').insertAdjacentHTML(
-  'afterbegin',
+document.querySelector('#header').insertAdjacentHTML(
+  'afterend',
   `
-<h1 style="display: none">Menu</h1>  
-<h2 class="heading-2 mb-10 mx-auto">Behind each of our cups hides an <em class="text-accent">amazing surprise</em></h2>
-<div class="menu__tabs mb-10"></div>
-<div class="menu__items"></div>
-<button id="more-cards" class="rounded-btn transparent-dark-btn">${REFRESH_ICON}</button>
+<main class="wrap mx-auto mt-5">
+  <section id="menu">
+    <h1 style="display: none">Menu</h1>  
+    <h2 class="heading-2 mb-10 mx-auto">Behind each of our cups hides an <em class="text-accent">amazing surprise</em></h2>
+    <div class="menu__tabs mb-10"></div>
+    <div class="menu__items"></div>
+    <button id="more-cards" class="rounded-btn transparent-dark-btn">${REFRESH_ICON}</button>
+  </section>
+</main>
 `,
 );
 

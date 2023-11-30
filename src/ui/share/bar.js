@@ -15,7 +15,7 @@ let char;
 const footerChar = '#';
 const path = window.location.pathname;
 
-if (path === '/naya252-JSFE2023Q4/coffee-house2/menu/') {
+if (path === `${BASE_URL}menu/`) {
   char = `${BASE_URL}#`;
   menuData[0].link = BASE_URL;
 } else {
@@ -23,33 +23,35 @@ if (path === '/naya252-JSFE2023Q4/coffee-house2/menu/') {
   menuData[0].link = `${BASE_URL}#enjoy`;
 }
 
-document.querySelector('#header').insertAdjacentHTML(
+document.querySelector('body').insertAdjacentHTML(
   'afterbegin',
   `
-<div class="header__bar">
-  <a href="${menuData[0].link}" id="logo"
-    ><img
-      src="${logoUrl}"
-      alt="${menuData[0].name}"
-  /></a>
+<header id="header" class="wrap mx-auto mt-5">
+  <div class="header__bar">
+    <a href="${menuData[0].link}" id="logo"
+      ><img
+        src="${logoUrl}"
+        alt="${menuData[0].name}"
+    /></a>
 
-  <nav class="bar__nav">
-    <ul id="nav-list" class="nav__list pl-0">
-    </ul>
-  </nav>
+    <nav class="bar__nav">
+      <ul id="nav-list" class="nav__list pl-0">
+      </ul>
+    </nav>
 
-  <a
-    id="nav-menu"
-    class="bar__coffee-menu nav-item"
-    href="${menuData[5].link}"
-    >${menuData[5].name}
+    <a
+      id="nav-menu"
+      class="bar__coffee-menu nav-item"
+      href="${menuData[5].link}"
+      >${menuData[5].name}
 
-    ${CUP_ICON}
- 
-  </a>
+      ${CUP_ICON}
+  
+    </a>
 
-  <button id="burger-btn"></button>
-</div>
+    <button id="burger-btn"></button>
+  </div>
+</header>
 `,
 );
 
@@ -68,33 +70,5 @@ menuItems.forEach((el) => {
 
 document.querySelector('#nav-list').insertAdjacentHTML('afterbegin', navItems);
 
-function intersectionCallback(entries) {
-  entries.forEach((entry) => {
-    const section = entry.target;
-    if (entry.isIntersecting) {
-      document.querySelectorAll(`.nav-item`).forEach((el) => {
-        el.classList.toggle('active', el.getAttribute('id').replace('nav-', '') === section.id);
-      });
-    } else if (!entry.isIntersecting && path === '/naya252-JSFE2023Q4/coffee-house2/') {
-      document.querySelectorAll(`.nav-item`).forEach((el) => {
-        el.classList.remove('active');
-      });
-    }
-  });
-}
-
-const observer = new IntersectionObserver(intersectionCallback, {
-  threshold: [0.5, 1],
-});
-
-if (path === '/naya252-JSFE2023Q4/coffee-house2/menu/') {
-  document.querySelector('#nav-menu').classList.add('active');
-  document.querySelector('#nav-menu').style.pointerEvents = 'none';
-  ['menu', 'footer'].forEach((el) => {
-    observer.observe(document.getElementById(el));
-  });
-} else {
-  menuItems.forEach((el) => {
-    observer.observe(document.getElementById(el.link));
-  });
-}
+export const MENU_ITEMS = menuItems;
+export const CURRENT_PATH = path;
