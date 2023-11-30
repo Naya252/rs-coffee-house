@@ -2,9 +2,10 @@ import '../../sass/layouts/mobile.scss';
 import '../../sass/components/button.scss';
 import { APPLE_ICON, GOOGLE_PLAY_ICON } from '../../core/constants';
 
-document.querySelector('#about').insertAdjacentHTML(
-  'afterend',
-  `
+export default function createMobileSection() {
+  document.querySelector('#about').insertAdjacentHTML(
+    'afterend',
+    `
 <section id="mobile-app" class="section">
   <div class="mobile-app__offer">
     <h2 class="heading-2"><em class="text-accent">Download</em> our apps to start ordering</h2>
@@ -32,4 +33,5 @@ document.querySelector('#about').insertAdjacentHTML(
   </div>
 </section>
 `,
-);
+  );
+}
