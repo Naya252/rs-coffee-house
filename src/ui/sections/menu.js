@@ -59,7 +59,7 @@ const coffeeItems = [
     img: coffee7Url,
   },
   {
-    name: 'Coffeewith cognac',
+    name: 'Coffee with cognac',
     descriptions: 'Fragrant black coffee with cognac and whipped cream',
     price: '$6.50',
     img: coffee8Url,
