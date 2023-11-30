@@ -77,3 +77,4 @@ export const DESSERTS_IMAGES = [
 ];
 
 export const { BASE_URL } = import.meta.env;
+export const CURRENT_PATH = window.location.pathname;

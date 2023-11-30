@@ -3,9 +3,10 @@ import '../../sass/components/button.scss';
 import { TWITTER_ICON, INSTAGRAM_ICON, FACEBOOK_ICON, PHONE_ICON, PIN_ICON, CLOCK_ICON } from '../../core/constants';
 import watchActiveSection from '../services/watchSection';
 
-document.querySelector('main').insertAdjacentHTML(
-  'afterend',
-  `
+export default function createFooter() {
+  document.querySelector('#main').insertAdjacentHTML(
+    'afterend',
+    `
 <footer id="footer" class="wrap mx-auto mt-auto mb-10">
   <div class="footer__offer">
     <h2 class="heading-2">
@@ -31,13 +32,14 @@ document.querySelector('main').insertAdjacentHTML(
   </div>
 </footer>
 `,
-);
+  );
 
-const socialIcons = [TWITTER_ICON, INSTAGRAM_ICON, FACEBOOK_ICON];
-let socialButtons = '';
-socialIcons.forEach((el) => {
-  socialButtons += `<button class="social__btn rounded-btn transparent-light-btn">${el}</button>`;
-});
-document.querySelector('#socials').insertAdjacentHTML('afterbegin', socialButtons);
+  const socialIcons = [TWITTER_ICON, INSTAGRAM_ICON, FACEBOOK_ICON];
+  let socialButtons = '';
+  socialIcons.forEach((el) => {
+    socialButtons += `<button class="social__btn rounded-btn transparent-light-btn">${el}</button>`;
+  });
+  document.querySelector('#socials').insertAdjacentHTML('afterbegin', socialButtons);
 
-watchActiveSection();
+  watchActiveSection();
+}

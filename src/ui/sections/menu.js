@@ -25,10 +25,11 @@ console.log(coffeeItems);
 console.log(teaItems);
 console.log(dessertsItems);
 
-document.querySelector('#header').insertAdjacentHTML(
-  'afterend',
-  `
-<main class="wrap mx-auto mt-5">
+export default function createMenuSection() {
+  document.querySelector('#header').insertAdjacentHTML(
+    'afterend',
+    `
+<main id="main" class="wrap mx-auto mt-5">
   <section id="menu">
     <h1 style="display: none">Menu</h1>  
     <h2 class="heading-2 mb-10 mx-auto">Behind each of our cups hides an <em class="text-accent">amazing surprise</em></h2>
@@ -38,21 +39,21 @@ document.querySelector('#header').insertAdjacentHTML(
   </section>
 </main>
 `,
-);
+  );
 
-let tabsHtml = '';
-tabItems.forEach((el) => {
-  tabsHtml += `<button id="${el.name.toLowerCase()}">
+  let tabsHtml = '';
+  tabItems.forEach((el) => {
+    tabsHtml += `<button id="${el.name.toLowerCase()}">
   <span class="button_img-container">${el.img}</span>
   <span class="button_text">${el.name}</span>
   </button>`;
-});
-document.querySelector('.menu__tabs').insertAdjacentHTML('afterbegin', tabsHtml);
-document.querySelector('#coffee').classList.add('active');
+  });
+  document.querySelector('.menu__tabs').insertAdjacentHTML('afterbegin', tabsHtml);
+  document.querySelector('#coffee').classList.add('active');
 
-let cardsHtml = '';
-coffeeItems.forEach((el) => {
-  cardsHtml += `
+  let cardsHtml = '';
+  coffeeItems.forEach((el) => {
+    cardsHtml += `
   <div class="card">
     <div class="card__img">
       <img
@@ -66,5 +67,6 @@ coffeeItems.forEach((el) => {
     </div>
   </div>
   `;
-});
-document.querySelector('.menu__items').insertAdjacentHTML('afterbegin', cardsHtml);
+  });
+  document.querySelector('.menu__items').insertAdjacentHTML('afterbegin', cardsHtml);
+}
