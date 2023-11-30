@@ -1,6 +1,10 @@
 import { MENU_ITEMS } from '../share/bar';
 import { BASE_URL, CURRENT_PATH } from '../../core/constants';
 
+console.log(MENU_ITEMS);
+console.log(CURRENT_PATH);
+console.log(BASE_URL);
+
 function intersectionCallback(entries) {
   entries.forEach((entry) => {
     const section = entry.target;

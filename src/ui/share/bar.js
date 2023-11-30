@@ -11,23 +11,21 @@ const menuData = [
   { name: 'Menu', link: `${BASE_URL}menu/` },
 ];
 
-let char;
-const footerChar = '#';
-
-if (CURRENT_PATH === `${BASE_URL}menu/`) {
-  char = `${BASE_URL}#`;
-  menuData[0].link = BASE_URL;
-} else {
-  char = '#';
-  menuData[0].link = `${BASE_URL}#enjoy`;
-}
-
-const menuItems = menuData.slice(1, -1);
-let navItems = '';
-
-export const MENU_ITEMS = menuItems;
+export const MENU_ITEMS = menuData.slice(1, -1);
 
 export function createHeader() {
+  let char;
+  const footerChar = '#';
+
+  if (CURRENT_PATH === `${BASE_URL}menu/`) {
+    char = `${BASE_URL}#`;
+    menuData[0].link = BASE_URL;
+  } else {
+    char = '#';
+    menuData[0].link = `${BASE_URL}#enjoy`;
+  }
+  let navItems = '';
+
   document.querySelector('body').insertAdjacentHTML(
     'afterbegin',
     `
@@ -60,7 +58,7 @@ export function createHeader() {
   `,
   );
 
-  menuItems.forEach((el) => {
+  MENU_ITEMS.forEach((el) => {
     navItems += `
     <li>
           <a
