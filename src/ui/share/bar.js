@@ -17,7 +17,7 @@ export function createHeader() {
   let char;
   const footerChar = '#';
 
-  if (CURRENT_PATH === `${BASE_URL}menu/`) {
+  if (CURRENT_PATH.includes('menu')) {
     char = `${BASE_URL}#`;
     menuData[0].link = BASE_URL;
   } else {

@@ -1,10 +1,6 @@
 import { MENU_ITEMS } from '../share/bar';
 import { BASE_URL, CURRENT_PATH } from '../../core/constants';
 
-console.log(MENU_ITEMS);
-console.log(CURRENT_PATH);
-console.log(BASE_URL);
-
 function intersectionCallback(entries) {
   entries.forEach((entry) => {
     const section = entry.target;
@@ -25,7 +21,7 @@ const observer = new IntersectionObserver(intersectionCallback, {
 });
 
 export default function watchActiveSection() {
-  if (CURRENT_PATH === `${BASE_URL}menu/`) {
+  if (CURRENT_PATH.includes('menu')) {
     document.querySelector('#nav-menu').classList.add('active');
     document.querySelector('#nav-menu').style.pointerEvents = 'none';
     ['menu', 'footer'].forEach((el) => {
