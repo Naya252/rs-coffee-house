@@ -15,6 +15,11 @@
     align-items: center;
     justify-content: space-between;
 
+    #logo {
+      width: 100px;
+      height: 60px;
+    }
+
     .nav__list {
       display: flex;
       align-items: center;
