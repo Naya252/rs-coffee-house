@@ -1,0 +1,254 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+@import './variables.module.scss';
+@import './generic.module.scss';
+
+:root {
+  font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 150%;
+  font-weight: 400;
+  font-size: 16px;
+  color: $text-dark-color;
+  background-color: $light-color;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+  scroll-padding-top: 100px;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+}
+
+body {
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px $content-gap-xl;
+  display: flex;
+  place-items: start;
+  min-width: 320px;
+  min-height: 100dvh;
+  width: 100%;
+  flex-direction: column;
+  scrollbar-color: $light-color;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+}
+button {
+  border: none;
+  font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 150%;
+}
+ul,
+li {
+  list-style: none;
+}
+
+.heading-1 {
+  font-size: 72px;
+  font-weight: 600;
+  line-height: 105%;
+}
+
+.heading-2 {
+  font-size: 60px;
+  font-weight: 600;
+  line-height: 125%;
+}
+
+.heading-3 {
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 125%;
+}
+
+.accent {
+  font-style: italic;
+}
+
+.caption {
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 140%;
+}
+
+a,
+button,
+.link {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 150%;
+}
+
+.burger-link {
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 125%;
+}
+
+.wrap {
+  max-width: $content-width-xl;
+  width: 100%;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  gap: 100px;
+}
+
+.text-light {
+  color: $text-light-color;
+}
+
+.text-accent {
+  color: $accent-color;
+}
+
+.background-container {
+  background-color: $container-color;
+}
+
+.background-backdrop {
+  background-color: $backdrop-color;
+}
+
+.link {
+  svg {
+    stroke: $light-color;
+    margin-right: 8px;
+  }
+  span {
+    position: relative;
+
+    &:after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      height: 2px;
+      background: $light-color;
+      transition: all 0.5s ease-out;
+    }
+
+    &:target::after,
+    &:link::after,
+    &:focus::after,
+    &:active::after {
+      width: 100%;
+      left: 0;
+    }
+    svg {
+      stroke: $light-color;
+      margin-right: 8px;
+    }
+  }
+}
+
+.text-three-rows {
+  display: -webkit-box;
+  overflow: hidden;
+  white-space: normal;
+  text-overflow: ellipsis;
+  word-break: normal;
+  overflow-wrap: break-word;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+@media (hover: hover) {
+  ::-webkit-scrollbar-thumb {
+    background: $light-color-secondary;
+    &:hover {
+      background: $accent-color;
+    }
+  }
+
+  .link {
+    span {
+      &:after {
+        width: 0;
+        left: 50%;
+      }
+
+      &:hover::after {
+        width: 100%;
+        left: 0;
+      }
+    }
+  }
+}
+
+@media (hover: none) {
+  ::-webkit-scrollbar-thumb {
+    background: $light-color-secondary;
+  }
+
+  .link {
+    span {
+      &:after {
+        width: 0;
+        left: 50%;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: $breakpoint-sm) {
+  ::-webkit-scrollbar {
+    width: 0;
+  }
+  body {
+    padding: 0px $content-gap-xs;
+  }
+
+  .wrap {
+    max-width: $content-width-xs;
+  }
+
+  .heading-1 {
+    font-size: 2.63rem;
+    font-weight: 600;
+    line-height: 115%;
+  }
+
+  .heading-2 {
+    font-size: 2rem;
+    font-weight: 600;
+    line-height: 125%;
+  }
+
+  a,
+  button,
+  .link {
+    font-size: 1rem;
+  }
+}
+
+@media only screen and (max-width: $breakpoint-xxs) {
+  .heading-1 {
+    font-size: 2rem;
+    font-weight: 600;
+    line-height: 114%;
+  }
+}

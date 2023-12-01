@@ -1,0 +1,24 @@
+@for $i from 0 to 11 {
+  $gap: $i * 4;
+
+  .mx-auto {
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  .mt-auto {
+    margin-top: auto;
+  }
+
+  .mt-#{$i} {
+    margin-top: #{$gap}px;
+  }
+
+  .mb-#{$i} {
+    margin-bottom: #{$gap}px;
+  }
+
+  .pl-#{$i} {
+    padding-left: #{$gap}px;
+  }
+}
