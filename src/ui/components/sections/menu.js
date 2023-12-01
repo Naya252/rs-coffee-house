@@ -23,11 +23,9 @@ const tabItems = [
   { name: 'Dessert', img: TAB_DESSERT, items: dessertsItems },
 ];
 
-export function changeActiveTab(name) {
-  const activeTabName = name ?? 'coffee';
-  const activeTab = tabItems.filter((el) => el.name.toLocaleLowerCase() === activeTabName);
+function renderItems(items) {
   let cardsHtml = '';
-  activeTab[0].items.forEach((el) => {
+  items.forEach((el) => {
     cardsHtml += `
 <div class="card">
   <div class="card__img">
@@ -43,7 +41,14 @@ export function changeActiveTab(name) {
 </div>
 `;
   });
-  document.querySelector('.menu__items').insertAdjacentHTML('afterbegin', cardsHtml);
+  return cardsHtml;
+}
+
+export function changeActiveTab(name) {
+  const activeTabName = name ?? 'coffee';
+  const activeTab = tabItems.filter((el) => el.name.toLocaleLowerCase() === activeTabName);
+  const cardsHtml = renderItems(activeTab[0].items);
+  document.querySelector('.menu__items').innerHTML = cardsHtml;
 }
 
 export function createMenuSection() {
