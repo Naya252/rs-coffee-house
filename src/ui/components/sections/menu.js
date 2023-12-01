@@ -10,22 +10,43 @@ import {
 } from '../../../core/constants';
 import { getTabData } from '../../../repository/products-repository';
 
-const tabItems = [
-  { name: 'Coffee', img: TAB_COFFEE },
-  { name: 'Tea', img: TAB_TEA },
-  { name: 'Dessert', img: TAB_DESSERT },
-];
 let coffeeItems = getTabData('coffee');
 let teaItems = getTabData('tea');
 let dessertsItems = getTabData('dessert');
 coffeeItems = coffeeItems.map((el, i) => ({ ...el, img: COFFEE_IMAGES[i] }));
 teaItems = teaItems.map((el, i) => ({ ...el, img: TEA_IMAGES[i] }));
 dessertsItems = dessertsItems.map((el, i) => ({ ...el, img: DESSERTS_IMAGES[i] }));
-console.log(coffeeItems);
-console.log(teaItems);
-console.log(dessertsItems);
 
-export default function createMenuSection() {
+const tabItems = [
+  { name: 'Coffee', img: TAB_COFFEE, items: coffeeItems },
+  { name: 'Tea', img: TAB_TEA, items: teaItems },
+  { name: 'Dessert', img: TAB_DESSERT, items: dessertsItems },
+];
+
+export function changeActiveTab(name) {
+  const activeTabName = name ?? 'coffee';
+  const activeTab = tabItems.filter((el) => el.name.toLocaleLowerCase() === activeTabName);
+  let cardsHtml = '';
+  activeTab[0].items.forEach((el) => {
+    cardsHtml += `
+<div class="card">
+  <div class="card__img">
+    <img
+      src="${el.img}"
+      alt="${el.name}" />
+  </div>
+  <div class="card__info">
+    <h3 class="heading-3 mb-3">${el.name}</h3>
+    <p class="text-three-rows">${el.description}</p>
+    <h3 class="heading-3 mt-auto">${el.price}</h3>
+  </div>
+</div>
+`;
+  });
+  document.querySelector('.menu__items').insertAdjacentHTML('afterbegin', cardsHtml);
+}
+
+export function createMenuSection() {
   document.querySelector('#header').insertAdjacentHTML(
     'afterend',
     `
@@ -43,7 +64,7 @@ export default function createMenuSection() {
 
   let tabsHtml = '';
   tabItems.forEach((el) => {
-    tabsHtml += `<button id="${el.name.toLowerCase()}">
+    tabsHtml += `<button class="menu__tabs_tab" id="${el.name.toLowerCase()}">
   <span class="button_img-container">${el.img}</span>
   <span class="button_text">${el.name}</span>
   </button>`;
@@ -51,22 +72,5 @@ export default function createMenuSection() {
   document.querySelector('.menu__tabs').insertAdjacentHTML('afterbegin', tabsHtml);
   document.querySelector('#coffee').classList.add('active');
 
-  let cardsHtml = '';
-  coffeeItems.forEach((el) => {
-    cardsHtml += `
-  <div class="card">
-    <div class="card__img">
-      <img
-        src="${el.img}"
-        alt="${el.name}" />
-    </div>
-    <div class="card__info">
-      <h3 class="heading-3 mb-3">${el.name}</h3>
-      <p class="text-three-rows">${el.description}</p>
-      <h3 class="heading-3 mt-auto">${el.price}</h3>
-    </div>
-  </div>
-  `;
-  });
-  document.querySelector('.menu__items').insertAdjacentHTML('afterbegin', cardsHtml);
+  changeActiveTab();
 }

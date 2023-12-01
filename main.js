@@ -3,6 +3,7 @@ import { CURRENT_PATH } from './src/core/constants';
 import createMainPage from './src/ui/views/mainPage';
 import createMenuPage from './src/ui/views/menuPage';
 import { watchActiveSection, unWatchSections } from './src/core/services/watchSection';
+import setupTab from './src/core/services/setupTab';
 
 if (CURRENT_PATH.includes('menu')) {
   createMenuPage();
@@ -20,3 +21,5 @@ const resizeObserver = new ResizeObserver((entries) => {
 });
 const body = document.querySelector('body');
 resizeObserver.observe(body);
+
+setupTab(document.querySelector('.menu__tabs'));
