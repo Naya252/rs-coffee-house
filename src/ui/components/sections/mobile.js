@@ -1,6 +1,6 @@
-import '../../sass/layouts/mobile.scss';
-import '../../sass/components/button.scss';
-import { APPLE_ICON, GOOGLE_PLAY_ICON } from '../../core/constants';
+import '../../../sass/layouts/mobile.module.scss';
+import '../../../sass/components/button.module.scss';
+import { APPLE_ICON, GOOGLE_PLAY_ICON } from '../../../core/constants';
 
 export default function createMobileSection() {
   document.querySelector('#about').insertAdjacentHTML(

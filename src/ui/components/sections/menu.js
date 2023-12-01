@@ -1,4 +1,4 @@
-import '../../sass/layouts/menu.scss';
+import '../../../sass/layouts/menu.module.scss';
 import {
   TAB_COFFEE,
   TAB_TEA,
@@ -7,8 +7,8 @@ import {
   COFFEE_IMAGES,
   TEA_IMAGES,
   DESSERTS_IMAGES,
-} from '../../core/constants';
-import { getTabData } from '../../repository/products-repository';
+} from '../../../core/constants';
+import { getTabData } from '../../../repository/products-repository';
 
 const tabItems = [
   { name: 'Coffee', img: TAB_COFFEE },
