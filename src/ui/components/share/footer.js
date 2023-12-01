@@ -1,7 +1,7 @@
-import '../../sass/layouts/footer.scss';
-import '../../sass/components/button.scss';
-import { TWITTER_ICON, INSTAGRAM_ICON, FACEBOOK_ICON, PHONE_ICON, PIN_ICON, CLOCK_ICON } from '../../core/constants';
-import watchActiveSection from '../services/watchSection';
+import '../../../sass/layouts/footer.module.scss';
+import '../../../sass/components/button.module.scss';
+import { TWITTER_ICON, INSTAGRAM_ICON, FACEBOOK_ICON, PHONE_ICON, PIN_ICON, CLOCK_ICON } from '../../../core/constants';
+import watchActiveSection from '../../../core/services/watchSection';
 
 export default function createFooter() {
   document.querySelector('#main').insertAdjacentHTML(

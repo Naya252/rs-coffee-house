@@ -1,13 +1,13 @@
-import '../../sass/layouts/menu.scss';
-import coffee1Url from '../../assets/img/coffee/coffee-1.svg';
-import coffee2Url from '../../assets/img/coffee/coffee-2.svg';
-import coffee3Url from '../../assets/img/coffee/coffee-3.svg';
-import coffee4Url from '../../assets/img/coffee/coffee-4.svg';
-import coffee5Url from '../../assets/img/coffee/coffee-5.svg';
-import coffee6Url from '../../assets/img/coffee/coffee-6.svg';
-import coffee7Url from '../../assets/img/coffee/coffee-7.svg';
-import coffee8Url from '../../assets/img/coffee/coffee-8.svg';
-import { TAB_COFFEE, TAB_TEA, TAB_DESSERT, REFRESH_ICON } from '../../core/constants';
+import '../../../sass/layouts/menu.module.scss';
+import coffee1Url from '../../../assets/img/coffee/coffee-1.svg';
+import coffee2Url from '../../../assets/img/coffee/coffee-2.svg';
+import coffee3Url from '../../../assets/img/coffee/coffee-3.svg';
+import coffee4Url from '../../../assets/img/coffee/coffee-4.svg';
+import coffee5Url from '../../../assets/img/coffee/coffee-5.svg';
+import coffee6Url from '../../../assets/img/coffee/coffee-6.svg';
+import coffee7Url from '../../../assets/img/coffee/coffee-7.svg';
+import coffee8Url from '../../../assets/img/coffee/coffee-8.svg';
+import { TAB_COFFEE, TAB_TEA, TAB_DESSERT, REFRESH_ICON } from '../../../core/constants';
 
 const tabItems = [
   { name: 'Coffee', img: TAB_COFFEE },

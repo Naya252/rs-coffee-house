@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
-@import './variables.scss';
-@import './generic.scss';
+@import './variables.module.scss';
+@import './generic.module.scss';
 
 :root {
   font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;

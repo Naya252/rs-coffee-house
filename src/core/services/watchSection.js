@@ -1,5 +1,5 @@
-import { MENU_ITEMS } from '../share/bar';
-import { BASE_URL, CURRENT_PATH } from '../../core/constants';
+import { MENU_ITEMS } from '../../ui/components/share/bar';
+import { BASE_URL, CURRENT_PATH } from '../constants';
 
 function intersectionCallback(entries) {
   entries.forEach((entry) => {

@@ -1,9 +1,9 @@
-import { createHeader } from '../share/bar';
-import createEnjoySection from '../sections/enjoy';
-import createFavoriteSection from '../sections/favorite';
-import createAboutSection from '../sections/about';
-import createMobileSection from '../sections/mobile';
-import createFooter from '../share/footer';
+import { createHeader } from '../components/share/bar';
+import createEnjoySection from '../components/sections/enjoy';
+import createFavoriteSection from '../components/sections/favorite';
+import createAboutSection from '../components/sections/about';
+import createMobileSection from '../components/sections/mobile';
+import createFooter from '../components/share/footer';
 
 export default function createMainPage() {
   createHeader();

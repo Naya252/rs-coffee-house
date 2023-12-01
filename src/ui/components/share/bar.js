@@ -1,6 +1,6 @@
-import logoUrl from '../../assets/img/logo.svg';
-import '../../sass/layouts/bar.scss';
-import { CUP_ICON, BASE_URL, CURRENT_PATH } from '../../core/constants';
+import logoUrl from '../../../assets/img/logo.svg';
+import '../../../sass/layouts/bar.module.scss';
+import { CUP_ICON, BASE_URL, CURRENT_PATH } from '../../../core/constants';
 
 const menuData = [
   { name: 'logo', link: 'enjoy', anchor: 'enjoy' },

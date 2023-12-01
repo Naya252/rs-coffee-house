@@ -3,6 +3,12 @@ import path, { resolve } from 'path';
 export default {
   base: 'https://rolling-scopes-school.github.io/naya252-JSFE2023Q4/coffee-house2/',
   plugins: [],
+  css: {
+    modules: {
+      localsConvention: 'camelCase',
+      generateScopedName: '[local]',
+    },
+  },
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src/assets'),

@@ -1,8 +1,8 @@
-import '../../sass/layouts/enjoy.scss';
-import '../../sass/components/button.scss';
-import { CUP_ICON, BASE_URL } from '../../core/constants';
-import imgUrl from '../../assets/video/img-hero.svg';
-import videoUrl from '../../assets/video/video(2160p).mp4';
+import '../../../sass/layouts/enjoy.module.scss';
+import '../../../sass/components/button.module.scss';
+import { CUP_ICON, BASE_URL } from '../../../core/constants';
+import imgUrl from '../../../assets/video/img-hero.svg';
+import videoUrl from '../../../assets/video/video(2160p).mp4';
 
 export default function createEnjoySection() {
   document.querySelector('#header').insertAdjacentHTML(
