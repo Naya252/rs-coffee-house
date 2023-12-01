@@ -1,6 +1,19 @@
 import { MENU_ITEMS } from '../../ui/components/share/bar';
 import { BASE_URL, CURRENT_PATH } from '../constants';
 
+function removeClasses() {
+  document.querySelectorAll(`.nav-item`).forEach((el) => {
+    el.classList.remove('active');
+  });
+}
+
+function addMenuActive() {
+  if (CURRENT_PATH.includes('menu')) {
+    document.querySelector('#nav-menu').classList.add('active');
+    document.querySelector('#nav-menu').style.pointerEvents = 'none';
+  }
+}
+
 function intersectionCallback(entries) {
   entries.forEach((entry) => {
     const section = entry.target;
@@ -9,9 +22,7 @@ function intersectionCallback(entries) {
         el.classList.toggle('active', el.getAttribute('id').replace('nav-', '') === section.id);
       });
     } else if (!entry.isIntersecting && CURRENT_PATH === `${BASE_URL}`) {
-      document.querySelectorAll(`.nav-item`).forEach((el) => {
-        el.classList.remove('active');
-      });
+      removeClasses();
     }
   });
 }
@@ -20,16 +31,29 @@ const observer = new IntersectionObserver(intersectionCallback, {
   threshold: [0.5, 1],
 });
 
-export default function watchActiveSection() {
+function getEntries() {
+  let data;
   if (CURRENT_PATH.includes('menu')) {
-    document.querySelector('#nav-menu').classList.add('active');
-    document.querySelector('#nav-menu').style.pointerEvents = 'none';
-    ['menu', 'footer'].forEach((el) => {
-      observer.observe(document.getElementById(el));
-    });
+    addMenuActive();
+    data = ['menu', 'footer'];
   } else {
-    MENU_ITEMS.forEach((el) => {
-      observer.observe(document.getElementById(el.link));
-    });
+    data = MENU_ITEMS.map((el) => el.link);
   }
+  return data;
+}
+
+export function watchActiveSection() {
+  const entries = getEntries();
+  entries.forEach((el) => {
+    observer.observe(document.getElementById(el));
+  });
+}
+
+export function unWatchSections() {
+  const entries = getEntries();
+  entries.forEach((el) => {
+    observer.unobserve(document.getElementById(el));
+  });
+  removeClasses();
+  addMenuActive();
 }
