@@ -1,5 +1,5 @@
 import { watchActiveSection, unWatchSections } from './watchSection';
-import { changeActiveTab } from '../../ui/components/sections/menu';
+import { changeDevice } from '../../ui/components/sections/menu';
 
 let prewSize = null;
 let curSize = null;
@@ -21,8 +21,9 @@ const resizeObserver = new ResizeObserver((entries) => {
       } else {
         curSize = val;
       }
+      // console.log(`prew: ${prewSize}`, `cur: ${curSize}`);
       if ((cur && pre !== cur) || cur === null) {
-        changeActiveTab(curSize);
+        changeDevice(curSize);
       }
     }
 

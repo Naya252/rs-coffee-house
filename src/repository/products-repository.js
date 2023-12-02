@@ -34,10 +34,10 @@ export function getSizes(categoryName) {
   return category ? category.sizes : [];
 }
 
-export function getTabData(categoryName, count) {
+export function getTabData(categoryName, count, itemsLength) {
   const items = getItemsData(categoryName).map((el) => {
     const { name, description, price, img } = { ...el };
     return { name, description, price, img };
   });
-  return { items: items.slice(0, count), length: items.length };
+  return { items: items.slice(itemsLength, itemsLength + count), length: items.length };
 }
