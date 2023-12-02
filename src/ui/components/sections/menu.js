@@ -35,7 +35,7 @@ function renderItems(items) {
   let cardsHtml = '';
   items.forEach((el) => {
     cardsHtml += `
-<div class="card">
+<div class="card" id="${el.id}-${el.category}">
   <div class="card__img">
     <img
       src="${el.img}"
@@ -108,4 +108,8 @@ export function createMenuSection() {
   });
   document.querySelector('.menu__tabs').insertAdjacentHTML('afterbegin', tabsHtml);
   document.querySelector('#coffee').classList.add('active');
+}
+
+export function showOrderModal(item) {
+  console.log(item);
 }

@@ -1,4 +1,5 @@
-import { changeActiveTab, getTabItems, removeTabItems } from '../../ui/components/sections/menu';
+import { changeActiveTab, getTabItems, removeTabItems, showOrderModal } from '../../ui/components/sections/menu';
+import { getItemById } from '../../repository/products-repository';
 
 export function setupRefreshBtn(element) {
   const getNewCards = (event) => {
@@ -10,6 +11,21 @@ export function setupRefreshBtn(element) {
     }
   };
   element.addEventListener('click', (event) => getNewCards(event));
+}
+
+export function setupItemCard(element) {
+  const openModal = (event) => {
+    const card = event.target.closest('.card');
+
+    if (!card) return;
+
+    if (card) {
+      const attr = card.getAttribute('id').split('-');
+      const itemData = getItemById(attr[0], attr[1]);
+      showOrderModal(itemData);
+    }
+  };
+  element.addEventListener('click', (event) => openModal(event));
 }
 
 export function setupTab(element) {

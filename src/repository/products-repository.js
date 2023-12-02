@@ -36,8 +36,13 @@ export function getSizes(categoryName) {
 
 export function getTabData(categoryName, count, itemsLength) {
   const items = getItemsData(categoryName).map((el) => {
-    const { name, description, price, img } = { ...el };
-    return { name, description, price, img };
+    const { id, name, description, price, category, img } = { ...el };
+    return { id, name, description, price, category, img };
   });
   return { items: items.slice(itemsLength, itemsLength + count), length: items.length };
+}
+
+export function getItemById(id, category) {
+  const item = getItemsData(category).filter((el) => el.id === +id);
+  return item[0];
 }
