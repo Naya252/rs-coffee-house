@@ -1,27 +1,18 @@
 import '../../../sass/layouts/menu.module.scss';
-import {
-  TAB_COFFEE,
-  TAB_TEA,
-  TAB_DESSERT,
-  REFRESH_ICON,
-  COFFEE_IMAGES,
-  TEA_IMAGES,
-  DESSERTS_IMAGES,
-} from '../../../core/constants';
+import { TAB_COFFEE, TAB_TEA, TAB_DESSERT, REFRESH_ICON } from '../../../core/constants';
 import { getTabData } from '../../../repository/products-repository';
 
-let coffeeItems = getTabData('coffee');
-let teaItems = getTabData('tea');
-let dessertsItems = getTabData('dessert');
-coffeeItems = coffeeItems.map((el, i) => ({ ...el, img: COFFEE_IMAGES[i] }));
-teaItems = teaItems.map((el, i) => ({ ...el, img: TEA_IMAGES[i] }));
-dessertsItems = dessertsItems.map((el, i) => ({ ...el, img: DESSERTS_IMAGES[i] }));
+export function getTabItems(name, device) {
+  const itemsData = device === 'mobile' ? getTabData(name, 4) : getTabData(name, 8);
+  return itemsData.items;
+}
 
 const tabItems = [
-  { name: 'Coffee', img: TAB_COFFEE, items: coffeeItems },
-  { name: 'Tea', img: TAB_TEA, items: teaItems },
-  { name: 'Dessert', img: TAB_DESSERT, items: dessertsItems },
+  { name: 'Coffee', img: TAB_COFFEE, items: [] },
+  { name: 'Tea', img: TAB_TEA, items: [] },
+  { name: 'Dessert', img: TAB_DESSERT, items: [] },
 ];
+let activeTabName = 'coffee';
 
 function renderItems(items) {
   let cardsHtml = '';
@@ -44,12 +35,22 @@ function renderItems(items) {
   return cardsHtml;
 }
 
-export function changeActiveTab(name) {
-  const activeTabName = name ?? 'coffee';
+export function changeActiveTab(val) {
+  console.log(val.name);
+  if (val.name) {
+    activeTabName = val.name;
+  }
+  tabItems.forEach((el) => {
+    if (el.name.toLocaleLowerCase() === activeTabName) {
+      el.items = getTabItems(activeTabName, val.device);
+    }
+  });
   const activeTab = tabItems.filter((el) => el.name.toLocaleLowerCase() === activeTabName);
+
   const cardsHtml = renderItems(activeTab[0].items);
   document.querySelector('.menu__items').innerHTML = cardsHtml;
 }
+export const ACTIVE_TAB = activeTabName;
 
 export function createMenuSection() {
   document.querySelector('#header').insertAdjacentHTML(
@@ -77,5 +78,5 @@ export function createMenuSection() {
   document.querySelector('.menu__tabs').insertAdjacentHTML('afterbegin', tabsHtml);
   document.querySelector('#coffee').classList.add('active');
 
-  changeActiveTab();
+  changeActiveTab({ name: 'coffee' });
 }

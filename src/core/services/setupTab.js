@@ -9,7 +9,7 @@ export default function setupTab(element) {
       document.querySelectorAll(`.menu__tabs_tab`).forEach((el) => {
         el.classList.toggle('active', el === tab);
         if (el === tab) {
-          changeActiveTab(el.id);
+          changeActiveTab({ name: el.id });
         }
       });
     }

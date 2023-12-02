@@ -188,13 +188,13 @@
 
 @media only screen and (max-width: $breakpoint-md) {
   #menu {
-    .menu__items {
-      .card {
-        &:nth-child(n + 5) {
-          display: none;
-        }
-      }
-    }
+    // .menu__items {
+    //   .card {
+    //     &:nth-child(n + 5) {
+    //       display: none;
+    //     }
+    //   }
+    // }
 
     #more-cards {
       display: block;
