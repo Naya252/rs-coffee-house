@@ -11,9 +11,13 @@ let activeTabName = 'coffee';
 let currentDevice = null;
 let isRefresh = false;
 
-function changeTabItems() {
+function getCurrentTab() {
   const tab = tabs.filter((el) => el.name.toLowerCase() === activeTabName);
   return tab[0];
+}
+
+function changeIsRefresh(dataLength, curLength) {
+  isRefresh = dataLength !== curLength;
 }
 
 function changeVisibleRefresh() {
@@ -48,18 +52,14 @@ function renderItems(items) {
   return cardsHtml;
 }
 
-function isShowRefresh(dataLength, curLength) {
-  isRefresh = dataLength !== curLength;
-}
-
 export function getTabItems() {
-  const tab = changeTabItems();
+  const tab = getCurrentTab();
   const itemsData =
     currentDevice === 'mobile'
       ? getTabData(activeTabName, 4, tab.items.length)
       : getTabData(activeTabName, 8, tab.items.length);
   tab.items = [...tab.items, ...itemsData.items];
-  isShowRefresh(itemsData.length, tab.items.length);
+  changeIsRefresh(itemsData.length, tab.items.length);
   const cardsHtml = renderItems(tab.items);
   document.querySelector('.menu__items').innerHTML = cardsHtml;
 
