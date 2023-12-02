@@ -21,8 +21,7 @@ const resizeObserver = new ResizeObserver((entries) => {
       } else {
         curSize = val;
       }
-      // console.log(`prew: ${prewSize}`, `cur: ${curSize}`);
-      if ((cur && pre !== cur) || cur === null) {
+      if ((cur && pre !== cur && pre !== null) || cur === null) {
         changeDevice(curSize);
       }
     }

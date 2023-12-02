@@ -85,25 +85,15 @@
   }
 
   #more-cards {
-    // width: 60px;
-    // height: 60px;
-    // border-radius: 50%;
-    // background: inherit;
-    // border: 1px solid $dark-color-secondary;
-    // cursor: pointer;
     margin-top: 40px;
     margin-left: calc(50% - 30px);
-    display: none;
-    // position: relative;
-    // transition: all 0.5s ease-out;
+  }
 
-    // svg {
-    //   position: absolute;
-    //   top: calc(50% - 12px);
-    //   left: calc(50% - 12px);
-    //   stroke: $dark-color-secondary;
-    //   margin: auto;
-    // }
+  .not-show {
+    display: none;
+  }
+  .show {
+    display: block;
   }
 }
 
@@ -182,22 +172,6 @@
     .menu__items {
       grid-template-columns: 1fr 1fr;
       margin: 0 12px;
-    }
-  }
-}
-
-@media only screen and (max-width: $breakpoint-md) {
-  #menu {
-    // .menu__items {
-    //   .card {
-    //     &:nth-child(n + 5) {
-    //       display: none;
-    //     }
-    //   }
-    // }
-
-    #more-cards {
-      display: block;
     }
   }
 }

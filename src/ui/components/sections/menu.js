@@ -2,19 +2,30 @@ import '../../../sass/layouts/menu.module.scss';
 import { TAB_COFFEE, TAB_TEA, TAB_DESSERT, REFRESH_ICON } from '../../../core/constants';
 import { getTabData } from '../../../repository/products-repository';
 
-export function getTabItems(name, curDevice, itemsLength) {
-  const itemsData = curDevice === 'mobile' ? getTabData(name, 4, itemsLength) : getTabData(name, 8, itemsLength);
-  console.log(itemsData);
-  return itemsData.items;
-}
-
-const tabItems = [
+let tabs = [
   { name: 'Coffee', img: TAB_COFFEE, items: [] },
   { name: 'Tea', img: TAB_TEA, items: [] },
   { name: 'Dessert', img: TAB_DESSERT, items: [] },
 ];
 let activeTabName = 'coffee';
 let currentDevice = null;
+let isRefresh = false;
+
+function changeTabItems() {
+  const tab = tabs.filter((el) => el.name.toLowerCase() === activeTabName);
+  return tab[0];
+}
+
+function changeVisibleRefresh() {
+  const btn = document.getElementById('more-cards');
+  if (!isRefresh) {
+    btn.classList.remove('show');
+    btn.classList.add('not-show');
+  } else {
+    btn.classList.remove('not-show');
+    btn.classList.add('show');
+  }
+}
 
 function renderItems(items) {
   let cardsHtml = '';
@@ -37,24 +48,39 @@ function renderItems(items) {
   return cardsHtml;
 }
 
+function isShowRefresh(dataLength, curLength) {
+  isRefresh = dataLength !== curLength;
+}
+
+export function getTabItems() {
+  const tab = changeTabItems();
+  const itemsData =
+    currentDevice === 'mobile'
+      ? getTabData(activeTabName, 4, tab.items.length)
+      : getTabData(activeTabName, 8, tab.items.length);
+  tab.items = [...tab.items, ...itemsData.items];
+  isShowRefresh(itemsData.length, tab.items.length);
+  const cardsHtml = renderItems(tab.items);
+  document.querySelector('.menu__items').innerHTML = cardsHtml;
+
+  changeVisibleRefresh();
+}
+
 export function changeActiveTab(name) {
   if (name) {
     activeTabName = name;
   }
-  tabItems.forEach((el) => {
-    if (el.name.toLocaleLowerCase() === activeTabName) {
-      el.items = getTabItems(activeTabName, currentDevice, el.items.length);
-    }
-  });
-  const activeTab = tabItems.filter((el) => el.name.toLocaleLowerCase() === activeTabName);
+}
 
-  const cardsHtml = renderItems(activeTab[0].items);
-  document.querySelector('.menu__items').innerHTML = cardsHtml;
+export function removeTabItems() {
+  tabs = tabs.map((tab) => ({ ...tab, items: [] }));
 }
 
 export function changeDevice(val) {
   currentDevice = val;
+  removeTabItems();
   changeActiveTab();
+  getTabItems();
 }
 
 export function createMenuSection() {
@@ -74,7 +100,7 @@ export function createMenuSection() {
   );
 
   let tabsHtml = '';
-  tabItems.forEach((el) => {
+  tabs.forEach((el) => {
     tabsHtml += `<button class="menu__tabs_tab" id="${el.name.toLowerCase()}">
   <span class="button_img-container">${el.img}</span>
   <span class="button_text">${el.name}</span>
