@@ -1,6 +1,8 @@
 import data from './products.json';
+import { COFFEE_IMAGES, TEA_IMAGES, DESSERTS_IMAGES } from '../core/constants';
 
-const products = data.map((el, i) => ({ ...el, id: i + 1 }));
+const images = [...COFFEE_IMAGES, ...TEA_IMAGES, ...DESSERTS_IMAGES];
+const products = data.map((el, i) => ({ ...el, id: i + 1, img: images[i] }));
 
 function getItemsData(categoryName) {
   return [...products].filter((el) => el.category === categoryName);
@@ -32,9 +34,10 @@ export function getSizes(categoryName) {
   return category ? category.sizes : [];
 }
 
-export function getTabData(categoryName) {
-  return getItemsData(categoryName).map((el) => {
-    const { name, description, price } = { ...el };
-    return { name, description, price };
+export function getTabData(categoryName, count) {
+  const items = getItemsData(categoryName).map((el) => {
+    const { name, description, price, img } = { ...el };
+    return { name, description, price, img };
   });
+  return { items: items.slice(0, count), length: items.length };
 }
