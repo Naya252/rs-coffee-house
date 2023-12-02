@@ -44,7 +44,7 @@ function renderItems(items) {
   <div class="card__info">
     <h3 class="heading-3 mb-3">${el.name}</h3>
     <p class="text-three-rows">${el.description}</p>
-    <h3 class="heading-3 mt-auto">${el.price}</h3>
+    <h3 class="heading-3 mt-auto">&#36;${el.price}</h3>
   </div>
 </div>
 `;
