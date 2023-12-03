@@ -38,6 +38,12 @@
     left: calc(50% - 12px);
   }
 }
+.fill-btn {
+  height: 44px;
+  border-radius: 100px;
+  cursor: pointer;
+  transition: all 0.5s ease-out;
+}
 .button-primary {
   width: 200px;
   height: 64px;
