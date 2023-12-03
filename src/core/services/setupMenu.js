@@ -1,4 +1,10 @@
-import { changeActiveTab, getTabItems, removeTabItems, showOrderModal } from '../../ui/components/sections/menu';
+import {
+  changeActiveTab,
+  getTabItems,
+  removeTabItems,
+  showOrderModal,
+  closeModal,
+} from '../../ui/components/sections/menu';
 import { getItemById } from '../../repository/products-repository';
 
 export function setupRefreshBtn(element) {
@@ -11,6 +17,18 @@ export function setupRefreshBtn(element) {
     }
   };
   element.addEventListener('click', (event) => getNewCards(event));
+}
+
+export function setupCloseBtn(element) {
+  const clickCloseModal = (event) => {
+    const btn = event.target.closest('.modal__close');
+    if (!btn) return;
+
+    if (btn) {
+      closeModal();
+    }
+  };
+  element.addEventListener('click', (event) => clickCloseModal(event));
 }
 
 export function setupItemCard(element) {

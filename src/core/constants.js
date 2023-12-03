@@ -10,6 +10,7 @@ import arrowRightImg from './icons/arrow-right';
 import appleImg from './icons/apple';
 import googlePlayImg from './icons/google-play';
 import refreshImg from './icons/refresh';
+import infoImg from './icons/info';
 
 import coffeeUrl1 from '../assets/img/coffee/coffee-1.svg';
 import coffeeUrl2 from '../assets/img/coffee/coffee-2.svg';
@@ -47,6 +48,7 @@ export const ARROW_RIGHT_ICON = arrowRightImg;
 export const APPLE_ICON = appleImg;
 export const GOOGLE_PLAY_ICON = googlePlayImg;
 export const REFRESH_ICON = refreshImg;
+export const INFO_ICON = infoImg;
 
 export const TAB_COFFEE = tabCoffee;
 export const TAB_TEA = tabTea;

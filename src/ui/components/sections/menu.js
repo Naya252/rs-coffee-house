@@ -1,5 +1,7 @@
 import '../../../sass/layouts/menu.module.scss';
-import { TAB_COFFEE, TAB_TEA, TAB_DESSERT, REFRESH_ICON } from '../../../core/constants';
+import '../../../sass/components/_modal.module.scss';
+import '../../../sass/components/button.module.scss';
+import { TAB_COFFEE, TAB_TEA, TAB_DESSERT, REFRESH_ICON, INFO_ICON } from '../../../core/constants';
 import { getTabData } from '../../../repository/products-repository';
 
 let tabs = [
@@ -94,6 +96,12 @@ export function createMenuSection() {
     <div class="menu__tabs mb-10"></div>
     <div class="menu__items"></div>
     <button id="more-cards" class="rounded-btn transparent-dark-btn">${REFRESH_ICON}</button>
+    <div id="modal" aria-hidden="true">
+      <div class="modal__wrap">
+        <div class="modal__content">
+        </div>
+      </div>
+    </div>
   </section>
 </main>
 `,
@@ -111,5 +119,45 @@ export function createMenuSection() {
 }
 
 export function showOrderModal(item) {
-  console.log(item);
+  const modal = document.querySelector('#modal');
+  modal.classList.add('modal--active');
+  const content = document.querySelector('.modal__content');
+  content.innerHTML = `
+<img class="modal_img" alt="${item.name}" src="${item.img}" />
+<div class="modal__text">
+  <h3 class="heading-3">${item.name}</h3>
+  <p class="description">${item.description}</p>
+  <div>
+    <p>Size</p>
+  </div>
+  <div>
+    <p>Additives</p>
+  </div>
+  <div class="total">
+    <h3 class="heading-3">Total:</h3>
+    <h3 class="heading-3">&#36;${item.price}</h3>
+  </div>
+  <div class="alert">
+    ${INFO_ICON}
+    <p class="caption">The cost is not final. Download our mobile app to see the final price and place your order. Earn loyalty points and enjoy your favorite coffee with up to 20% discount.</p>
+  </div>
+  <button class="modal__close transparent-dark-btn fill-btn">Close</button>
+
+</div>
+  `;
+
+  setTimeout(() => {
+    content.classList.add('content--active');
+  }, 100);
+}
+
+export function closeModal() {
+  const content = document.querySelector('.modal__content');
+  content.classList.remove('content--active');
+
+  setTimeout(() => {
+    content.innerHTML = ``;
+    const modal = document.querySelector('#modal');
+    modal.classList.remove('modal--active');
+  }, 100);
 }
