@@ -60,7 +60,8 @@
     display: block;
   }
 
-  .size, .additives{
+  .size,
+  .additives {
     display: flex;
     flex-direction: column;
     gap: 8px;
