@@ -40,6 +40,7 @@ function renderItems(items) {
 <div class="card" id="${el.id}-${el.category}">
   <div class="card__img">
     <img
+      loading="lazy"
       src="${el.img}"
       alt="${el.name}" />
   </div>
@@ -123,7 +124,7 @@ export function showOrderModal(item) {
   modal.classList.add('modal--active');
   const content = document.querySelector('.modal__content');
   content.innerHTML = `
-<img class="modal_img" alt="${item.name}" src="${item.img}" />
+<img loading="lazy" class="modal_img" alt="${item.name}" src="${item.img}" />
 <div class="modal__text">
   <h3 class="heading-3">${item.name}</h3>
   <p class="description">${item.description}</p>

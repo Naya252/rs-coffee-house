@@ -33,6 +33,7 @@ export function createHeader() {
     <div class="header__bar">
       <a href="${menuData[0].link}" id="logo"
         ><img
+          loading="lazy"
           src="${logoUrl}"
           alt="${menuData[0].name}"
       /></a>
