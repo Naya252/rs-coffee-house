@@ -15,7 +15,7 @@ export default {
     },
   },
   build: {
-    outDir: '../coffee-house3',
+    outDir: './coffee-house3',
     css: {
       devSourcemap: true, // enable CSS source maps during development
     },
