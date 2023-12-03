@@ -15,6 +15,64 @@ let activeTabName = 'coffee';
 let currentDevice = null;
 let isRefresh = false;
 
+class Order {
+  constructor(price, total, isShow, size = { value: 's', price: 0 }, additives = []) {
+    this.size = size;
+    this.additives = additives;
+    this.price = price;
+    this.total = total;
+    this.isShow = isShow;
+  }
+
+  change(value) {
+    this.size.value = 's';
+    this.size.price = 0;
+    this.additives = [];
+    this.total = null;
+    this.price = value.price;
+    this.calculateTotal();
+  }
+
+  changeSize(size, price) {
+    this.size.value = size;
+    this.size.price = price;
+    this.calculateTotal();
+  }
+
+  changeAdditivies(value, price, element) {
+    if (this.additives.some((el) => el.name === value)) {
+      this.additives = this.additives.filter((el) => el.name !== value);
+      element.classList.remove('active');
+    } else {
+      this.additives.push({ name: value, price });
+      element.classList.add('active');
+    }
+    this.calculateTotal();
+  }
+
+  calculateTotal() {
+    let sumAdditivies = 0;
+    if (this.additives.length) {
+      sumAdditivies = parseFloat('0.5') * this.additives.length;
+    }
+    const sum = parseFloat(this.price) + parseFloat(this.size.price) + parseFloat(sumAdditivies);
+    this.total = parseFloat(sum).toFixed(2);
+    if (this.isShow) {
+      document.querySelector('.total-price').innerHTML = `&#36;${this.total}`;
+    }
+  }
+
+  isActive(value) {
+    return value === this.size.value ? 'active' : '';
+  }
+
+  changeVisible(value) {
+    this.isShow = value;
+  }
+}
+
+export const order = new Order();
+
 function getCurrentTab() {
   const tab = tabs.filter((el) => el.name.toLowerCase() === activeTabName);
   return tab[0];
@@ -121,8 +179,8 @@ export function createMenuSection() {
   document.querySelector('#coffee').classList.add('active');
 }
 
+// Генерация контролов модалки
 function generateTab(arr, name) {
-  console.log('generate ', name);
   let html = ``;
   let tabs = [];
   for (const [key, value] of Object.entries(arr)) {
@@ -132,16 +190,16 @@ function generateTab(arr, name) {
   tabs = tabs.map((el) => Object.values(el));
 
   tabs.forEach((el) => {
-    html += `<button class="${name}_tab tab" price="${el[1]}">
+    html += `<button class="${name}__tab tab ${order.isActive(el[2])}" price="${el[1]}" value="${el[2]}">
     <span class="tab__img-container"><span>${el[2].toUpperCase()}</span></span>
     <span>${el[0]}</span>
     </button>`;
   });
   return html;
 }
-
+// Генерация модалки
 export function showOrderModal(item) {
-  console.log(item);
+  order.change(item);
   const modal = document.querySelector('#modal');
   modal.classList.add('modal--active');
   const content = document.querySelector('.modal__content');
@@ -164,7 +222,7 @@ export function showOrderModal(item) {
   </div>
   <div class="total">
     <h3 class="heading-3">Total:</h3>
-    <h3 class="heading-3">&#36;${item.price}</h3>
+    <h3 class="heading-3 total-price">&#36;${order.total}</h3>
   </div>
   <div class="alert">
     ${INFO_ICON}
@@ -174,10 +232,10 @@ export function showOrderModal(item) {
 
 </div>
   `;
-  console.log(content);
 
   setTimeout(() => {
     content.classList.add('content--active');
+    order.changeVisible(true);
   }, 100);
 }
 
@@ -192,5 +250,6 @@ export function closeModal() {
     content.innerHTML = ``;
     const modal = document.querySelector('#modal');
     modal.classList.remove('modal--active');
+    order.changeVisible(false);
   }, 100);
 }

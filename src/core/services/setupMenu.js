@@ -4,6 +4,7 @@ import {
   removeTabItems,
   showOrderModal,
   closeModal,
+  order,
 } from '../../ui/components/sections/menu';
 import { getItemById } from '../../repository/products-repository';
 
@@ -19,16 +20,32 @@ export function setupRefreshBtn(element) {
   element.addEventListener('click', (event) => getNewCards(event));
 }
 
-export function setupCloseBtn(element) {
-  const clickCloseModal = (event) => {
-    const btn = event.target.closest('.modal__close');
-    if (!btn) return;
+export function setupModal(element) {
+  const eventModal = (event) => {
+    const modal = event.target.closest('.modal__content');
+    const closeBtn = event.target.closest('.modal__close');
+    const size = event.target.closest('.sizes__tab');
+    const additive = event.target.closest('.additives__tab');
+    // console.log(event.target);
 
-    if (btn) {
+    if (closeBtn || !modal) {
       closeModal();
     }
+    if (size) {
+      order.changeSize(size.getAttribute('value'), size.getAttribute('price'));
+      document.querySelectorAll(`.sizes__tab`).forEach((el) => {
+        if (size.getAttribute('value') === el.getAttribute('value')) {
+          el.classList.add('active');
+        } else {
+          el.classList.remove('active');
+        }
+      });
+    }
+    if (additive) {
+      order.changeAdditivies(additive.getAttribute('value'), additive.getAttribute('price'), additive);
+    }
   };
-  element.addEventListener('click', (event) => clickCloseModal(event));
+  element.addEventListener('click', (event) => eventModal(event));
 }
 
 export function setupItemCard(element) {
