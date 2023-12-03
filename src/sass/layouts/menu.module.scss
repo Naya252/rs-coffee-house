@@ -59,6 +59,8 @@
       flex-direction: column;
       cursor: pointer;
       box-sizing: border-box;
+      background: inherit;
+      padding: 0;
 
       .card__img {
         height: 310px;
