@@ -1,5 +1,6 @@
 import { watchActiveSection, unWatchSections } from './watchSection';
 import { changeDevice } from '../../ui/components/sections/menu';
+import { CURRENT_PATH } from '../constants';
 
 let prewSize = null;
 let curSize = null;
@@ -25,7 +26,6 @@ const resizeObserver = new ResizeObserver((entries) => {
         changeDevice(curSize);
       }
     }
-
     if (inlineSize > 768) {
       editDevice('desktop');
     }
@@ -33,7 +33,9 @@ const resizeObserver = new ResizeObserver((entries) => {
       editDevice('mobile');
     }
   }
-  checkDevice(prewSize, curSize);
+  if (CURRENT_PATH.includes('menu')) {
+    checkDevice(prewSize, curSize);
+  }
 });
 
 export default resizeObserver;
