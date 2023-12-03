@@ -1,5 +1,5 @@
-import '../../../sass/layouts/favorite.module.scss';
-import '../../../sass/components/button.module.scss';
+import '../../../sass/layouts/_favorite.module.scss';
+import '../../../sass/components/_button.module.scss';
 import { ARROW_LEFT_ICON, ARROW_RIGHT_ICON } from '../../../core/constants';
 
 export default function createFavoriteSection() {

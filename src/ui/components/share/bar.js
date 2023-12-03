@@ -1,5 +1,5 @@
 import logoUrl from '../../../assets/img/logo.svg';
-import '../../../sass/layouts/bar.module.scss';
+import '../../../sass/layouts/_bar.module.scss';
 import { CUP_ICON, BASE_URL, CURRENT_PATH } from '../../../core/constants';
 
 const menuData = [

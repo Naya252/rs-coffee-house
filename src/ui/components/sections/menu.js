@@ -1,6 +1,6 @@
-import '../../../sass/layouts/menu.module.scss';
+import '../../../sass/layouts/_menu.module.scss';
 import '../../../sass/components/_modal.module.scss';
-import '../../../sass/components/button.module.scss';
+import '../../../sass/components/_button.module.scss';
 import { TAB_COFFEE, TAB_TEA, TAB_DESSERT, REFRESH_ICON, INFO_ICON } from '../../../core/constants';
 import { getTabData } from '../../../repository/products-repository';
 
@@ -151,6 +151,9 @@ export function showOrderModal(item) {
   }, 100);
 }
 
+//--------------
+// TODO: change animate of close modal
+//--------------
 export function closeModal() {
   const content = document.querySelector('.modal__content');
   content.classList.remove('content--active');

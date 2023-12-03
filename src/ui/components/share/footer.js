@@ -1,5 +1,5 @@
-import '../../../sass/layouts/footer.module.scss';
-import '../../../sass/components/button.module.scss';
+import '../../../sass/layouts/_footer.module.scss';
+import '../../../sass/components/_button.module.scss';
 import { TWITTER_ICON, INSTAGRAM_ICON, FACEBOOK_ICON, PHONE_ICON, PIN_ICON, CLOCK_ICON } from '../../../core/constants';
 
 export default function createFooter() {

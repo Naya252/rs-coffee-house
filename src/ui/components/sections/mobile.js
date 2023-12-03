@@ -1,5 +1,5 @@
-import '../../../sass/layouts/mobile.module.scss';
-import '../../../sass/components/button.module.scss';
+import '../../../sass/layouts/_mobile.module.scss';
+import '../../../sass/components/_button.module.scss';
 import { APPLE_ICON, GOOGLE_PLAY_ICON } from '../../../core/constants';
 
 export default function createMobileSection() {
