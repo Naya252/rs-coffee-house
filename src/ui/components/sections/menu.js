@@ -1,6 +1,8 @@
 import '../../../sass/layouts/_menu.module.scss';
 import '../../../sass/components/_modal.module.scss';
 import '../../../sass/components/_button.module.scss';
+import '../../../sass/components/_tab.module.scss';
+
 import { TAB_COFFEE, TAB_TEA, TAB_DESSERT, REFRESH_ICON, INFO_ICON } from '../../../core/constants';
 import { getTabData } from '../../../repository/products-repository';
 
@@ -94,7 +96,7 @@ export function createMenuSection() {
   <section id="menu">
     <h1 style="display: none">Menu</h1>  
     <h2 class="heading-2 mb-10 mx-auto">Behind each of our cups hides an <em class="text-accent">amazing surprise</em></h2>
-    <div class="menu__tabs mb-10"></div>
+    <div class="menu__tabs tabs mb-10"></div>
     <div class="menu__items"></div>
     <button id="more-cards" class="rounded-btn transparent-dark-btn">${REFRESH_ICON}</button>
     <div id="modal" aria-hidden="true">
@@ -110,16 +112,36 @@ export function createMenuSection() {
 
   let tabsHtml = '';
   tabs.forEach((el) => {
-    tabsHtml += `<button class="menu__tabs_tab" id="${el.name.toLowerCase()}">
-  <span class="button_img-container">${el.img}</span>
-  <span class="button_text">${el.name}</span>
+    tabsHtml += `<button class="menu__tabs_tab tab" id="${el.name.toLowerCase()}">
+  <span class="tab__img-container">${el.img}</span>
+  <span class="tab__text">${el.name}</span>
   </button>`;
   });
   document.querySelector('.menu__tabs').insertAdjacentHTML('afterbegin', tabsHtml);
   document.querySelector('#coffee').classList.add('active');
 }
 
+function generateTab(arr, name) {
+  console.log('generate ', name);
+  let html = ``;
+  let tabs = [];
+  for (const [key, value] of Object.entries(arr)) {
+    tabs.push({ ...value, title: key[0] });
+  }
+
+  tabs = tabs.map((el) => Object.values(el));
+
+  tabs.forEach((el) => {
+    html += `<button class="${name}_tab tab" price="${el[1]}">
+    <span class="tab__img-container"><span>${el[2].toUpperCase()}</span></span>
+    <span>${el[0]}</span>
+    </button>`;
+  });
+  return html;
+}
+
 export function showOrderModal(item) {
+  console.log(item);
   const modal = document.querySelector('#modal');
   modal.classList.add('modal--active');
   const content = document.querySelector('.modal__content');
@@ -128,11 +150,17 @@ export function showOrderModal(item) {
 <div class="modal__text">
   <h3 class="heading-3">${item.name}</h3>
   <p class="description">${item.description}</p>
-  <div>
-    <p>Size</p>
+  <div class="size">
+    <p "class="size__title">Size</p>
+    <div class="tabs sizes__tabs">
+      ${generateTab(item.sizes, 'sizes')}
+    </div>
   </div>
-  <div>
-    <p>Additives</p>
+  <div class="additives">
+    <p "class="additives__title">Additives</p>
+    <div class="tabs additives__tabs">
+      ${generateTab(item.additives, 'additives')}
+    </div>
   </div>
   <div class="total">
     <h3 class="heading-3">Total:</h3>
@@ -146,6 +174,7 @@ export function showOrderModal(item) {
 
 </div>
   `;
+  console.log(content);
 
   setTimeout(() => {
     content.classList.add('content--active');

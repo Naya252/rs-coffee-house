@@ -7,44 +7,6 @@
     width: 800px;
     text-align: center;
   }
-  .menu__tabs {
-    display: flex;
-    gap: 16px;
-    text-align: center;
-    justify-content: center;
-
-    button {
-      padding: 8px 16px 8px 8px;
-      border-radius: 100px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-
-      transition: all 0.4s ease-in;
-      cursor: pointer;
-      height: 46px;
-
-      .button_img-container {
-        display: flex;
-        width: 30px;
-        height: 30px;
-        align-items: center;
-        justify-content: center;
-        border-radius: 50%;
-      }
-
-      &.active {
-        background: $dark-color-secondary;
-        border: 1px solid $dark-color-secondary;
-        color: $text-light-color;
-        cursor: auto;
-
-        .button_img-container {
-          background: $light-color;
-        }
-      }
-    }
-  }
 
   .menu__items {
     display: grid;
@@ -97,29 +59,20 @@
   .show {
     display: block;
   }
+
+  .size, .additives{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    justify-content: flex-start;
+
+    .tabs {
+      align-self: flex-start;
+    }
+  }
 }
 
 @media (hover: hover) {
-  .menu__tabs button {
-    background: inherit;
-    border: 1px solid $light-color-secondary;
-    color: $dark-color;
-
-    .button_img-container {
-      background: $light-color-secondary;
-    }
-
-    &:hover {
-      background: $dark-color-secondary;
-      border: 1px solid $dark-color-secondary;
-      color: $light-color;
-
-      .button_img-container {
-        background: $light-color;
-      }
-    }
-  }
-
   .menu__items .card {
     .card__img {
       img {
@@ -143,16 +96,6 @@
   }
 }
 @media (hover: none) {
-  .menu__tabs button {
-    background: inherit;
-    border: 1px solid $light-color-secondary;
-    color: $dark-color;
-
-    .button_img-container {
-      background: $light-color-secondary;
-    }
-  }
-
   .menu__items .card {
     .card__img {
       img {
@@ -180,29 +123,9 @@
 
 @media only screen and (max-width: $breakpoint-xs) {
   #menu {
-    .menu__tabs {
-      gap: 8px;
-    }
-
     .menu__items {
       grid-template-columns: 1fr;
       margin: 0 18px;
-    }
-  }
-}
-
-@media only screen and (max-width: $breakpoint-xxs) {
-  #menu {
-    .menu__tabs {
-      gap: 16px;
-
-      button {
-        padding: 8px;
-
-        .button_text {
-          display: none;
-        }
-      }
     }
   }
 }
