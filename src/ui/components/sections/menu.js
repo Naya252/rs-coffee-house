@@ -245,14 +245,18 @@ export function showOrderModal(item) {
   if (posHeaderBeforeModal.y === 0) {
     header.classList.remove('mt-5');
   }
+
+  console.log(posHeaderBeforeModal)
   const posHeaderAfterModal = header.getBoundingClientRect();
   header.style.top = `${Math.abs(posHeaderAfterModal.y)}px`;
-  header.style.left = `${posHeaderBeforeModal.x - 8}px`;
+  header.style.left = `${posHeaderBeforeModal.x}px`;
+  header.style.width = `${posHeaderBeforeModal.width}px`;
   if (posHeaderAfterModal.y === 20) {
     header.classList.remove('mt-5');
   }
   if (currentDevice === 'desktop') {
     document.querySelector('body').classList.add('static-width');
+    header.style.left = `${posHeaderBeforeModal.x - 8}px`;
   }
 
   setTimeout(() => {
@@ -279,6 +283,7 @@ export function closeModal() {
     header.classList.add('mt-5');
     header.style.top = 0;
     header.style.left = 0;
+    header.style.width = null;
     document.querySelector('.pseudo').classList.remove('show');
 
     if (currentDevice === 'desktop') {
