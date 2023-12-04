@@ -5,7 +5,7 @@ import imgUrl from '../../../assets/video/img-hero.webp';
 import videoUrl from '../../../assets/video/video(2160p).mp4';
 
 export default function createEnjoySection() {
-  document.querySelector('#header').insertAdjacentHTML(
+  document.querySelector('.pseudo').insertAdjacentHTML(
     'afterend',
     `
   <main id="main" class="wrap mx-auto">

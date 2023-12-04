@@ -56,6 +56,7 @@ export function createHeader() {
       <button id="burger-btn"></button>
     </div>
   </header>
+  <div class="pseudo mx-auto"></div>
   `,
   );
 

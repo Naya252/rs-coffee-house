@@ -147,7 +147,7 @@ export function changeDevice(val) {
 }
 
 export function createMenuSection() {
-  document.querySelector('#header').insertAdjacentHTML(
+  document.querySelector('.pseudo').insertAdjacentHTML(
     'afterend',
     `
 <main id="main" class="wrap mx-auto mt-5">
@@ -238,6 +238,19 @@ export function showOrderModal(item) {
   `;
 
   document.querySelector('body').classList.add('scroll-not-visible');
+  const header = document.querySelector('#header');
+  const posHeaderBeforeModal = header.getBoundingClientRect();
+  document.querySelector('.pseudo').classList.add('show');
+  header.classList.add('show-always');
+  if (posHeaderBeforeModal.y === 0) {
+    header.classList.remove('mt-5');
+  }
+  const posHeaderAfterModal = header.getBoundingClientRect();
+  header.style.top = `${Math.abs(posHeaderAfterModal.y)}px`;
+  header.style.left = `${posHeaderBeforeModal.x - 8}px`;
+  if (posHeaderAfterModal.y === 20) {
+    header.classList.remove('mt-5');
+  }
   if (currentDevice === 'desktop') {
     document.querySelector('body').classList.add('static-width');
   }
@@ -261,6 +274,13 @@ export function closeModal() {
     modal.classList.remove('modal--active');
     order.changeVisible(false);
     document.querySelector('body').classList.remove('scroll-not-visible');
+    const header = document.querySelector('#header');
+    header.classList.remove('show-always');
+    header.classList.add('mt-5');
+    header.style.top = 0;
+    header.style.left = 0;
+    document.querySelector('.pseudo').classList.remove('show');
+
     if (currentDevice === 'desktop') {
       document.querySelector('body').classList.remove('static-width');
     }

@@ -137,3 +137,28 @@
     }
   }
 }
+
+#header.show-always {
+  position: absolute;
+}
+
+.pseudo {
+  min-height: 80px;
+  max-width: 1360px;
+  width: 100%;
+  display: none;
+
+  &.show {
+    display: block;
+  }
+}
+.pseudo-before {
+  min-height: 20px;
+  max-width: 1360px;
+  width: 100%;
+  display: none;
+
+  &.show {
+    display: block;
+  }
+}
