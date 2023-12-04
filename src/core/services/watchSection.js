@@ -1,5 +1,5 @@
 import { MENU_ITEMS } from '../../ui/components/share/bar';
-import { BASE_URL, CURRENT_PATH } from '../constants';
+import { CURRENT_PATH } from '../constants';
 
 function removeClasses() {
   document.querySelectorAll(`.nav-item`).forEach((el) => {
@@ -21,7 +21,7 @@ function intersectionCallback(entries) {
       document.querySelectorAll(`.nav-item`).forEach((el) => {
         el.classList.toggle('active', el.getAttribute('id').replace('nav-', '') === section.id);
       });
-    } else if (!entry.isIntersecting && CURRENT_PATH === `${BASE_URL}`) {
+    } else if (!entry.isIntersecting && !CURRENT_PATH.includes('menu')) {
       removeClasses();
     }
   });
