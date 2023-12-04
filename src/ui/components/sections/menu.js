@@ -204,10 +204,14 @@ export function showOrderModal(item) {
   modal.classList.add('modal--active');
   const content = document.querySelector('.modal__content');
   content.innerHTML = `
-<img loading="lazy" class="modal_img" alt="${item.name}" src="${item.img}" />
+<div class="modal__img">
+  <img loading="lazy" alt="${item.name}" src="${item.img}" />
+</div>
 <div class="modal__text">
-  <h3 class="heading-3">${item.name}</h3>
-  <p class="description">${item.description}</p>
+  <div>
+    <h3 class="heading-3 mb-3">${item.name}</h3>
+    <p class="description">${item.description}</p>
+  </div>
   <div class="size">
     <p "class="size__title">Size</p>
     <div class="tabs sizes__tabs">
