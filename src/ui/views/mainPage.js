@@ -4,6 +4,7 @@ import createFavoriteSection from '../components/sections/favorite';
 import createAboutSection from '../components/sections/about';
 import createMobileSection from '../components/sections/mobile';
 import createFooter from '../components/share/footer';
+import setupBurgerBtn from '../../core/services/setupBurger';
 
 export default function createMainPage() {
   createHeader();
@@ -12,4 +13,5 @@ export default function createMainPage() {
   createAboutSection();
   createMobileSection();
   createFooter();
+  setupBurgerBtn(document.querySelector(`#burger-btn`));
 }

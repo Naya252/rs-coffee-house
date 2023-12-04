@@ -82,7 +82,7 @@
         content: '';
         position: absolute;
         bottom: calc(50% - 4px);
-        height: 3.55%;
+        height: 2px;
         width: 16px;
         left: calc(50% - 8px);
         background: $dark-color;
@@ -93,11 +93,23 @@
         content: '';
         position: absolute;
         top: calc(50% - 4px);
-        height: 3.55%;
+        height: 2px;
         width: 16px;
         left: calc(50% - 8px);
         background: $dark-color;
         transition: all 0.5s ease-out;
+      }
+
+      &.show-cancel {
+
+        &:before {
+          transform: translate(0, -3px) rotate(45deg);
+        }
+
+        &:after {
+          transform: translate(0, 3px) rotate(-45deg);
+        }
+
       }
     }
   }
