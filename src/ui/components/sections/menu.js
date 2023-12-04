@@ -237,6 +237,11 @@ export function showOrderModal(item) {
 </div>
   `;
 
+  document.querySelector('body').classList.add('scroll-not-visible');
+  if (currentDevice === 'desktop') {
+    document.querySelector('body').classList.add('static-width');
+  }
+
   setTimeout(() => {
     content.classList.add('content--active');
     order.changeVisible(true);
@@ -255,5 +260,9 @@ export function closeModal() {
     const modal = document.querySelector('#modal');
     modal.classList.remove('modal--active');
     order.changeVisible(false);
+    document.querySelector('body').classList.remove('scroll-not-visible');
+    if (currentDevice === 'desktop') {
+      document.querySelector('body').classList.remove('static-width');
+    }
   }, 100);
 }

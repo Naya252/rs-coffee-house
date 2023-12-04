@@ -38,7 +38,6 @@
       opacity: 0;
       padding: 16px;
 
-
       .modal__img {
         width: 50%;
         min-width: 310px;
@@ -49,7 +48,6 @@
           object-fit: contain;
           border-radius: 40px;
         }
-      
       }
 
       .modal__text {
@@ -117,4 +115,12 @@
       }
     }
   }
+}
+
+.scroll-not-visible {
+  overflow: hidden;
+  height: 100dvh;
+}
+.static-width {
+  width: calc(100% - 17px);
 }
