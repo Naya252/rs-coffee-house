@@ -1,10 +1,58 @@
 @import '../variables.module.scss';
 
+.side-container {
+  // width: 100%;
+  // height: 100dvh;
+  // position: absolute;
+  // width: 100%;
+  // top: 0;
+  // left: 100%;
+  // background: $light-color;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: -100%;
+  left: 100%;
+  overflow: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  // display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 5;
+  padding: 40px;
+  background: $light-color;
+  transition: all 0.3s ease;
+}
+
+.side-menu {
+  display: flex;
+  gap: 60px;
+  flex-direction: column;
+  margin-top: 120px;
+  align-items: center;
+  height: 340px;
+  padding: 0;
+
+  .nav-item {
+    font-size: 32px;
+    line-height: 40px;
+  }
+
+  #nav-menu svg {
+    stroke: $text-dark-color;
+    margin-bottom: 4px;
+    margin-left: 8px;
+    width: 40px;
+    height: 40px;
+  }
+}
+
 #header {
   height: 60px;
   position: sticky;
   top: 0;
-  background: $light-color;
+
   background: rgba($light-color, 0.8);
   backdrop-filter: blur(10px);
   z-index: 10;
@@ -31,41 +79,8 @@
       stroke: $text-dark-color;
       margin-bottom: 4px;
       margin-left: 8px;
-    }
-
-    .nav-item {
-      display: flex;
-      align-items: center;
-      position: relative;
-      color: $text-dark-color;
-
-      &:after {
-        content: '';
-        position: absolute;
-        bottom: -4px;
-        height: 2px;
-
-        background: $text-dark-color;
-        transition: all 0.5s ease-out;
-      }
-
-      &:target::after {
-        width: 100%;
-        left: 0;
-      }
-    }
-
-    .nav-item.active {
-      &:after {
-        content: '';
-        position: absolute;
-        bottom: -4px;
-        height: 2px;
-        width: 100%;
-        left: 0;
-        background: $text-dark-color;
-        transition: all 0.5s ease-out;
-      }
+      width: 20px;
+      height: 20px;
     }
 
     #burger-btn {
@@ -101,7 +116,6 @@
       }
 
       &.show-cancel {
-
         &:before {
           transform: translate(0, -3px) rotate(45deg);
         }
@@ -109,9 +123,43 @@
         &:after {
           transform: translate(0, 3px) rotate(-45deg);
         }
-
       }
     }
+  }
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  position: relative;
+  color: $text-dark-color;
+
+  &:after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    height: 2px;
+
+    background: $text-dark-color;
+    transition: all 0.5s ease-out;
+  }
+
+  &:target::after {
+    width: 100%;
+    left: 0;
+  }
+}
+
+.nav-item.active {
+  &:after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    height: 2px;
+    width: 100%;
+    left: 0;
+    background: $text-dark-color;
+    transition: all 0.5s ease-out;
   }
 }
 

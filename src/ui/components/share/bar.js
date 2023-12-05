@@ -1,6 +1,8 @@
 import logoUrl from '../../../assets/img/logo.svg';
 import '../../../sass/layouts/_bar.module.scss';
 import { CUP_ICON, BASE_URL, CURRENT_PATH } from '../../../core/constants';
+import { showModal as changeMenu, closeModal as closeContent } from '../../../core/services/changeAbsoluteMenu';
+import { setupBurgerModal } from '../../../core/services/setupBurger';
 
 const menuData = [
   { name: 'logo', link: 'enjoy', anchor: 'enjoy' },
@@ -12,10 +14,26 @@ const menuData = [
 ];
 
 export const MENU_ITEMS = menuData.slice(1, -1);
+// TODO провести рефакторинг и добавить на линк меню # для модального окна
+// вообще разобрать функции бара, меню, модалки
+//добавить закрытие модалки при ресайзе
+function createMenuItems(char) {
+  let navItems = '';
+  MENU_ITEMS.forEach((el) => {
+    navItems += `
+    <li>
+          <a
+          id="nav-${el.link}"
+            href="${el.link === 'footer' ? `#${el.link}` : char + el.link}"
+            class="nav-item ">${el.name}</a>
+    </li>
+    `;
+  });
+  return navItems;
+}
 
-export function createHeader() {
+function checkUrl() {
   let char;
-  const footerChar = '#';
 
   if (CURRENT_PATH.includes('menu')) {
     char = `${BASE_URL}#`;
@@ -24,7 +42,55 @@ export function createHeader() {
     char = '#';
     menuData[0].link = `${BASE_URL}#enjoy`;
   }
-  let navItems = '';
+
+  return char;
+}
+
+export function createMenu() {
+  const char = checkUrl();
+  const block = document.createElement('div');
+  block.classList.add('side-container');
+  let navItems = createMenuItems(char);
+  navItems += `<a
+  id="nav-menu"
+  style="margin-top: 40px"
+  class="bar__coffee-menu nav-item"
+  href="${menuData[5].link}"
+  >${menuData[5].name}
+
+  ${CUP_ICON}
+
+</a>`;
+  const menuModal = `
+  <ul class="side-menu"></ul>
+  `;
+
+  block.innerHTML = menuModal;
+
+  console.log(block);
+  document.querySelector('body').style.overflow = 'hidden';
+  document.querySelector('body').appendChild(block);
+  document.querySelector('.side-menu').innerHTML = navItems;
+  changeMenu('mobile');
+
+  setTimeout(() => {
+    block.style.translate = '-100%';
+    setupBurgerModal(document.querySelector('.side-menu'));
+  });
+}
+
+export function removeMenu() {
+  const block = document.querySelector('.side-container');
+  block.style.translate = '0';
+  setTimeout(() => {
+    document.querySelector('body').removeChild(document.querySelector('.side-container'));
+    document.querySelector('body').style.overflow = 'auto';
+    closeContent('mobile');
+  }, 500);
+}
+
+export function createHeader() {
+  const char = checkUrl();
 
   document.querySelector('body').insertAdjacentHTML(
     'afterbegin',
@@ -59,17 +125,6 @@ export function createHeader() {
   <div class="pseudo mx-auto"></div>
   `,
   );
-
-  MENU_ITEMS.forEach((el) => {
-    navItems += `
-    <li>
-          <a
-          id="nav-${el.link}"
-            href="${el.link === 'footer' ? footerChar + el.link : char + el.link}"
-            class="nav-item">${el.name}</a>
-    </li>
-    `;
-  });
-
+  const navItems = createMenuItems(char);
   document.querySelector('#nav-list').insertAdjacentHTML('afterbegin', navItems);
 }
