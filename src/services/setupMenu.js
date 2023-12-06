@@ -5,8 +5,8 @@ import {
   showOrderModal,
   closeModal,
   order,
-} from '../../ui/components/sections/menu';
-import { getItemById } from '../../repository/products-repository';
+} from '../ui/components/sections/menu';
+import { getItemById } from '../repository/products-repository';
 
 export function setupRefreshBtn(element) {
   const getNewCards = (event) => {

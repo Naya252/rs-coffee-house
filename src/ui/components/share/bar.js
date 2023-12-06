@@ -1,8 +1,8 @@
 import logoUrl from '../../../assets/img/logo.svg';
 import '../../../sass/layouts/_bar.module.scss';
 import { CUP_ICON, BASE_URL, CURRENT_PATH } from '../../../core/constants';
-import { showModal as changeMenu, closeModal as closeContent } from '../../../core/services/changeAbsoluteMenu';
-import { setupBurgerModal } from '../../../core/services/setupBurger';
+import { showModal as changeMenu, closeModal as closeContent } from '../../../services/changeAbsoluteMenu';
+import { setupBurgerModal } from '../../../services/setupBurger';
 
 const menuData = [
   { name: 'logo', link: 'enjoy', anchor: 'enjoy' },
@@ -16,7 +16,8 @@ const menuData = [
 export const MENU_ITEMS = menuData.slice(1, -1);
 // TODO провести рефакторинг и добавить на линк меню # для модального окна
 // вообще разобрать функции бара, меню, модалки
-//добавить закрытие модалки при ресайзе
+// добавить закрытие модалки при ресайзе
+// завершани анимацию - потом переходить на др страницу
 function createMenuItems(char) {
   let navItems = '';
   MENU_ITEMS.forEach((el) => {

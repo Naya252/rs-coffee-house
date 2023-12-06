@@ -1,5 +1,5 @@
-import { MENU_ITEMS } from '../../ui/components/share/bar';
-import { CURRENT_PATH } from '../constants';
+import { MENU_ITEMS } from '../ui/components/share/bar';
+import { CURRENT_PATH } from '../core/constants';
 
 function removeClasses() {
   document.querySelectorAll(`.nav-item`).forEach((el) => {

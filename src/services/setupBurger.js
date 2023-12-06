@@ -1,4 +1,4 @@
-import { createMenu, removeMenu } from '../../ui/components/share/bar';
+import { createMenu, removeMenu } from '../ui/components/share/bar';
 
 export function setupBurgerBtn(element) {
   const changeShowMenu = (event) => {
