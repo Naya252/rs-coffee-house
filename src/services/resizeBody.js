@@ -1,6 +1,6 @@
 import { watchActiveSection, unWatchSections } from './watchSection';
 import { changeDevice } from '../ui/components/sections/menu';
-import { CURRENT_PATH } from '../core/constants';
+import { CURRENT_PATH } from '../share/constants';
 
 let prewSize = null;
 let curSize = null;

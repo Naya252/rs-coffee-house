@@ -1,6 +1,6 @@
 import '../../../sass/layouts/_favorite.module.scss';
 import '../../../sass/components/_button.module.scss';
-import { ARROW_LEFT_ICON, ARROW_RIGHT_ICON } from '../../../core/constants';
+import { ARROW_LEFT_ICON, ARROW_RIGHT_ICON } from '../../../share/constants';
 
 export default function createFavoriteSection() {
   document.querySelector('#enjoy').insertAdjacentHTML(

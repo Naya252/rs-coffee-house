@@ -1,6 +1,6 @@
 import logoUrl from '../../../assets/img/logo.svg';
 import '../../../sass/layouts/_bar.module.scss';
-import { CUP_ICON, BASE_URL, CURRENT_PATH } from '../../../core/constants';
+import { CUP_ICON, BASE_URL, CURRENT_PATH } from '../../../share/constants';
 import { showModal as changeMenu, closeModal as closeContent } from '../../../services/changeAbsoluteMenu';
 import { setupBurgerModal } from '../../../services/setupBurger';
 

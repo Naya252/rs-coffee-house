@@ -1,5 +1,5 @@
 import data from './products.json';
-import { COFFEE_IMAGES, TEA_IMAGES, DESSERTS_IMAGES } from '../core/constants';
+import { COFFEE_IMAGES, TEA_IMAGES, DESSERTS_IMAGES } from '../share/constants';
 
 const images = [...COFFEE_IMAGES, ...TEA_IMAGES, ...DESSERTS_IMAGES];
 const products = data.map((el, i) => ({ ...el, id: i + 1, img: images[i] }));

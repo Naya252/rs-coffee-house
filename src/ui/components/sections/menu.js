@@ -3,7 +3,7 @@ import '../../../sass/components/_modal.module.scss';
 import '../../../sass/components/_button.module.scss';
 import '../../../sass/components/_tab.module.scss';
 
-import { TAB_COFFEE, TAB_TEA, TAB_DESSERT, REFRESH_ICON, INFO_ICON } from '../../../core/constants';
+import { TAB_COFFEE, TAB_TEA, TAB_DESSERT, REFRESH_ICON, INFO_ICON } from '../../../share/constants';
 import { getTabData } from '../../../repository/products-repository';
 import { showModal as changeMenu, closeModal as closeContent } from '../../../services/changeAbsoluteMenu';
 
