@@ -33,7 +33,7 @@ export function createMenu() {
   id="nav-menu"
   style="margin-top: 40px"
   class="bar__coffee-menu nav-item"
-  href="${menuItem.link}"
+  href="${menuItem.isNotActive ? '#' : menuItem.link}"
   >${menuItem.name}
 
   ${CUP_ICON}

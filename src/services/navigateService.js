@@ -24,6 +24,7 @@ export function getMenuItems() {
       }
       if (el.page === 'menu') {
         val.link = `${BASE_URL}${val.page}/`;
+        val.isNotActive = true;
       }
       return val;
     });
@@ -38,6 +39,7 @@ export function getMenuItems() {
       }
       if (el.page === 'menu') {
         val.link = `${BASE_URL}${val.page}`;
+        val.isNotActive = false;
       }
       return val;
     });
