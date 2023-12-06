@@ -5,7 +5,7 @@ import '../../../sass/components/_tab.module.scss';
 
 import { TAB_COFFEE, TAB_TEA, TAB_DESSERT, REFRESH_ICON, INFO_ICON } from '../../../share/constants';
 import { getTabData } from '../../../repository/products-repository';
-import { showModal as changeMenu, closeModal as closeContent } from '../../../services/changeAbsoluteMenu';
+import { showModal as changeMenu, closeModal as closeContent } from '../../../services/navigateService';
 
 let tabs = [
   { name: 'Coffee', img: TAB_COFFEE, items: [] },

@@ -1,31 +1,22 @@
 import logoUrl from '../../../assets/img/logo.svg';
 import '../../../sass/layouts/_bar.module.scss';
 import { CUP_ICON, BASE_URL, CURRENT_PATH } from '../../../share/constants';
-import { showModal as changeMenu, closeModal as closeContent } from '../../../services/changeAbsoluteMenu';
+import { showModal as changeMenu, closeModal as closeContent, getMenuItems } from '../../../services/navigateService';
 import { setupBurgerModal } from '../../../services/setupBurger';
 
-const menuData = [
-  { name: 'logo', link: 'enjoy', anchor: 'enjoy' },
-  { name: 'Favorite coffee', link: 'favorite-coffee' },
-  { name: 'About', link: 'about' },
-  { name: 'Mobile app', link: 'mobile-app' },
-  { name: 'Contact us', link: 'footer' },
-  { name: 'Menu', link: `${BASE_URL}menu/` },
-];
-
-export const MENU_ITEMS = menuData.slice(1, -1);
 // TODO провести рефакторинг и добавить на линк меню # для модального окна
 // вообще разобрать функции бара, меню, модалки
 // добавить закрытие модалки при ресайзе
 // завершани анимацию - потом переходить на др страницу
-function createMenuItems(char) {
+function createMenuItems() {
   let navItems = '';
-  MENU_ITEMS.forEach((el) => {
+  const { generalMenutems } = getMenuItems();
+  generalMenutems.forEach((el) => {
     navItems += `
     <li>
           <a
-          id="nav-${el.link}"
-            href="${el.link === 'footer' ? `#${el.link}` : char + el.link}"
+          id="nav-${el.id}"
+            href="${el.link}"
             class="nav-item ">${el.name}</a>
     </li>
     `;
@@ -33,31 +24,17 @@ function createMenuItems(char) {
   return navItems;
 }
 
-function checkUrl() {
-  let char;
-
-  if (CURRENT_PATH.includes('menu')) {
-    char = `${BASE_URL}#`;
-    menuData[0].link = BASE_URL;
-  } else {
-    char = '#';
-    menuData[0].link = `${BASE_URL}#enjoy`;
-  }
-
-  return char;
-}
-
 export function createMenu() {
-  const char = checkUrl();
+  const { menuItem } = getMenuItems();
   const block = document.createElement('div');
   block.classList.add('side-container');
-  let navItems = createMenuItems(char);
+  let navItems = createMenuItems();
   navItems += `<a
   id="nav-menu"
   style="margin-top: 40px"
   class="bar__coffee-menu nav-item"
-  href="${menuData[5].link}"
-  >${menuData[5].name}
+  href="${menuItem.link}"
+  >${menuItem.name}
 
   ${CUP_ICON}
 
@@ -68,7 +45,6 @@ export function createMenu() {
 
   block.innerHTML = menuModal;
 
-  console.log(block);
   document.querySelector('body').style.overflow = 'hidden';
   document.querySelector('body').appendChild(block);
   document.querySelector('.side-menu').innerHTML = navItems;
@@ -91,18 +67,19 @@ export function removeMenu() {
 }
 
 export function createHeader() {
-  const char = checkUrl();
+  const { logoItem, menuItem } = getMenuItems();
+  const navItems = createMenuItems();
 
   document.querySelector('body').insertAdjacentHTML(
     'afterbegin',
     `
   <header id="header" class="wrap mx-auto mt-5">
     <div class="header__bar">
-      <a href="${menuData[0].link}" id="logo"
+      <a href="${logoItem.link}" id="logo"
         ><img
           loading="lazy"
           src="${logoUrl}"
-          alt="${menuData[0].name}"
+          alt="${logoItem.name}"
       /></a>
   
       <nav class="bar__nav">
@@ -113,8 +90,8 @@ export function createHeader() {
       <a
         id="nav-menu"
         class="bar__coffee-menu nav-item"
-        href="${menuData[5].link}"
-        >${menuData[5].name}
+        href="${menuItem.link}"
+        >${menuItem.name}
   
         ${CUP_ICON}
     
@@ -126,6 +103,5 @@ export function createHeader() {
   <div class="pseudo mx-auto"></div>
   `,
   );
-  const navItems = createMenuItems(char);
   document.querySelector('#nav-list').insertAdjacentHTML('afterbegin', navItems);
 }

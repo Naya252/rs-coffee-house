@@ -1,4 +1,4 @@
-import { MENU_ITEMS } from '../ui/components/share/bar';
+import { getMenuItems } from './navigateService';
 import { CURRENT_PATH } from '../share/constants';
 
 function removeClasses() {
@@ -37,7 +37,9 @@ function getEntries() {
     addMenuActive();
     data = ['menu', 'footer'];
   } else {
-    data = MENU_ITEMS.map((el) => el.link);
+    const { generalMenutems } = getMenuItems();
+    const links = generalMenutems.map((el) => el.link.split('#'));
+    data = links.map((el) => el[el.length - 1]);
   }
   return data;
 }
