@@ -4,8 +4,8 @@ import { CUP_ICON } from '../../../share/constants';
 import { getMenuItems } from '../../../services/navigateService';
 // import { setupBurgerModal } from '../../../services/setupBurger';
 
-// вообще разобрать функции и стили бара, меню, модалки
-// завершани анимацию - потом переходить на др страницу
+// TODO разобрать функции и стили бара, меню, модалки
+
 function createMenuItems() {
   let navItems = '';
   const { generalMenutems } = getMenuItems();
@@ -49,10 +49,8 @@ export function createMenu() {
 }
 
 export function removeMenu() {
-  if (document.querySelector('.side-container')) {
-    const block = document.querySelector('.side-container');
-    block.style.translate = '0';
-  }
+  const block = document.querySelector('.side-container');
+  block.style.translate = null;
 }
 
 export function createHeader() {

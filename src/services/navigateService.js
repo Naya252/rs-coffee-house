@@ -38,7 +38,7 @@ export function getMenuItems() {
         val.link = `${BASE_URL}#${val.id}`;
       }
       if (el.page === 'menu') {
-        val.link = `${BASE_URL}${val.page}`;
+        val.link = `${BASE_URL}${val.page}/`;
         val.isNotActive = false;
       }
       return val;
