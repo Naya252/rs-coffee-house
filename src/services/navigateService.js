@@ -56,10 +56,12 @@ export function computedHeaderWidth(left, currentDevice) {
   const padding = paddings[1].slice(0, -2);
   let width = window.getComputedStyle(document.querySelector('body')).width.slice(0, -2);
 
+  let curLeft = left - padding;
   if (currentDevice === 'desktop') {
-    width -= 17;
+    width += 16;
+    curLeft -= 8;
   }
-  return { width: width - padding * 2, padding, left: left - padding };
+  return { width: width - padding * 2, padding, left: curLeft };
 }
 
 export function showModal(currentDevice) {

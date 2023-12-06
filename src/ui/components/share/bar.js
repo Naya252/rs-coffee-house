@@ -5,7 +5,6 @@ import { getMenuItems } from '../../../services/navigateService';
 // import { setupBurgerModal } from '../../../services/setupBurger';
 
 // вообще разобрать функции и стили бара, меню, модалки
-// добавить закрытие модалки при ресайзе
 // завершани анимацию - потом переходить на др страницу
 function createMenuItems() {
   let navItems = '';
