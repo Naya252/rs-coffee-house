@@ -51,6 +51,17 @@ export function getMenuItems() {
   return { generalMenutems, menuItem, logoItem };
 }
 
+export function computedHeaderWidth(left, currentDevice) {
+  const paddings = window.getComputedStyle(document.querySelector('body')).padding.split(' ');
+  const padding = paddings[1].slice(0, -2);
+  let width = window.getComputedStyle(document.querySelector('body')).width.slice(0, -2);
+
+  if (currentDevice === 'desktop') {
+    width -= 17;
+  }
+  return { width: width - padding * 2, padding, left: left - padding };
+}
+
 export function showModal(currentDevice) {
   document.querySelector('body').classList.add('scroll-not-visible');
   const header = document.querySelector('#header');
@@ -61,17 +72,20 @@ export function showModal(currentDevice) {
     header.classList.remove('mt-5');
   }
 
-  // console.log(posHeaderBeforeModal);
   const posHeaderAfterModal = header.getBoundingClientRect();
+  const { width, padding, left } = computedHeaderWidth(posHeaderBeforeModal.x, currentDevice);
+  // console.log(width, padding, left);
+
   header.style.top = `${Math.abs(posHeaderAfterModal.y)}px`;
-  header.style.left = `${posHeaderBeforeModal.x}px`;
-  header.style.width = `${posHeaderBeforeModal.width}px`;
+  header.style.left = `${left}px`;
+  header.style.padding = `0 ${padding}px`;
+  header.style.width = `${width}px`;
+
   if (posHeaderAfterModal.y === 20) {
     header.classList.remove('mt-5');
   }
   if (currentDevice === 'desktop') {
     document.querySelector('body').classList.add('static-width');
-    header.style.left = `${posHeaderBeforeModal.x - 8}px`;
   }
 }
 
@@ -82,6 +96,7 @@ export function closeModal(currentDevice) {
   header.classList.add('mt-5');
   header.style.top = 0;
   header.style.left = 0;
+  header.style.padding = 0;
   header.style.width = null;
   document.querySelector('.pseudo').classList.remove('show');
 

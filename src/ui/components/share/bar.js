@@ -1,11 +1,10 @@
 import logoUrl from '../../../assets/img/logo.svg';
 import '../../../sass/layouts/_bar.module.scss';
-import { CUP_ICON, BASE_URL, CURRENT_PATH } from '../../../share/constants';
-import { showModal as changeMenu, closeModal as closeContent, getMenuItems } from '../../../services/navigateService';
-import { setupBurgerModal } from '../../../services/setupBurger';
+import { CUP_ICON } from '../../../share/constants';
+import { getMenuItems } from '../../../services/navigateService';
+// import { setupBurgerModal } from '../../../services/setupBurger';
 
-// TODO провести рефакторинг и добавить на линк меню # для модального окна
-// вообще разобрать функции бара, меню, модалки
+// вообще разобрать функции и стили бара, меню, модалки
 // добавить закрытие модалки при ресайзе
 // завершани анимацию - потом переходить на др страницу
 function createMenuItems() {
@@ -32,7 +31,7 @@ export function createMenu() {
   navItems += `<a
   id="nav-menu"
   style="margin-top: 40px"
-  class="bar__coffee-menu nav-item"
+  class="bar__coffee-menu nav-item burger-link"
   href="${menuItem.isNotActive ? '#' : menuItem.link}"
   >${menuItem.name}
 
@@ -48,22 +47,13 @@ export function createMenu() {
   document.querySelector('body').style.overflow = 'hidden';
   document.querySelector('body').appendChild(block);
   document.querySelector('.side-menu').innerHTML = navItems;
-  changeMenu('mobile');
-
-  setTimeout(() => {
-    block.style.translate = '-100%';
-    setupBurgerModal(document.querySelector('.side-menu'));
-  });
 }
 
 export function removeMenu() {
-  const block = document.querySelector('.side-container');
-  block.style.translate = '0';
-  setTimeout(() => {
-    document.querySelector('body').removeChild(document.querySelector('.side-container'));
-    document.querySelector('body').style.overflow = 'auto';
-    closeContent('mobile');
-  }, 500);
+  if (document.querySelector('.side-container')) {
+    const block = document.querySelector('.side-container');
+    block.style.translate = '0';
+  }
 }
 
 export function createHeader() {
