@@ -26,7 +26,6 @@ export function setupModal(element) {
     const closeBtn = event.target.closest('.modal__close');
     const size = event.target.closest('.sizes__tab');
     const additive = event.target.closest('.additives__tab');
-    // console.log(event.target);
 
     if (closeBtn || !modal) {
       closeModal();
@@ -45,7 +44,12 @@ export function setupModal(element) {
       order.changeAdditivies(additive.getAttribute('value'), additive.getAttribute('price'), additive);
     }
   };
+  const loadImg = (event) => {
+    const img = event.target.closest('img');
+    img.classList.add('loader');
+  };
   element.addEventListener('click', (event) => eventModal(event));
+  element.addEventListener('load', (event) => loadImg(event));
 }
 
 export function setupItemCard(element) {
@@ -60,7 +64,12 @@ export function setupItemCard(element) {
       showOrderModal(itemData);
     }
   };
+  const loadImg = (event) => {
+    const img = event.target.closest('.img');
+    img.classList.add('loader');
+  };
   element.addEventListener('click', (event) => openModal(event));
+  element.addEventListener('load', (event) => loadImg(event));
 }
 
 export function setupTab(element) {

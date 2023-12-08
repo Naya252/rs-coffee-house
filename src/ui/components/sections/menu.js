@@ -6,6 +6,7 @@ import '../../../sass/components/_tab.module.scss';
 import { TAB_COFFEE, TAB_TEA, TAB_DESSERT, REFRESH_ICON, INFO_ICON } from '../../../share/constants';
 import { getTabData } from '../../../repository/products-repository';
 import { showModal as changeMenu, closeModal as closeContent } from '../../../services/navigateService';
+import loadImage from '../../../services/setupImg';
 
 let tabs = [
   { name: 'Coffee', img: TAB_COFFEE, items: [] },
@@ -99,8 +100,9 @@ function renderItems(items) {
   items.forEach((el) => {
     cardsHtml += `
 <div class="card" id="${el.id}-${el.category}">
-  <div class="card__img">
+  <div class="card__img loader">
     <img
+      class="img"
       loading="lazy"
       src="${el.img}"
       alt="${el.name}" />
@@ -126,8 +128,10 @@ export function getTabItems() {
   changeIsRefresh(itemsData.length, tab.items.length);
   const cardsHtml = renderItems(tab.items);
   document.querySelector('.menu__items').innerHTML = cardsHtml;
-
   changeVisibleRefresh();
+  document.querySelectorAll('.img').forEach((el) => {
+    loadImage(el);
+  });
 }
 
 export function changeActiveTab(name) {
@@ -206,7 +210,9 @@ export function showOrderModal(item) {
   const content = document.querySelector('.modal__content');
   content.innerHTML = `
 <div class="modal__img">
-  <img loading="lazy" alt="${item.name}" src="${item.img}" />
+  <img loading="lazy" alt="${item.name}" src="${item.img}">
+  </div>
+  </img>
 </div>
 <div class="modal__text">
   <div>
