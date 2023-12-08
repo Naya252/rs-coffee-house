@@ -7,13 +7,34 @@
   .slider {
     height: 684px;
     position: relative;
+    overflow: hidden;
+
+    #slider-wrapper {
+      width: 300%;
+      display: flex;
+      transition: all 0.3s ease;
+    }
+
+    .slide-wrapper {
+      min-width: calc(100% / 3);
+      transition: all 0.3s ease;
+
+      &:nth-child(1) .slider__content_img {
+        background-image: url('../../assets/img/slider/coffee-slider-1.png');
+      }
+      &:nth-child(2) .slider__content_img {
+        background-image: url('../../assets/img/slider/coffee-slider-2.png');
+      }
+      &:nth-child(3) .slider__content_img {
+        background-image: url('../../assets/img/slider/coffee-slider-3.png');
+      }
+    }
 
     .slider__content {
       width: 480px;
 
       .slider__content_img {
         height: 480px;
-        background-image: url('../../assets/img/slider/coffee-slider-1.png');
         background-repeat: no-repeat;
         background-position: center;
         background-size: cover;
