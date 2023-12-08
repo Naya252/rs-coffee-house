@@ -64,12 +64,8 @@ export function setupItemCard(element) {
       showOrderModal(itemData);
     }
   };
-  const loadImg = (event) => {
-    const img = event.target.closest('.img');
-    img.classList.add('loader');
-  };
+
   element.addEventListener('click', (event) => openModal(event));
-  element.addEventListener('load', (event) => loadImg(event));
 }
 
 export function setupTab(element) {
