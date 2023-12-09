@@ -66,7 +66,8 @@
       display: flex;
       gap: 12px;
 
-      progress, progress::-webkit-progress-bar {
+      progress,
+      progress::-webkit-progress-bar {
         width: 40px;
         height: 4px;
         border: 0;

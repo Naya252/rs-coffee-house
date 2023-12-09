@@ -1,8 +1,9 @@
 class Slider {
-  constructor(items, value, id) {
+  constructor(items, value, id, showDelay = 5000) {
     this.value = value;
     this.items = items;
     this.movedItem = id;
+    this.showDelay = showDelay;
   }
 
   changeSlider(val) {
@@ -13,6 +14,27 @@ class Slider {
     if (this.value === 0) {
       this.value = this.items.length;
     }
+    this.animateProgress(document.getElementById(`${this.value}-progress`));
+  }
+
+  async animateProgress(el) {
+    let percent = 0;
+    const step = this.showDelay / 100;
+
+    const self = this;
+    let interval = null;
+
+    function progressTimer() {
+      if (percent <= 100) {
+        percent += 1;
+        el.setAttribute('value', percent);
+      } else {
+        clearInterval(interval);
+        el.setAttribute('value', 0);
+        self.calculateTranslate('after');
+      }
+    }
+    interval = setInterval(progressTimer, step);
   }
 
   getTranslate() {
@@ -57,10 +79,7 @@ class Slider {
   }
 
   defaultBehavior() {
-    setTimeout(() => {
-      this.calculateTranslate('after');
-      this.defaultBehavior();
-    }, 5000);
+    this.animateProgress(document.getElementById(`${this.value}-progress`));
   }
 }
 
@@ -80,7 +99,7 @@ const items = [
     price: '5.00',
   },
   {
-    id: 2,
+    id: 3,
     name: 'Ice coffee',
     description: 'A popular summer drink that tones and invigorates. Prepared from coffee, milk and ice.',
     price: '4.50',
@@ -96,9 +115,11 @@ export function setupSlider(element) {
 
     if (afterBtn) {
       slider.calculateTranslate('after');
+      // this.animateProgress(document.getElementById(`${this.value}-progress`));
     }
     if (beforeBtn) {
       slider.calculateTranslate('before');
+      // this.animateProgress(document.getElementById(`${this.value}-progress`));
     }
   };
   element.addEventListener('click', (event) => watchSlider(event));
