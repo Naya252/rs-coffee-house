@@ -5,6 +5,7 @@ class Slider {
     this.movedItem = id;
     this.showDelay = showDelay;
     this.interval = null;
+    this.percent = 0;
   }
 
   changeSlider(val) {
@@ -15,6 +16,7 @@ class Slider {
     if (this.value === 0) {
       this.value = this.items.length;
     }
+
     this.animateProgress({ el: document.getElementById(`${this.value}-progress`) });
   }
 
@@ -25,19 +27,32 @@ class Slider {
     this.calculateTranslate(to);
   }
 
-  async animateProgress(data) {
+  pauseInterval() {
+    clearInterval(this.interval);
+  }
+
+  async animateProgress(data, currentPercent) {
+    document.getElementById(`${this.value}-slide`).classList.add('active');
     data.el.classList.add('active');
-    let percent = 0;
+    let percent;
+    if (currentPercent) {
+      percent = currentPercent;
+    } else {
+      percent = 0;
+    }
+
     const step = this.showDelay / 100;
 
     const self = this;
     let interval = null;
 
     function progressTimer() {
-      if (percent <= 100) {
+      if (percent < 100) {
         percent += 1;
+        this.percent = percent;
         data.el.setAttribute('value', percent);
       } else {
+        document.getElementById(`${self.value}-slide`).classList.remove('active');
         self.abortInterval({ el: data.el, to: 'after' });
       }
     }
@@ -116,6 +131,20 @@ const items = [
 
 export const slider = new Slider(items, 1, 'slider-wrapper');
 
+export function setupSlides(el) {
+  const watchSlide = (event) => {
+    if (event.type === 'mouseenter') {
+      slider.pauseInterval();
+    }
+    const currentPercent = document.querySelector('.slider__controls_item.active').getAttribute('value');
+    if (event.type === 'mouseleave') {
+      slider.animateProgress({ el: document.getElementById(`${slider.value}-progress`) }, +currentPercent);
+    }
+  };
+  el.addEventListener('mouseenter', (event) => watchSlide(event));
+  el.addEventListener('mouseleave', (event) => watchSlide(event));
+}
+
 export function setupSlider(element) {
   const watchSlider = (event) => {
     const beforeBtn = event.target.closest('.slider__buttons_btn-left');
@@ -130,4 +159,7 @@ export function setupSlider(element) {
     }
   };
   element.addEventListener('click', (event) => watchSlider(event));
+  document.querySelectorAll('.slider__content').forEach((el) => {
+    setupSlides(el);
+  });
 }
