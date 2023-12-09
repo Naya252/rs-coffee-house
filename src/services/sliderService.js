@@ -4,6 +4,7 @@ class Slider {
     this.items = items;
     this.movedItem = id;
     this.showDelay = showDelay;
+    this.interval = null;
   }
 
   changeSlider(val) {
@@ -14,10 +15,18 @@ class Slider {
     if (this.value === 0) {
       this.value = this.items.length;
     }
-    this.animateProgress(document.getElementById(`${this.value}-progress`));
+    this.animateProgress({ el: document.getElementById(`${this.value}-progress`) });
   }
 
-  async animateProgress(el) {
+  abortInterval({ el, to }) {
+    clearInterval(this.interval);
+    el.setAttribute('value', 0);
+    el.classList.remove('active');
+    this.calculateTranslate(to);
+  }
+
+  async animateProgress(data) {
+    data.el.classList.add('active');
     let percent = 0;
     const step = this.showDelay / 100;
 
@@ -27,14 +36,13 @@ class Slider {
     function progressTimer() {
       if (percent <= 100) {
         percent += 1;
-        el.setAttribute('value', percent);
+        data.el.setAttribute('value', percent);
       } else {
-        clearInterval(interval);
-        el.setAttribute('value', 0);
-        self.calculateTranslate('after');
+        self.abortInterval({ el: data.el, to: 'after' });
       }
     }
     interval = setInterval(progressTimer, step);
+    this.interval = interval;
   }
 
   getTranslate() {
@@ -79,7 +87,7 @@ class Slider {
   }
 
   defaultBehavior() {
-    this.animateProgress(document.getElementById(`${this.value}-progress`));
+    this.animateProgress({ el: document.getElementById(`${this.value}-progress`) });
   }
 }
 
@@ -112,14 +120,13 @@ export function setupSlider(element) {
   const watchSlider = (event) => {
     const beforeBtn = event.target.closest('.slider__buttons_btn-left');
     const afterBtn = event.target.closest('.slider__buttons_btn-right');
+    const activeProgress = document.querySelector(`.slider__controls_item.active`);
 
     if (afterBtn) {
-      slider.calculateTranslate('after');
-      // this.animateProgress(document.getElementById(`${this.value}-progress`));
+      slider.abortInterval({ el: activeProgress, to: 'after' });
     }
     if (beforeBtn) {
-      slider.calculateTranslate('before');
-      // this.animateProgress(document.getElementById(`${this.value}-progress`));
+      slider.abortInterval({ el: activeProgress, to: 'before' });
     }
   };
   element.addEventListener('click', (event) => watchSlider(event));
