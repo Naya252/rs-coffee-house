@@ -6,6 +6,8 @@ class Slider {
     this.showDelay = showDelay;
     this.interval = null;
     this.percent = 0;
+    this.touchStart = null;
+    this.touchEnd = null;
   }
 
   changeSlider(val) {
@@ -133,16 +135,41 @@ export const slider = new Slider(items, 1, 'slider-wrapper');
 
 export function setupSlides(el) {
   const watchSlide = (event) => {
-    if (event.type === 'mouseenter') {
+    if (event.type === 'mouseenter' || event.type === 'touchenter') {
       slider.pauseInterval();
     }
-    const currentPercent = document.querySelector('.slider__controls_item.active').getAttribute('value');
-    if (event.type === 'mouseleave') {
+    const activeProgress = document.querySelector(`.slider__controls_item.active`);
+    const currentPercent = activeProgress.getAttribute('value');
+    if (event.type === 'mouseleave' || event.type === 'touchleave') {
       slider.animateProgress({ el: document.getElementById(`${slider.value}-progress`) }, +currentPercent);
+    }
+
+    function checkSwipe() {
+      if (slider.touchStart && slider.touchEnd && slider.touchStart !== slider.touchEnd) {
+        if (slider.touchStart > slider.touchEnd) {
+          slider.abortInterval({ el: activeProgress, to: 'before' });
+        } else {
+          slider.abortInterval({ el: activeProgress, to: 'after' });
+        }
+        slider.touchStart = null;
+        slider.touchEnd = null;
+      }
+    }
+
+    if (event.type === 'touchstart') {
+      slider.touchStart = event.changedTouches[0].screenX;
+    }
+    if (event.type === 'touchend') {
+      slider.touchEnd = event.changedTouches[0].screenX;
+      checkSwipe();
     }
   };
   el.addEventListener('mouseenter', (event) => watchSlide(event));
   el.addEventListener('mouseleave', (event) => watchSlide(event));
+  el.addEventListener('touchenter', (event) => watchSlide(event));
+  el.addEventListener('touchleave', (event) => watchSlide(event));
+  el.addEventListener('touchstart', (event) => watchSlide(event));
+  el.addEventListener('touchend', (event) => watchSlide(event));
 }
 
 export function setupSlider(element) {
