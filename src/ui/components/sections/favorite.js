@@ -44,10 +44,8 @@ export default function createFavoriteSection() {
     <div id="slider-wrapper">
       ${slidesHtml}
       </div>
-      <div class="slider__buttons">
-        <button class="slider__buttons_btn-left rounded-btn transparent-dark-btn">${ARROW_LEFT_ICON}</button>
-        <button class="slider__buttons_btn-right rounded-btn transparent-dark-btn">${ARROW_RIGHT_ICON}</button>
-      </div>
+        <button class="slider__buttons slider__buttons_btn-left rounded-btn transparent-dark-btn">${ARROW_LEFT_ICON}</button>
+        <button class="slider__buttons slider__buttons_btn-right rounded-btn transparent-dark-btn">${ARROW_RIGHT_ICON}</button>
       <div class="slider__controls">
       ${progressHtml}
       </div>

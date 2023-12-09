@@ -47,18 +47,19 @@
         text-align: center;
       }
     }
-    .slider__buttons {
+    .slider__buttons.slider__buttons_btn-left {
       position: absolute;
       top: calc(50% - 54px);
       left: 0;
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-
-      .slider__buttons_btn-left,
-      .slider__buttons_btn-right {
-        margin: 2px;
-      }
+      width: 60px;
+      margin: 2px;
+    }
+    .slider__buttons.slider__buttons_btn-right {
+      position: absolute;
+      top: calc(50% - 54px);
+      right: 0;
+      width: 60px;
+      margin: 2px;
     }
     .slider__controls {
       position: absolute;
