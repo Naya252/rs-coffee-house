@@ -50,4 +50,5 @@ export default function createFavoriteSection() {
   );
 
   setupSlider(document.querySelector('.slider'));
+  slider.defaultBehavior();
 }
