@@ -66,17 +66,21 @@
       display: flex;
       gap: 12px;
 
-      .slider__controls_item {
+      progress, progress::-webkit-progress-bar {
         width: 40px;
         height: 4px;
+        border: 0;
         border-radius: 100px;
         background: $border-color;
-        cursor: pointer;
         transition: all 0.5s ease-out;
       }
-      .active {
+
+      progress::-webkit-progress-value {
+        height: 4px;
+        border: 0;
+        border-radius: 100px;
         background: $dark-color-secondary;
-        cursor: auto;
+        transition: all 0.5s ease-out;
       }
     }
   }

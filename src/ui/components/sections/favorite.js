@@ -3,7 +3,7 @@ import '../../../sass/components/_button.module.scss';
 import { ARROW_LEFT_ICON, ARROW_RIGHT_ICON } from '../../../share/constants';
 import { slider, setupSlider } from '../../../services/sliderService';
 
-function createSlider() {
+function createSlides() {
   let slidesHtml = ``;
   slider.items.forEach((el) => {
     slidesHtml += `
@@ -24,8 +24,17 @@ function createSlider() {
   return slidesHtml;
 }
 
+function createProgressItems() {
+  let progressHtml = ``;
+  slider.items.forEach((el) => {
+    progressHtml += `<progress id="${el.id}-progress" class="slider__controls_item" value="0" max="100"></progress>`;
+  });
+  return progressHtml;
+}
+
 export default function createFavoriteSection() {
-  const slidesHtml = createSlider();
+  const slidesHtml = createSlides();
+  const progressHtml = createProgressItems();
   document.querySelector('#enjoy').insertAdjacentHTML(
     'afterend',
     `
@@ -40,9 +49,7 @@ export default function createFavoriteSection() {
         <button class="slider__buttons_btn-right rounded-btn transparent-dark-btn">${ARROW_RIGHT_ICON}</button>
       </div>
       <div class="slider__controls">
-        <button class="slider__controls_item active"></button>
-        <button class="slider__controls_item"></button>
-        <button class="slider__controls_item"></button>
+      ${progressHtml}
       </div>
     </div>
   </section>
