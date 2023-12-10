@@ -187,14 +187,14 @@ export function createMenuSection() {
 // Генерация контролов модалки
 function generateTab(arr, name) {
   let html = ``;
-  let tabs = [];
+  let controls = [];
   for (const [key, value] of Object.entries(arr)) {
-    tabs.push({ ...value, title: key[0] });
+    controls.push({ ...value, title: key[0] });
   }
 
-  tabs = tabs.map((el) => Object.values(el));
+  controls = controls.map((el) => Object.values(el));
 
-  tabs.forEach((el) => {
+  controls.forEach((el) => {
     html += `<button class="${name}__tab tab ${order.isActive(el[2])}" price="${el[1]}" value="${el[2]}">
     <span class="tab__img-container"><span>${el[2].toUpperCase()}</span></span>
     <span>${el[0]}</span>
