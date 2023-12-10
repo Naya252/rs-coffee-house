@@ -254,7 +254,7 @@ main {
   }
 }
 
-.loader::after {
+.loader::before {
   content: '';
   border: 10px solid rgba(0, 0, 0, 0.1);
   border-top: 10px solid #b0907a;

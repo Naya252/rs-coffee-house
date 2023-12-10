@@ -210,9 +210,10 @@ export function showOrderModal(item) {
   const content = document.querySelector('.modal__content');
   content.innerHTML = `
 <div class="modal__img">
-  <img loading="lazy" alt="${item.name}" src="${item.img}">
-  </div>
+<div class="loader modal-img-wrapper" style="position:relative; min-height: 200px">
+  <img loading="lazy" class="modal-img img"  alt="${item.name}" src="${item.img}">
   </img>
+</div>
 </div>
 <div class="modal__text">
   <div>
@@ -248,6 +249,7 @@ export function showOrderModal(item) {
   setTimeout(() => {
     content.classList.add('content--active');
     order.changeVisible(true);
+    loadImage(document.querySelector('.modal-img'));
   }, 100);
 }
 

@@ -22,7 +22,6 @@ export function setupRefreshBtn(element) {
   element.addEventListener('click', (event) => getNewCards(event));
 }
 
-
 // lestening modal
 export function setupModal(element) {
   const eventModal = (event) => {
@@ -50,15 +49,8 @@ export function setupModal(element) {
       order.changeAdditivies(additive.getAttribute('value'), additive.getAttribute('price'), additive);
     }
   };
-  // add loader for img
-  const loadImg = (event) => {
-    const img = event.target.closest('img');
-    img.classList.add('loader');
-  };
   element.addEventListener('click', (event) => eventModal(event));
-  element.addEventListener('load', (event) => loadImg(event));
 }
-
 
 // lestening item card
 export function setupItemCard(element) {
@@ -76,7 +68,6 @@ export function setupItemCard(element) {
 
   element.addEventListener('click', (event) => openModal(event));
 }
-
 
 // listening tabs
 export function setupTab(element) {
