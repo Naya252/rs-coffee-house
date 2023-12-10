@@ -6,8 +6,8 @@ class Slider {
     this.showDelay = showDelay;
     this.interval = null;
     this.percent = 0;
-    this.touchStart = null;
-    this.touchEnd = null;
+    this.moveStart = null;
+    this.moveEnd = null;
   }
 
   changeSlider(val) {
@@ -135,41 +135,50 @@ export const slider = new Slider(items, 1, 'slider-wrapper');
 
 export function setupSlides(el) {
   const watchSlide = (event) => {
-    if (event.type === 'mouseenter' || event.type === 'touchenter') {
-      slider.pauseInterval();
-    }
     const activeProgress = document.querySelector(`.slider__controls_item.active`);
     const currentPercent = activeProgress.getAttribute('value');
-    if (event.type === 'mouseleave' || event.type === 'touchleave') {
+
+    if (event.type === 'pointerenter') {
+      slider.pauseInterval();
+    }
+
+    if (event.type === 'pointerleave') {
       slider.animateProgress({ el: document.getElementById(`${slider.value}-progress`) }, +currentPercent);
     }
 
     function checkSwipe() {
-      if (slider.touchStart && slider.touchEnd && slider.touchStart !== slider.touchEnd) {
-        if (slider.touchStart > slider.touchEnd) {
+      if (slider.moveStart && slider.moveEnd && slider.moveStart !== slider.moveEnd) {
+        if (slider.moveStart > slider.moveEnd) {
           slider.abortInterval({ el: activeProgress, to: 'before' });
         } else {
           slider.abortInterval({ el: activeProgress, to: 'after' });
         }
-        slider.touchStart = null;
-        slider.touchEnd = null;
+        slider.moveStart = null;
+        slider.moveEnd = null;
       }
     }
 
     if (event.type === 'touchstart') {
-      slider.touchStart = event.changedTouches[0].screenX;
+      slider.moveStart = event.changedTouches[0].screenX;
     }
     if (event.type === 'touchend') {
-      slider.touchEnd = event.changedTouches[0].screenX;
+      slider.moveEnd = event.changedTouches[0].screenX;
       checkSwipe();
     }
+    // if (event.type === 'pointerup') {
+    //   slider.moveStart = event.screenX;
+    // }
+    // if (event.type === 'pointerdown') {
+    //   slider.moveEnd = event.screenX;
+    //   checkSwipe();
+    // }
   };
-  el.addEventListener('mouseenter', (event) => watchSlide(event));
-  el.addEventListener('mouseleave', (event) => watchSlide(event));
-  el.addEventListener('touchenter', (event) => watchSlide(event));
-  el.addEventListener('touchleave', (event) => watchSlide(event));
+  el.addEventListener('pointerenter', (event) => watchSlide(event));
+  el.addEventListener('pointerleave', (event) => watchSlide(event));
   el.addEventListener('touchstart', (event) => watchSlide(event));
   el.addEventListener('touchend', (event) => watchSlide(event));
+  // el.addEventListener('pointerdown', (event) => watchSlide(event));
+  // el.addEventListener('pointerup', (event) => watchSlide(event));
 }
 
 export function setupSlider(element) {
