@@ -87,6 +87,10 @@
 
         .card.large {
           display: block;
+
+          img {
+            transform: scale(1.05);
+          }
         }
       }
     }

@@ -16,6 +16,12 @@
     cursor: pointer;
     height: 46px;
 
+    &.sizes__tab {
+      span {
+        letter-spacing: -0.05rem !important;
+      }
+    }
+
     .tab__img-container {
       display: flex;
       width: 30px;
