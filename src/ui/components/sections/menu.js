@@ -194,9 +194,19 @@ function generateTab(arr, name) {
 
   controls = controls.map((el) => Object.values(el));
 
+  function getTitle(el) {
+    let title;
+    if (name === 'sizes') {
+      title = el[2].toUpperCase();
+    } else {
+      title = +el[2] + 1;
+    }
+    return title;
+  }
+
   controls.forEach((el) => {
     html += `<button class="${name}__tab tab ${order.isActive(el[2])}" price="${el[1]}" value="${el[2]}">
-    <span class="tab__img-container"><span>${el[2].toUpperCase()}</span></span>
+    <span class="tab__img-container"><span>${getTitle(el)}</span></span>
     <span>${el[0]}</span>
     </button>`;
   });
