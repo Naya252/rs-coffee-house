@@ -138,31 +138,35 @@ export function setupSlides(el) {
     const activeProgress = document.querySelector(`.slider__controls_item.active`);
     const currentPercent = activeProgress.getAttribute('value');
 
-    if (event.type === 'pointerenter') {
+    if (event.type === 'pointerenter' && event.pointerType === 'mouse') {
       slider.pauseInterval();
     }
 
-    if (event.type === 'pointerleave') {
+    if (event.type === 'pointerleave' && event.pointerType === 'mouse') {
       slider.animateProgress({ el: document.getElementById(`${slider.value}-progress`) }, +currentPercent);
     }
 
     function checkSwipe() {
       if (slider.moveStart && slider.moveEnd && slider.moveStart !== slider.moveEnd) {
         if (slider.moveStart > slider.moveEnd) {
-          slider.abortInterval({ el: activeProgress, to: 'before' });
-        } else {
           slider.abortInterval({ el: activeProgress, to: 'after' });
+        } else {
+          slider.abortInterval({ el: activeProgress, to: 'before' });
         }
         slider.moveStart = null;
         slider.moveEnd = null;
       }
     }
 
-    if (event.type === 'touchstart') {
-      slider.moveStart = event.changedTouches[0].screenX;
+    // if (event.type === 'pointermove') {
+    //   console.log('set ', event.getCoalescedEvents())
+    // }
+
+    if (event.type === 'gotpointercapture') {
+      slider.moveStart = Math.round(event.offsetX);
     }
-    if (event.type === 'touchend') {
-      slider.moveEnd = event.changedTouches[0].screenX;
+    if (event.type === 'lostpointercapture') {
+      slider.moveEnd = Math.round(event.offsetX);
       checkSwipe();
     }
     // if (event.type === 'pointerup') {
@@ -175,10 +179,11 @@ export function setupSlides(el) {
   };
   el.addEventListener('pointerenter', (event) => watchSlide(event));
   el.addEventListener('pointerleave', (event) => watchSlide(event));
-  el.addEventListener('touchstart', (event) => watchSlide(event));
-  el.addEventListener('touchend', (event) => watchSlide(event));
   // el.addEventListener('pointerdown', (event) => watchSlide(event));
   // el.addEventListener('pointerup', (event) => watchSlide(event));
+  el.addEventListener('gotpointercapture', (event) => watchSlide(event));
+  el.addEventListener('lostpointercapture', (event) => watchSlide(event));
+  el.addEventListener('pointermove', (event) => watchSlide(event));
 }
 
 export function setupSlider(element) {
