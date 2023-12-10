@@ -8,18 +8,22 @@ import {
 } from '../ui/components/sections/menu';
 import { getItemById } from '../repository/products-repository';
 
+// lestening get more btn
 export function setupRefreshBtn(element) {
   const getNewCards = (event) => {
     const btn = event.target.closest('#more-cards');
     if (!btn) return;
 
     if (btn) {
+      // get data
       getTabItems();
     }
   };
   element.addEventListener('click', (event) => getNewCards(event));
 }
 
+
+// lestening modal
 export function setupModal(element) {
   const eventModal = (event) => {
     const modal = event.target.closest('.modal__content');
@@ -30,6 +34,7 @@ export function setupModal(element) {
     if (closeBtn || !modal) {
       closeModal();
     }
+    // change size
     if (size) {
       order.changeSize(size.getAttribute('value'), size.getAttribute('price'));
       document.querySelectorAll(`.sizes__tab`).forEach((el) => {
@@ -40,10 +45,12 @@ export function setupModal(element) {
         }
       });
     }
+    // change additivies
     if (additive) {
       order.changeAdditivies(additive.getAttribute('value'), additive.getAttribute('price'), additive);
     }
   };
+  // add loader for img
   const loadImg = (event) => {
     const img = event.target.closest('img');
     img.classList.add('loader');
@@ -52,6 +59,8 @@ export function setupModal(element) {
   element.addEventListener('load', (event) => loadImg(event));
 }
 
+
+// lestening item card
 export function setupItemCard(element) {
   const openModal = (event) => {
     const card = event.target.closest('.card');
@@ -68,6 +77,8 @@ export function setupItemCard(element) {
   element.addEventListener('click', (event) => openModal(event));
 }
 
+
+// listening tabs
 export function setupTab(element) {
   const setActiveTab = (event) => {
     const tab = event.target.closest('.menu__tabs_tab');

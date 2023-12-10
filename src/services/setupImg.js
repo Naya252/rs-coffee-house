@@ -1,3 +1,4 @@
+// delete loaders for images
 export default function loadImage(el) {
   const loadImg = (event) => {
     const img = event.target.closest('.img');

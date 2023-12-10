@@ -14,6 +14,8 @@ export function getCurrentDevice() {
 
 const resizeObserver = new ResizeObserver((entries) => {
   const [{ inlineSize }] = entries[0].borderBoxSize;
+
+  // drow underline for the active section
   if (inlineSize > 1024) {
     watchActiveSection();
   }
@@ -21,7 +23,9 @@ const resizeObserver = new ResizeObserver((entries) => {
     unWatchSections();
   }
 
+  // check current size of device
   function checkDevice(pre, cur) {
+    // change values of size & device
     function editDevice(val) {
       if (cur) {
         prewSize = cur;
@@ -30,6 +34,7 @@ const resizeObserver = new ResizeObserver((entries) => {
         curSize = val;
       }
       if ((cur && pre !== cur && pre !== null) || cur === null) {
+        // close burger modal with change device
         if (document.querySelector('.side-container')) {
           cancelBurgerModal(document.querySelector('#burger-btn'));
         }
@@ -52,6 +57,7 @@ const resizeObserver = new ResizeObserver((entries) => {
     curInline = size;
 
     if (curInline && prewInline && curInline !== prewInline) {
+      // close burger modal with resize
       if (document.querySelector('.side-container')) {
         cancelBurgerModal(document.querySelector('#burger-btn'));
       }

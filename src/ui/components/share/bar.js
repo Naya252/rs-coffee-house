@@ -2,7 +2,6 @@ import logoUrl from '../../../assets/img/logo.svg';
 import '../../../sass/layouts/_bar.module.scss';
 import { CUP_ICON } from '../../../share/constants';
 import { getMenuItems } from '../../../services/navigateService';
-// import { setupBurgerModal } from '../../../services/setupBurger';
 
 // TODO разобрать функции и стили бара, меню, модалки
 
@@ -22,6 +21,7 @@ function createMenuItems() {
   return navItems;
 }
 
+// create burger modal
 export function createMenu() {
   const { menuItem } = getMenuItems();
   const block = document.createElement('div');
@@ -47,7 +47,7 @@ export function createMenu() {
   document.querySelector('body').appendChild(block);
   document.querySelector('.side-menu').innerHTML = navItems;
 }
-
+// remove burger modal
 export function removeMenu() {
   const block = document.querySelector('.side-container');
   block.style.translate = null;

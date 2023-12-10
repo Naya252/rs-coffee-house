@@ -1,5 +1,5 @@
 import { BASE_URL, CURRENT_PATH } from '../share/constants';
-
+// generate nav items with correct url
 export function getMenuItems() {
   let menuData = [
     { name: 'logo', id: 'enjoy', anchor: 'enjoy', page: 'main' },
@@ -10,6 +10,7 @@ export function getMenuItems() {
     { name: 'Menu', id: `menu`, page: 'menu' },
   ];
 
+  // menu items for menu page
   if (CURRENT_PATH.includes('menu')) {
     menuData = menuData.map((el, i) => {
       const val = { ...el, link: '' };
@@ -29,6 +30,7 @@ export function getMenuItems() {
       return val;
     });
   } else {
+    // menu items for main page
     menuData = menuData.map((el, i) => {
       const val = { ...el };
       if (el.name === 'logo') {
@@ -51,6 +53,7 @@ export function getMenuItems() {
   return { generalMenutems, menuItem, logoItem };
 }
 
+// change header styles with opened modal
 export function computedHeaderWidth(left, currentDevice) {
   const paddings = window.getComputedStyle(document.querySelector('body')).padding.split(' ');
   const padding = paddings[1].slice(0, -2);
@@ -64,6 +67,7 @@ export function computedHeaderWidth(left, currentDevice) {
   return { width: width - padding * 2, padding, left: curLeft };
 }
 
+// open modal
 export function showModal(currentDevice) {
   document.querySelector('body').classList.add('scroll-not-visible');
   const header = document.querySelector('#header');
@@ -90,6 +94,7 @@ export function showModal(currentDevice) {
   }
 }
 
+// close modal
 export function closeModal(currentDevice) {
   document.querySelector('body').classList.remove('scroll-not-visible');
   const header = document.querySelector('#header');

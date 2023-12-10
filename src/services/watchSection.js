@@ -7,6 +7,7 @@ function removeClasses() {
   });
 }
 
+// drow underline for active menu item
 function addMenuActive() {
   if (CURRENT_PATH.includes('menu')) {
     document.querySelector('#nav-menu').classList.add('active');
