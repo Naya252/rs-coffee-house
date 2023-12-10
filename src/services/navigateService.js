@@ -76,7 +76,6 @@ export function showModal(currentDevice) {
 
   const posHeaderAfterModal = header.getBoundingClientRect();
   const { width, padding, left } = computedHeaderWidth(posHeaderBeforeModal.x, currentDevice);
-  // console.log(width, padding, left);
 
   header.style.top = `${Math.abs(posHeaderAfterModal.y)}px`;
   header.style.left = `${left}px`;

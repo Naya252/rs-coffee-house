@@ -19,6 +19,22 @@ export function cancelBurgerModal(btn, link) {
   });
 }
 
+function setupLogo(element) {
+  const changePointerLogo = (event) => {
+    const btn = document.querySelector('#burger-btn');
+
+    if (document.querySelector('.side-container')) {
+      event.preventDefault();
+      if (document.querySelector('.side-menu')) {
+        cancelBurgerModal(btn, event.target.closest('#logo').getAttribute('href'));
+      } else {
+        window.location.href = event.target.closest('#logo').getAttribute('href');
+      }
+    }
+  };
+  element.addEventListener('click', (event) => changePointerLogo(event));
+}
+
 export function setupBurgerModal(element) {
   const changeShowMenu = (event) => {
     event.preventDefault();
@@ -58,4 +74,5 @@ export function setupBurgerBtn(element) {
     }
   };
   element.addEventListener('click', (event) => changeShowMenu(event));
+  setupLogo(document.getElementById('logo'));
 }
