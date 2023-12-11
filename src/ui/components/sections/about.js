@@ -1,8 +1,9 @@
-import '../../../sass/layouts/about.module.scss';
-import about1Url from '../../../assets/img/photo/about-1.svg';
-import about2Url from '../../../assets/img/photo/about-2.svg';
-import about3Url from '../../../assets/img/photo/about-3.svg';
-import about4Url from '../../../assets/img/photo/about-4.svg';
+import '../../../sass/layouts/_about.module.scss';
+import about1Url from '../../../assets/img/photo/about-1.webp';
+import about2Url from '../../../assets/img/photo/about-2.webp';
+import about3Url from '../../../assets/img/photo/about-3.webp';
+import about4Url from '../../../assets/img/photo/about-4.webp';
+import loadImage from '../../../services/setupImg';
 
 export default function createAboutSection() {
   document.querySelector('#favorite-coffee').insertAdjacentHTML(
@@ -15,25 +16,33 @@ export default function createAboutSection() {
     </h2>
     <div class="about__images">
       <div class="about__images_column">
-        <div class="card large">
-          <img
+        <div class="card large loader">
+          <img 
+            class="img"
+            loading="lazy"
             src="${about1Url}"
             alt="about-1" />
         </div>
-        <div class="card">
-          <img
+        <div class="card loader">
+          <img 
+            class="img"
+            loading="lazy"
             src="${about2Url}"
             alt="about-2" />
         </div>
       </div>
       <div class="about__images_column">
-        <div class="card">
-          <img
+        <div class="card loader">
+          <img 
+            class="img"
+            loading="lazy"
             src="${about3Url}"
             alt="about-3" />
         </div>
-        <div class="card large">
-          <img
+        <div class="card large loader">
+          <img 
+            class="img"
+            loading="lazy"
             src="${about4Url}"
             alt="about-4" />
         </div>
@@ -42,4 +51,6 @@ export default function createAboutSection() {
   </section>
   `,
   );
+  const images = document.querySelectorAll('.img');
+  images.forEach((el) => loadImage(el));
 }

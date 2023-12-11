@@ -1,6 +1,13 @@
-import '../../../sass/layouts/footer.module.scss';
-import '../../../sass/components/button.module.scss';
-import { TWITTER_ICON, INSTAGRAM_ICON, FACEBOOK_ICON, PHONE_ICON, PIN_ICON, CLOCK_ICON } from '../../../core/constants';
+import '../../../sass/layouts/_footer.module.scss';
+import '../../../sass/components/_button.module.scss';
+import {
+  TWITTER_ICON,
+  INSTAGRAM_ICON,
+  FACEBOOK_ICON,
+  PHONE_ICON,
+  PIN_ICON,
+  CLOCK_ICON,
+} from '../../../share/constants';
 
 export default function createFooter() {
   document.querySelector('#main').insertAdjacentHTML(

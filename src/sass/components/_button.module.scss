@@ -1,0 +1,155 @@
+@import '../variables.module.scss';
+.transparent-dark-btn {
+  background: transparent;
+  color: $text-dark-color;
+  border: 1px solid $dark-color-secondary;
+
+  svg {
+    stroke: $text-dark-color;
+  }
+
+  &.svg-fill {
+    svg {
+      stroke: none;
+      fill: $text-dark-color;
+    }
+  }
+}
+.transparent-light-btn {
+  background: transparent;
+  color: $text-light-color;
+  border: 1px solid $border-color;
+
+  svg {
+    stroke: $light-color;
+  }
+}
+.rounded-btn {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.5s ease;
+
+  svg {
+    position: absolute;
+    top: calc(50% - 12px);
+    left: calc(50% - 12px);
+  }
+}
+.fill-btn {
+  height: 44px;
+  border-radius: 100px;
+  cursor: pointer;
+  transition: all 0.5s ease;
+}
+.button-primary {
+  width: 200px;
+  height: 64px;
+  border-radius: 100px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  position: relative;
+  gap: 8px;
+  transition: all 0.5s ease;
+
+  &.mobile-app-btn {
+    padding: 8px 20px;
+
+    svg {
+      transition: all 0.5s ease;
+    }
+
+    .button__text {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      gap: 2px;
+    }
+  }
+
+  &.enjoy-btn {
+    background: $light-color;
+    color: $text-dark-color;
+    transition: all 0.5s ease;
+    justify-content: center;
+
+    span {
+      transition: all 0.5s ease;
+    }
+
+    svg {
+      stroke: $dark-color;
+      margin-bottom: 4px;
+      position: absolute;
+      top: calc(50% - 10px);
+      right: 64px;
+      transition: all 0.2s ease-out;
+      width: 20px;
+      height: 20px;
+    }
+  }
+}
+
+@media (hover: hover) {
+  .transparent-dark-btn {
+    &:hover {
+      background: $dark-color-secondary;
+      color: $text-light-color;
+
+      svg {
+        stroke: $text-light-color;
+      }
+
+      &.svg-fill {
+        svg {
+          stroke: none;
+          fill: $text-light-color;
+        }
+      }
+    }
+  }
+
+  .transparent-light-btn {
+    &:hover {
+      border: 1px solid $light-color;
+      background: $light-color;
+
+      svg {
+        stroke: $dark-color;
+      }
+    }
+  }
+
+  .button-primary.enjoy-btn {
+    svg {
+      opacity: 0;
+    }
+    span {
+      margin-right: 0;
+    }
+
+    &:hover {
+      svg {
+        opacity: 1;
+      }
+
+      span {
+        margin-right: 24px;
+      }
+    }
+  }
+}
+@media (hover: none) {
+  .button-primary.enjoy-btn {
+    svg {
+      opacity: 1;
+    }
+    span {
+      margin-right: 24px;
+    }
+  }
+}

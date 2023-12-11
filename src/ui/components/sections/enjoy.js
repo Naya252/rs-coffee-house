@@ -1,11 +1,11 @@
-import '../../../sass/layouts/enjoy.module.scss';
-import '../../../sass/components/button.module.scss';
-import { CUP_ICON, BASE_URL } from '../../../core/constants';
-import imgUrl from '../../../assets/video/img-hero.svg';
+import '../../../sass/layouts/_enjoy.module.scss';
+import '../../../sass/components/_button.module.scss';
+import { CUP_ICON, BASE_URL } from '../../../share/constants';
+import imgUrl from '../../../assets/video/img-hero.webp';
 import videoUrl from '../../../assets/video/video(2160p).mp4';
 
 export default function createEnjoySection() {
-  document.querySelector('#header').insertAdjacentHTML(
+  document.querySelector('.pseudo').insertAdjacentHTML(
     'afterend',
     `
   <main id="main" class="wrap mx-auto">

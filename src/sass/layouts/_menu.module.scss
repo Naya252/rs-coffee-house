@@ -1,0 +1,132 @@
+@import '../variables.module.scss';
+
+#menu {
+  margin-bottom: 100px;
+
+  h2 {
+    width: 800px;
+    text-align: center;
+  }
+
+  .menu__items {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 40px;
+
+    .card {
+      border-radius: 40px;
+      border: 1px solid $border-color;
+      height: 506px;
+      display: flex;
+      flex-direction: column;
+      cursor: pointer;
+      box-sizing: border-box;
+      background: inherit;
+      padding: 0;
+
+      .card__img {
+        height: 310px;
+        width: 100%;
+        border-radius: 40px;
+        overflow: hidden;
+        position: relative;
+        background: rgba(0, 0, 0, 0.1);
+
+        img {
+          transition: all 0.5s ease;
+          object-fit: cover;
+          position: absolute;
+          height: 100%;
+          width: 100%;
+          top: 0%;
+          left: 0%;
+          z-index: 1;
+        }
+      }
+
+      .card__info {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        padding: 20px;
+        height: 156px;
+      }
+    }
+  }
+
+  #more-cards {
+    margin-top: 40px;
+    margin-left: calc(50% - 30px);
+  }
+
+  .not-show {
+    display: none;
+  }
+  .show {
+    display: block;
+  }
+
+  .size,
+  .additives {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    justify-content: flex-start;
+
+    .tabs {
+      align-self: flex-start;
+      justify-content: flex-start;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+  }
+}
+
+@media (hover: hover) {
+  .menu__items .card {
+    .card__img {
+      img {
+        transform: scale(1.1);
+      }
+    }
+
+    &:hover {
+      .card__img {
+        img {
+          transform: scale(1);
+        }
+      }
+    }
+  }
+}
+@media (hover: none) {
+  .menu__items .card {
+    .card__img {
+      img {
+        transform: scale(1.1);
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: $breakpoint-lg) {
+  #menu {
+    h2 {
+      width: 100%;
+    }
+
+    .menu__items {
+      grid-template-columns: 1fr 1fr;
+      margin: 0 12px;
+    }
+  }
+}
+
+@media only screen and (max-width: $breakpoint-xs) {
+  #menu {
+    .menu__items {
+      grid-template-columns: 1fr;
+      margin: 0 18px;
+    }
+  }
+}

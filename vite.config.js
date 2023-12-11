@@ -1,7 +1,7 @@
 import path, { resolve } from 'path';
 
 export default {
-  base: 'https://rolling-scopes-school.github.io/naya252-JSFE2023Q4/coffee-house2/',
+  base: 'https://rolling-scopes-school.github.io/naya252-JSFE2023Q4/coffee-house3/',
   plugins: [],
   css: {
     modules: {
@@ -15,6 +15,7 @@ export default {
     },
   },
   build: {
+    outDir: './coffee-house3',
     css: {
       devSourcemap: true, // enable CSS source maps during development
     },
