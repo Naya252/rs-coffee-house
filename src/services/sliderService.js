@@ -195,22 +195,21 @@ export function setupSlides(el) {
         checkSwipe(true);
       }
     }
-
     // touch swipe
-    if (event.type === 'gotpointercapture' && event.pointerType === 'touch') {
-      slider.moveStart = Math.round(event.offsetX);
-    }
-    if (event.type === 'lostpointercapture' && event.pointerType === 'touch') {
-      slider.moveEnd = Math.round(event.offsetX);
+    if (event.type === 'pointermove' && event.pointerType === 'touch') {
+      if (slider.moveStart) {
+        slider.moveEnd = Math.round(event.offsetX);
+      } else {
+        slider.moveStart = Math.round(event.offsetX);
+      }
     }
   };
   el.addEventListener('pointerenter', (event) => watchSlide(event));
   el.addEventListener('pointerleave', (event) => watchSlide(event));
   el.addEventListener('pointerdown', (event) => watchSlide(event));
   el.addEventListener('pointerup', (event) => watchSlide(event));
-  el.addEventListener('gotpointercapture', (event) => watchSlide(event));
-  el.addEventListener('lostpointercapture', (event) => watchSlide(event));
   el.addEventListener('pointercancel', (event) => watchSlide(event));
+  el.addEventListener('pointermove', (event) => watchSlide(event));
 }
 
 export function setupSlider(element) {
