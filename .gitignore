@@ -10,7 +10,7 @@ lerna-debug.log*
 node_modules
 dist
 dist-ssr
-coffee-house3
+coffee-house
 *.local
 
 # Editor directories and files
