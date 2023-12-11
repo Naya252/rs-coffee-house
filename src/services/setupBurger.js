@@ -9,16 +9,18 @@ export function cancelBurgerModal(btn, link) {
     removeMenu();
     setTimeout(() => {
       // return styles of body
-      document.querySelector('body').removeChild(document.querySelector('.side-container'));
-      document.querySelector('body').style.overflow = 'auto';
-      closeModal('mobile');
+      if (document.querySelector('.side-container')) {
+        document.querySelector('body').removeChild(document.querySelector('.side-container'));
+        document.querySelector('body').style.overflow = 'auto';
+        closeModal('mobile');
 
-      // move to link
-      setTimeout(() => {
-        if (link) {
-          window.location.href = link;
-        }
-      }, 300);
+        // move to link
+        setTimeout(() => {
+          if (link) {
+            window.location.href = link;
+          }
+        }, 300);
+      }
     }, 300);
   });
 }
