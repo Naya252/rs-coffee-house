@@ -9,6 +9,7 @@ class Slider {
     this.moveStart = null;
     this.moveEnd = null;
     this.isSwipe = false;
+    this.isDown = false;
   }
 
   changeSlider(val) {
@@ -170,26 +171,42 @@ export function setupSlides(el) {
       if (event.pointerType === 'touch') {
         checkSwipe();
       }
-      if (event.pointerType === 'mouse' && !slider.isSwipe) {
+      if (event.pointerType === 'mouse' && !slider.isSwipe && !slider.isDown) {
         slider.animateProgress({ el: document.getElementById(`${slider.value}-progress`) }, +currentPercent);
-        slider.isSwipe = false;
+      }
+
+      if (event.pointerType === 'mouse' && slider.isDown) {
+        slider.moveEnd = Math.round(event.offsetX);
+        slider.isDown = false;
+        checkSwipe();
       }
     }
 
     if (event.type === 'pointerenter') {
       slider.pauseInterval();
       slider.isSwipe = false;
+      if (event.pointerType === 'touch') {
+        slider.moveStart = Math.round(event.offsetX);
+      }
     }
 
     if (event.type === 'pointerdown' && event.pointerType === 'mouse') {
+      slider.isDown = true;
       slider.moveStart = Math.round(event.offsetX);
     }
-    if (event.type === 'pointerup' && event.pointerType === 'mouse') {
+
+
+    if (event.type === 'pointerup') {
+      slider.isDown = false;
       slider.moveEnd = Math.round(event.offsetX);
-      if (slider.moveStart && slider.moveEnd && slider.moveStart !== slider.moveEnd) {
+      if (slider.moveStart && slider.moveEnd && slider.moveStart !== slider.moveEnd && event.pointerType === 'mouse') {
+        checkSwipe();
+      }
+      if (event.pointerType === 'touch') {
         checkSwipe();
       }
     }
+
     if (event.type === 'pointercancel') {
       if (slider.moveStart && slider.moveEnd) {
         checkSwipe(true);

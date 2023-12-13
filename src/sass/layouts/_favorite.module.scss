@@ -18,6 +18,7 @@
     .slide-wrapper {
       min-width: calc(100% / 3);
       transition: all 0.3s ease;
+      user-select: none;
 
       &:nth-child(1) .slider__content_img {
         background-image: url('../../assets/img/slider/coffee-slider-1.png');

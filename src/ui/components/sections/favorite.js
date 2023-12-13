@@ -7,7 +7,7 @@ function createSlides() {
   let slidesHtml = ``;
   slider.items.forEach((el) => {
     slidesHtml += `
-    <div class="slide-wrapper" id="${el.id}-slide-wrapper">
+    <div class="slide-wrapper" id="${el.id}-slide-wrapper" oncontextmenu="return false">
       <div id="${el.id}-slide" class="slider__content mx-auto">
         <div class="slider__content_img"></div>
         <div class="slider__content_text mt-5">
