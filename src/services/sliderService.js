@@ -10,6 +10,7 @@ class Slider {
     this.moveEnd = null;
     this.isSwipe = false;
     this.isDown = false;
+    this.timeStartClickBtn = null;
   }
 
   changeSlider(val) {
@@ -195,7 +196,6 @@ export function setupSlides(el) {
       slider.moveStart = Math.round(event.offsetX);
     }
 
-
     if (event.type === 'pointerup') {
       slider.isDown = false;
       slider.moveEnd = Math.round(event.offsetX);
@@ -220,6 +220,7 @@ export function setupSlides(el) {
         slider.moveStart = Math.round(event.offsetX);
       }
     }
+    return true;
   };
   el.addEventListener('pointerenter', (event) => watchSlide(event));
   el.addEventListener('pointerleave', (event) => watchSlide(event));
@@ -235,11 +236,24 @@ export function setupSlider(element) {
     const afterBtn = event.target.closest('.slider__buttons_btn-right');
     const activeProgress = document.querySelector(`.slider__controls_item.active`);
 
-    if (afterBtn) {
-      slider.abortInterval({ el: activeProgress, to: 'after' });
+    function clickBtn() {
+      if (afterBtn) {
+        slider.abortInterval({ el: activeProgress, to: 'after' });
+      }
+      if (beforeBtn) {
+        slider.abortInterval({ el: activeProgress, to: 'before' });
+      }
     }
-    if (beforeBtn) {
-      slider.abortInterval({ el: activeProgress, to: 'before' });
+
+    if (!slider.timeStartClickBtn) {
+      slider.timeStartClickBtn = window.performance.now();
+      clickBtn();
+    } else {
+      const timeSecondClick = window.performance.now();
+      if (timeSecondClick - slider.timeStartClickBtn > 310) {
+        slider.timeStartClickBtn = timeSecondClick;
+        clickBtn();
+      }
     }
   };
   element.addEventListener('click', (event) => watchSlider(event));
