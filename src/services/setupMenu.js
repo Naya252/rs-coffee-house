@@ -73,9 +73,10 @@ export function setupItemCard(element) {
 export function setupTab(element) {
   const setActiveTab = (event) => {
     const tab = event.target.closest('.menu__tabs_tab');
+    const activeTab = event.target.closest('.menu__tabs_tab.active');
     if (!tab) return;
 
-    if (tab) {
+    if (tab && !activeTab) {
       document.querySelectorAll(`.menu__tabs_tab`).forEach((el) => {
         el.classList.toggle('active', el === tab);
         if (el === tab) {
