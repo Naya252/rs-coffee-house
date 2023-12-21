@@ -1,6 +1,6 @@
 import { watchActiveSection, unWatchSections } from './watchSection';
 import { cancelBurgerModal } from './setupBurger';
-import { changeDevice } from '../ui/components/sections/menu';
+import { changeDevice, closeModal } from '../ui/components/sections/menu';
 import { CURRENT_PATH } from '../share/constants';
 
 class Size {
@@ -62,6 +62,9 @@ const resizeObserver = new ResizeObserver((entries) => {
       // close burger modal with resize
       if (document.querySelector('.side-container')) {
         cancelBurgerModal(document.querySelector('#burger-btn'));
+      }
+      if (document.querySelector('.scroll-not-visible')) {
+        closeModal(size.currentDevice);
       }
     }
   }
