@@ -54,12 +54,14 @@ p {
 
 a {
   text-decoration: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 button {
   border: none;
   font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 150%;
   color: $dark-color;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 ul,
 li {

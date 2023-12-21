@@ -23,6 +23,7 @@
       box-sizing: border-box;
       background: inherit;
       padding: 0;
+      -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 
       .card__img {
         height: 310px;
