@@ -3,14 +3,16 @@ import { cancelBurgerModal } from './setupBurger';
 import { changeDevice } from '../ui/components/sections/menu';
 import { CURRENT_PATH } from '../share/constants';
 
-let prewSize = null;
-let curSize = null;
-let prewInline = null;
-let curInline = null;
-
-export function getCurrentDevice() {
-  return curSize;
+class Size {
+  constructor(prewSize, curSize, prewInline, curInline) {
+    this.prewSize = prewSize;
+    this.curSize = curSize;
+    this.prewInline = prewInline;
+    this.curInline = curInline;
+  }
 }
+
+export const size = new Size(null, null, null, null);
 
 const resizeObserver = new ResizeObserver((entries) => {
   const [{ inlineSize }] = entries[0].borderBoxSize;
@@ -28,10 +30,10 @@ const resizeObserver = new ResizeObserver((entries) => {
     // change values of size & device
     function editDevice(val) {
       if (cur) {
-        prewSize = cur;
-        curSize = val;
+        size.prewSize = cur;
+        size.curSize = val;
       } else {
-        curSize = val;
+        size.curSize = val;
       }
       if ((cur && pre !== cur && pre !== null) || cur === null) {
         // close burger modal with change device
@@ -39,7 +41,7 @@ const resizeObserver = new ResizeObserver((entries) => {
           cancelBurgerModal(document.querySelector('#burger-btn'));
         }
         if (CURRENT_PATH.includes('menu')) {
-          changeDevice(curSize);
+          changeDevice(size.curSize, size.curInline);
         }
       }
     }
@@ -51,12 +53,12 @@ const resizeObserver = new ResizeObserver((entries) => {
     }
   }
 
-  function saveSizes(pre, cur, size) {
-    prewInline = cur;
+  function saveSizes(pre, cur, inline) {
+    size.prewInline = cur;
 
-    curInline = size;
+    size.curInline = inline;
 
-    if (curInline && prewInline && curInline !== prewInline) {
+    if (size.curInline && size.prewInline && size.curInline !== size.prewInline) {
       // close burger modal with resize
       if (document.querySelector('.side-container')) {
         cancelBurgerModal(document.querySelector('#burger-btn'));
@@ -64,8 +66,8 @@ const resizeObserver = new ResizeObserver((entries) => {
     }
   }
 
-  checkDevice(prewSize, curSize);
-  saveSizes(prewInline, curInline, inlineSize);
+  checkDevice(size.prewSize, size.curSize);
+  saveSizes(size.prewInline, size.curInline, inlineSize);
 });
 
 export default resizeObserver;

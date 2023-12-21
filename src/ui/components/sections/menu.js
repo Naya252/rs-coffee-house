@@ -144,8 +144,8 @@ export function removeTabItems() {
   tabs = tabs.map((tab) => ({ ...tab, items: [] }));
 }
 
-export function changeDevice(val) {
-  currentDevice = val;
+export function changeDevice(size) {
+  currentDevice = size;
   removeTabItems();
   changeActiveTab();
   getTabItems();
@@ -263,9 +263,6 @@ export function showOrderModal(item) {
   }, 100);
 }
 
-//--------------
-// TODO: change animate of close modal
-//--------------
 export function closeModal() {
   const content = document.querySelector('.modal__content');
   content.classList.remove('content--active');
