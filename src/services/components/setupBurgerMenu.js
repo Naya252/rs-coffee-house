@@ -14,7 +14,7 @@ export function cancelBurgerModal(btn, link) {
       if (document.querySelector('.side-container')) {
         document.querySelector('body').removeChild(document.querySelector('.side-container'));
         document.querySelector('body').style.overflow = 'auto';
-        closeModal('mobile');
+        closeModal();
 
         // move to link
         setTimeout(() => {

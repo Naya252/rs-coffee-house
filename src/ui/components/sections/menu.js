@@ -5,9 +5,6 @@ import '../../../sass/components/_tab.module.scss';
 
 import { TAB_COFFEE, TAB_TEA, TAB_DESSERT, REFRESH_ICON, INFO_ICON } from '../../../share/constants';
 import { getTabData } from '../../../repository/products-repository';
-import { showModal as changeMenu, closeModal as closeContent } from '../../../services/navigateService';
-import { setupModal } from '../../../services/setupMenu';
-import { toInert, fromInert } from '../../../services/inertService';
 import loadImage from '../../../services/setupPreloader';
 
 let tabs = [
@@ -18,7 +15,6 @@ let tabs = [
 let activeTabName = 'coffee';
 let currentDevice = null;
 let isRefresh = false;
-let lastFocus = null;
 
 class Order {
   constructor(price, total, isShow, size = { value: 's', price: 0 }, additives = []) {
@@ -181,7 +177,7 @@ export function createMenuSection() {
   document.querySelector('#coffee').classList.add('active');
 }
 
-// Генерация контролов модалки
+// create controls of modal
 function generateTab(arr, name) {
   let html = ``;
   let controls = [];
@@ -209,10 +205,9 @@ function generateTab(arr, name) {
   });
   return html;
 }
-// Генерация модалки
-export function showOrderModal(item, card) {
+// create modal
+export function createOrderModal(item) {
   order.change(item);
-  lastFocus = card;
 
   document.querySelector('#footer').insertAdjacentHTML(
     'afterend',
@@ -225,7 +220,7 @@ export function showOrderModal(item, card) {
   );
 
   const modal = document.querySelector('#modal');
-  modal.classList.add('modal--active');
+
   const content = document.querySelector('.modal__content');
   content.innerHTML = `
 <div class="modal__img">
@@ -263,34 +258,6 @@ export function showOrderModal(item, card) {
 
 </div>
   `;
-  changeMenu(currentDevice);
-  setupModal(document.querySelector(`#modal`));
 
-  setTimeout(() => {
-    content.classList.add('content--active');
-    order.changeVisible(true);
-    loadImage(document.querySelector('.modal-img'));
-    document.querySelector('.sizes__tab.tab.active').focus();
-    toInert(modal);
-  }, 100);
-}
-
-export function closeModal() {
-  console.log('close')
-  const content = document.querySelector('.modal__content');
-  content.classList.remove('content--active');
-
-  setTimeout(() => {
-    content.innerHTML = ``;
-    const modal = document.querySelector('#modal');
-    modal.classList.remove('modal--active');
-    order.changeVisible(false);
-    closeContent(currentDevice);
-    fromInert();
-    lastFocus.focus();
-    lastFocus = null;
-    setTimeout(() => {
-      document.querySelector('body').removeChild(modal);
-    }, 100);
-  }, 100);
+  return { modal, content, currentDevice };
 }
