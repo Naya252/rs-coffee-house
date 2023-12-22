@@ -1,12 +1,5 @@
-import {
-  changeActiveTab,
-  getTabItems,
-  removeTabItems,
-  showOrderModal,
-  closeModal,
-  order,
-} from '../ui/components/sections/menu';
-import { getItemById } from '../repository/products-repository';
+import { changeActiveTab, getTabItems, removeTabItems, showOrderModal } from '../../ui/components/sections/menu';
+import { getItemById } from '../../repository/products-repository';
 
 // lestening get more btn
 export function setupRefreshBtn(element) {
@@ -20,36 +13,6 @@ export function setupRefreshBtn(element) {
     }
   };
   element.addEventListener('click', (event) => getNewCards(event));
-}
-
-// lestening modal
-export function setupModal(element) {
-  const eventModal = (event) => {
-    const modal = event.target.closest('.modal__content');
-    const closeBtn = event.target.closest('.modal__close');
-    const size = event.target.closest('.sizes__tab');
-    const additive = event.target.closest('.additives__tab');
-
-    if (closeBtn || !modal) {
-      closeModal();
-    }
-    // change size
-    if (size) {
-      order.changeSize(size.getAttribute('value'), size.getAttribute('price'));
-      document.querySelectorAll(`.sizes__tab`).forEach((el) => {
-        if (size.getAttribute('value') === el.getAttribute('value')) {
-          el.classList.add('active');
-        } else {
-          el.classList.remove('active');
-        }
-      });
-    }
-    // change additivies
-    if (additive) {
-      order.changeAdditivies(additive.getAttribute('value'), additive.getAttribute('price'), additive);
-    }
-  };
-  element.addEventListener('click', (event) => eventModal(event));
 }
 
 // lestening item card

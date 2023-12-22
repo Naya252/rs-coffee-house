@@ -4,7 +4,6 @@ import { CUP_ICON } from '../../../share/constants';
 import getMenuItems from '../../../services/navigateService';
 
 // TODO разобрать функции и стили бара, меню, модалки
-
 function createMenuItems() {
   let navItems = '';
   const { generalMenutems } = getMenuItems();
@@ -42,15 +41,7 @@ export function createMenu() {
   `;
 
   block.innerHTML = menuModal;
-
-  document.querySelector('body').style.overflow = 'hidden';
-  document.querySelector('body').appendChild(block);
-  document.querySelector('.side-menu').innerHTML = navItems;
-}
-// remove burger modal
-export function removeMenu() {
-  const block = document.querySelector('.side-container');
-  block.style.translate = null;
+  return { block, navItems };
 }
 
 export function createHeader() {

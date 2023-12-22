@@ -1,5 +1,5 @@
 import { watchActiveSection, unWatchSections } from './watchSection';
-import { cancelBurgerModal } from './setupBurger';
+import { cancelBurgerModal } from './components/setupBurgerMenu';
 import { changeDevice, closeModal } from '../ui/components/sections/menu';
 import { CURRENT_PATH } from '../share/constants';
 

@@ -1,12 +1,14 @@
-import { createMenu, removeMenu } from '../ui/components/share/bar';
-import { showModal, closeModal } from './navigateService';
+import { createMenu } from '../../ui/components/share/bar';
+import { openModal, closeModal } from '../modalService';
 
 // cancel burger menu
 export function cancelBurgerModal(btn, link) {
   btn.classList.remove('show-cancel');
 
   setTimeout(() => {
-    removeMenu();
+    const block = document.querySelector('.side-container');
+    block.style.translate = null;
+
     setTimeout(() => {
       // return styles of body
       if (document.querySelector('.side-container')) {
@@ -76,9 +78,13 @@ export function setupBurgerBtn(element) {
         // generate burger menu
         btn.classList.add('show-cancel');
         setTimeout(() => {
-          createMenu();
+          const data = createMenu();
+          document.querySelector('body').style.overflow = 'hidden';
+          document.querySelector('body').appendChild(data.block);
+          document.querySelector('.side-menu').innerHTML = data.navItems;
+
           setTimeout(() => {
-            showModal('mobile');
+            openModal('mobile');
             setTimeout(() => {
               document.querySelector('.side-container').style.translate = '-100%';
               setupBurgerModal(document.querySelector('.side-menu'));
