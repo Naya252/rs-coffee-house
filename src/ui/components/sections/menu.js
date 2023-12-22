@@ -8,7 +8,7 @@ import { getTabData } from '../../../repository/products-repository';
 import { showModal as changeMenu, closeModal as closeContent } from '../../../services/navigateService';
 import { setupModal } from '../../../services/setupMenu';
 import { toInert, fromInert } from '../../../services/inertService';
-import loadImage from '../../../services/setupImg';
+import loadImage from '../../../services/setupPreloader';
 
 let tabs = [
   { name: 'Coffee', img: TAB_COFFEE, items: [] },

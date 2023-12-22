@@ -3,7 +3,7 @@ import about1Url from '../../../assets/img/photo/about-1.webp';
 import about2Url from '../../../assets/img/photo/about-2.webp';
 import about3Url from '../../../assets/img/photo/about-3.webp';
 import about4Url from '../../../assets/img/photo/about-4.webp';
-import loadImage from '../../../services/setupImg';
+import loadImage from '../../../services/setupPreloader';
 
 export default function createAboutSection() {
   document.querySelector('#favorite-coffee').insertAdjacentHTML(
