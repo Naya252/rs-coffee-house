@@ -16,6 +16,7 @@ let tabs = [
 let activeTabName = 'coffee';
 let currentDevice = null;
 let isRefresh = false;
+let lastFocus = null;
 
 class Order {
   constructor(price, total, isShow, size = { value: 's', price: 0 }, additives = []) {
@@ -99,7 +100,7 @@ function renderItems(items) {
   let cardsHtml = '';
   items.forEach((el) => {
     cardsHtml += `
-<div class="card" id="${el.id}-${el.category}">
+<button class="card" id="${el.id}-${el.category}">
   <div class="card__img loader">
     <img
       class="img"
@@ -112,7 +113,7 @@ function renderItems(items) {
     <p class="text-three-rows">${el.description}</p>
     <h3 class="heading-3 mt-auto">&#36;${el.price}</h3>
   </div>
-</div>
+</button>
 `;
   });
   return cardsHtml;
@@ -213,8 +214,9 @@ function generateTab(arr, name) {
   return html;
 }
 // Генерация модалки
-export function showOrderModal(item) {
+export function showOrderModal(item, card) {
   order.change(item);
+  lastFocus = card;
   const modal = document.querySelector('#modal');
   modal.classList.add('modal--active');
   const content = document.querySelector('.modal__content');
@@ -260,6 +262,7 @@ export function showOrderModal(item) {
     content.classList.add('content--active');
     order.changeVisible(true);
     loadImage(document.querySelector('.modal-img'));
+    document.querySelector('.sizes__tab.tab.active').focus();
   }, 100);
 }
 
@@ -273,5 +276,7 @@ export function closeModal() {
     modal.classList.remove('modal--active');
     order.changeVisible(false);
     closeContent(currentDevice);
+    lastFocus.focus();
+    lastFocus = null;
   }, 100);
 }

@@ -62,7 +62,7 @@ export function setupItemCard(element) {
     if (card) {
       const attr = card.getAttribute('id').split('-');
       const itemData = getItemById(attr[0], attr[1]);
-      showOrderModal(itemData);
+      showOrderModal(itemData, card);
     }
   };
 
