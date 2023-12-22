@@ -1,7 +1,7 @@
 import { createHeader } from '../components/share/bar';
 import { createMenuSection } from '../components/sections/menu';
 import createFooter from '../components/share/footer';
-import { setupTab, setupRefreshBtn, setupItemCard } from '../../services/setupMenu';
+import { setupTab, setupRefreshBtn, setupItemCard } from '../../services/setupMenuPage';
 import { setupBurgerBtn } from '../../services/setupBurger';
 
 export default function createMenuPage() {
