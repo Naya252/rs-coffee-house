@@ -6,6 +6,8 @@ import '../../../sass/components/_tab.module.scss';
 import { TAB_COFFEE, TAB_TEA, TAB_DESSERT, REFRESH_ICON, INFO_ICON } from '../../../share/constants';
 import { getTabData } from '../../../repository/products-repository';
 import { showModal as changeMenu, closeModal as closeContent } from '../../../services/navigateService';
+import { setupModal } from '../../../services/setupMenu';
+import { toInert, fromInert } from '../../../services/inertService';
 import loadImage from '../../../services/setupImg';
 
 let tabs = [
@@ -163,12 +165,6 @@ export function createMenuSection() {
     <div class="menu__tabs tabs mb-10"></div>
     <div class="menu__items"></div>
     <button id="more-cards" class="rounded-btn transparent-dark-btn">${REFRESH_ICON}</button>
-    <div id="modal" aria-hidden="true">
-      <div class="modal__wrap">
-        <div class="modal__content">
-        </div>
-      </div>
-    </div>
   </section>
 </main>
 `,
@@ -217,6 +213,17 @@ function generateTab(arr, name) {
 export function showOrderModal(item, card) {
   order.change(item);
   lastFocus = card;
+
+  document.querySelector('#footer').insertAdjacentHTML(
+    'afterend',
+    `<div id="modal" aria-hidden="true">
+  <div class="modal__wrap">
+    <div class="modal__content">
+    </div>
+  </div>
+</div>`,
+  );
+
   const modal = document.querySelector('#modal');
   modal.classList.add('modal--active');
   const content = document.querySelector('.modal__content');
@@ -257,16 +264,19 @@ export function showOrderModal(item, card) {
 </div>
   `;
   changeMenu(currentDevice);
+  setupModal(document.querySelector(`#modal`));
 
   setTimeout(() => {
     content.classList.add('content--active');
     order.changeVisible(true);
     loadImage(document.querySelector('.modal-img'));
     document.querySelector('.sizes__tab.tab.active').focus();
+    toInert(modal);
   }, 100);
 }
 
 export function closeModal() {
+  console.log('close')
   const content = document.querySelector('.modal__content');
   content.classList.remove('content--active');
 
@@ -276,7 +286,11 @@ export function closeModal() {
     modal.classList.remove('modal--active');
     order.changeVisible(false);
     closeContent(currentDevice);
+    fromInert();
     lastFocus.focus();
     lastFocus = null;
+    setTimeout(() => {
+      document.querySelector('body').removeChild(modal);
+    }, 100);
   }, 100);
 }
