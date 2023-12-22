@@ -1,7 +1,7 @@
 import logoUrl from '../../../assets/img/logo.svg';
 import '../../../sass/layouts/_bar.module.scss';
 import { CUP_ICON } from '../../../share/constants';
-import { getMenuItems } from '../../../services/navigateService';
+import getMenuItems from '../../../services/navigateService';
 
 // TODO разобрать функции и стили бара, меню, модалки
 

@@ -1,4 +1,4 @@
-import { getMenuItems } from './navigateService';
+import getMenuItems from './navigateService';
 import { CURRENT_PATH } from '../share/constants';
 
 function removeClasses() {
