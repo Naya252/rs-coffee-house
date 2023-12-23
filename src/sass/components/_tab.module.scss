@@ -1,0 +1,122 @@
+@import '../variables.module.scss';
+
+.tabs {
+  display: flex;
+  gap: 16px;
+  text-align: center;
+  justify-content: center;
+
+  &.sizes__tabs, &.additives__tabs{
+    align-self: flex-start;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  button.tab {
+    padding: 8px 16px 8px 8px;
+    border-radius: 100px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.5s ease;
+    cursor: pointer;
+    height: 46px;
+
+    &.sizes__tab {
+      span {
+        letter-spacing: -0.05rem !important;
+      }
+    }
+
+    .tab__img-container {
+      display: flex;
+      width: 30px;
+      height: 30px;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+    }
+
+    &.active {
+      background: $dark-color-secondary;
+      border: 1px solid $dark-color-secondary;
+      color: $text-light-color;
+      cursor: auto;
+
+      &.additives__tab {
+        cursor: pointer;
+      }
+
+      .tab__img-container {
+        background: $light-color;
+      }
+    }
+  }
+}
+
+@media (hover: hover) {
+  .tabs button.tab {
+    background: inherit;
+    border: 1px solid $light-color-secondary;
+    color: $dark-color;
+
+    .tab__img-container {
+      background: $light-color-secondary;
+
+      span {
+        color: $dark-color;
+      }
+    }
+
+    &:hover {
+      background: $dark-color-secondary;
+      border: 1px solid $dark-color-secondary;
+      color: $light-color;
+
+      .tab__img-container {
+        background: $light-color;
+
+        span {
+          color: $dark-color;
+        }
+      }
+    }
+  }
+}
+
+@media (hover: none) {
+  .tabs button.tab {
+    background: inherit;
+    border: 1px solid $light-color-secondary;
+    color: $dark-color;
+
+    .tab__img-container {
+      background: $light-color-secondary;
+
+      span {
+        color: $dark-color;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: $breakpoint-xs) {
+  .tabs {
+    gap: 8px;
+  }
+}
+
+@media only screen and (max-width: $breakpoint-xxs) {
+  .tabs {
+    gap: 16px;
+
+    button.tab {
+      padding: 8px;
+
+      .tab__text {
+        display: none;
+      }
+    }
+  }
+}

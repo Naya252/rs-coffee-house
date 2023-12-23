@@ -1,0 +1,135 @@
+@import '../variables.module.scss';
+
+#modal {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  overflow: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  // display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 99;
+  padding: 40px;
+  background: $backdrop-color;
+  display: none;
+  opacity: 0;
+
+  .modal__wrap {
+    width: 100%;
+    min-height: 100%;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .modal__content {
+      max-width: 768px;
+      width: 100%;
+      background: $light-color;
+      border-radius: 40px;
+      display: flex;
+      gap: 20px;
+      transition: all 0.3s ease;
+      transform: scale(0.7);
+      opacity: 0;
+      padding: 16px;
+
+      .modal-img-wrapper {
+        border-radius: 40px;
+        overflow: hidden;
+      }
+
+      .modal__img {
+        width: 50%;
+        min-width: 310px;
+        max-height: 310px;
+        transition: all 0.3s ease;
+        
+
+        .img {
+          width: 100%;
+          object-fit: contain;
+          position: relative;
+          transform: scale(1.1);
+        }
+      }
+
+      .modal__text {
+        width: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+
+        .description {
+          font-weight: 400;
+        }
+
+        .total {
+          display: flex;
+          justify-content: space-between;
+        }
+
+        .alert {
+          border-top: 1px solid $light-color-secondary;
+          display: flex;
+          justify-content: space-between;
+          gap: 8px;
+          padding: 12px 0;
+        }
+      }
+    }
+  }
+
+  &.modal--active {
+    display: flex;
+    opacity: 1;
+
+    .modal__content.content--active {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+}
+
+@media only screen and (max-width: $breakpoint-sm) {
+  #modal .modal__wrap .modal__content {
+    .modal__img {
+      min-width: 50px;
+    }
+  }
+}
+
+@media only screen and (max-width: $breakpoint-xs) {
+  #modal {
+    padding: 20px;
+
+    .modal__content {
+      max-width: 768px;
+      width: 100%;
+      background: $light-color;
+      border-radius: 40px;
+      display: flex;
+      gap: 20px;
+      transition: all 0.3s ease;
+      transform: scale(0.7);
+      opacity: 0;
+      padding: 16px;
+
+      .modal__img {
+        display: none;
+      }
+    }
+  }
+}
+
+.scroll-not-visible {
+  overflow: hidden;
+  height: 100dvh;
+}
+.static-width {
+  width: calc(100% - 16px);
+}

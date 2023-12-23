@@ -1,0 +1,62 @@
+@import '../variables.module.scss';
+
+#enjoy {
+  .enjoy__content {
+    position: relative;
+    overflow: hidden;
+    border-radius: 40px;
+    height: 644px;
+
+    video {
+      width: 100%;
+      height: 644px;
+      object-fit: cover;
+      border-radius: 40px;
+    }
+
+    .enjoy__content_offer-wrapper {
+      position: absolute;
+      z-index: 0;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      color: $text-light-color;
+      background: rgba(0, 0, 0, 0.3);
+
+      .enjoy__content_offer {
+        padding: 100px;
+        width: 530px;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: $breakpoint-lg) {
+  #enjoy .enjoy__content .enjoy__content_offer-wrapper .enjoy__content_offer {
+    padding: 100px 60px 100px 60px;
+  }
+}
+
+@media only screen and (max-width: $breakpoint-sm) {
+  #enjoy {
+    .enjoy__content {
+      height: 552px;
+
+      .enjoy__content_offer-wrapper .enjoy__content_offer {
+        padding: 60px 16px 60px 16px;
+        max-width: 316px;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: $breakpoint-xxs) {
+  #enjoy {
+    .enjoy__content {
+      .enjoy__content_offer-wrapper .enjoy__content_offer {
+        max-width: 250px;
+      }
+    }
+  }
+}
