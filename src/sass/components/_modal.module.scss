@@ -38,24 +38,28 @@
       opacity: 0;
       padding: 16px;
 
+      .modal-img-wrapper {
+        border-radius: 40px;
+        overflow: hidden;
+      }
+
       .modal__img {
         width: 50%;
         min-width: 310px;
         max-height: 310px;
         transition: all 0.3s ease;
-        overflow: hidden;
-        border-radius: 40px;
+        
 
         .img {
           width: 100%;
           object-fit: contain;
-          border-radius: 40px;
           position: relative;
           transform: scale(1.1);
         }
       }
 
       .modal__text {
+        width: auto;
         display: flex;
         flex-direction: column;
         gap: 20px;

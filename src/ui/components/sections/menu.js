@@ -224,7 +224,7 @@ export function createOrderModal(item) {
   const content = document.querySelector('.modal__content');
   content.innerHTML = `
 <div class="modal__img">
-<div class="loader modal-img-wrapper" style="position:relative; min-height: 200px">
+<div class="loader modal-img-wrapper" style="position:relative; min-height: 100px">
   <img loading="lazy" class="modal-img img"  alt="${item.name}" src="${item.img}">
   </img>
 </div>
