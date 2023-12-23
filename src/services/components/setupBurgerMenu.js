@@ -1,5 +1,6 @@
 import { createMenu } from '../../ui/components/share/bar';
 import { openModal, closeModal } from '../modalService';
+import { toInert, fromInert } from '../inertService';
 
 // cancel burger menu
 export function cancelBurgerModal(btn, link) {
@@ -15,7 +16,7 @@ export function cancelBurgerModal(btn, link) {
         document.querySelector('body').removeChild(document.querySelector('.side-container'));
         document.querySelector('body').style.overflow = 'auto';
         closeModal();
-
+        fromInert();
         // move to link
         setTimeout(() => {
           if (link) {
@@ -88,6 +89,9 @@ export function setupBurgerBtn(element) {
             setTimeout(() => {
               document.querySelector('.side-container').style.translate = '-100%';
               setupBurgerModal(document.querySelector('.side-menu'));
+              const value = document.querySelector('#header');
+              const value2 = document.querySelector('.side-container');
+              toInert(value, value2);
             });
           });
         });
