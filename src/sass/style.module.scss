@@ -217,10 +217,12 @@ main {
   }
 }
 
-@media only screen and (max-width: $breakpoint-sm) {
+@media only screen and (max-width: $breakpoint-md) {
   ::-webkit-scrollbar {
     width: 0;
   }
+}
+@media only screen and (max-width: $breakpoint-sm) {
   body {
     padding: 0px $content-gap-xs;
   }
